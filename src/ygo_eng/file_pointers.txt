@@ -1,0 +1,10 @@
+src//ygo_eng//db//_data//
+monster.data
+pendulum_monster.data
+fusion_monster.data
+synchro_monster.data
+xyz_monster.data
+link_monster.data
+spell.data
+trap.data
+src//ygo_eng//db//_info//forbidden_and_limited.info
