@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public abstract class Card {
 	private Architype[] architype;
 	private final int CARD_IND;
-	private int max_copies_allowed;
+	private int max_copies_allowed = 3;
 	private final String NAME, LORE;
 	private final CardType TYPE;
 

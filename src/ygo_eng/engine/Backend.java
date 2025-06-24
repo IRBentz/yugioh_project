@@ -21,7 +21,7 @@ import ygo_eng.card.SpellCard;
 import ygo_eng.card.TrapCard;
 import ygo_eng.card.Type;
 import ygo_eng.card.XyzMonCard;
-import ygo_eng.testing.DebugWindow;
+import ygo_eng.ui.DebugWindow;
 
 public abstract class Backend {
 	private static ArrayList<Card> card_db = new ArrayList<>();
@@ -484,5 +484,6 @@ public abstract class Backend {
 		buildDB_v1(pointerFileName);
 		assignFaL();
 		debugCheck();
+		window.toString();
 	}
 }
