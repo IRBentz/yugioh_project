@@ -9,7 +9,6 @@ public class Deck implements EffectTarget{
 	
 	@Override
 	public Object getEffectObject() {
-		// TODO Auto-generated method stub
 		return this;
 	}
 
