@@ -24,7 +24,7 @@ public class Card implements EffectTarget {
 		this.TYPE = type;
 		this.LORE = lore;
 	}
-	
+
 	public Effect effect() {
 		return cardEffect;
 	}
@@ -40,7 +40,7 @@ public class Card implements EffectTarget {
 	public int getIndex() {
 		return CARD_IND;
 	}
-	
+
 	@Override
 	public Object getEffectObject() {
 		return this;
@@ -65,7 +65,7 @@ public class Card implements EffectTarget {
 	public void setArchitype(ArrayList<Architype> architype) {
 		this.architype = architype.toArray(new Architype[architype.size()]);
 	}
-	
+
 	public void setEffect(Effect effect) {
 		this.cardEffect = effect;
 	}
