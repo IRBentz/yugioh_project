@@ -1,6 +1,6 @@
 package ygo_eng.card;
 
-public class StCard extends Card {
+public abstract class StCard extends Card {
 	private final Icon ICON;
 
 	public StCard() {

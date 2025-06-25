@@ -2,7 +2,7 @@ package ygo_eng.card;
 
 import java.util.ArrayList;
 
-public class Card implements EffectTarget {
+public abstract class Card implements EffectTarget {
 	private Architype[] architype;
 	private final int CARD_IND;
 	private int max_copies_allowed = 3;
