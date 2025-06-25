@@ -2,12 +2,13 @@ package ygo_eng.card;
 
 import java.util.ArrayList;
 
-public abstract class Card {
+public class Card implements EffectTarget {
 	private Architype[] architype;
 	private final int CARD_IND;
 	private int max_copies_allowed = 3;
 	private final String NAME, LORE;
 	private final CardType TYPE;
+	private Effect cardEffect;
 
 	public Card() {
 		this.NAME = null;
@@ -23,6 +24,10 @@ public abstract class Card {
 		this.TYPE = type;
 		this.LORE = lore;
 	}
+	
+	public Effect effect() {
+		return cardEffect;
+	}
 
 	public int getAllowedCopies() {
 		return max_copies_allowed;
@@ -34,6 +39,11 @@ public abstract class Card {
 
 	public int getIndex() {
 		return CARD_IND;
+	}
+	
+	@Override
+	public Object getEffectObject() {
+		return this;
 	}
 
 	public String getLore() {
@@ -54,6 +64,10 @@ public abstract class Card {
 
 	public void setArchitype(ArrayList<Architype> architype) {
 		this.architype = architype.toArray(new Architype[architype.size()]);
+	}
+	
+	public void setEffect(Effect effect) {
+		this.cardEffect = effect;
 	}
 
 	@Override
