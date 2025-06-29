@@ -487,15 +487,16 @@ public abstract class Backend {
 	}
 	
 	public static Card askUserSelection(ArrayList<Card> selectionList) {
-		Card selectedCard;
 		String inputText = "";
 		int i = 0;
 		for(Card card : selectionList)
 			inputText += "\t" + Integer.toString(i++) + card.getName() + "\n";
 		inputText = inputText.substring(0, inputText.length() - 1);
-		String cardName = Utils.askUser("Select 1 of the following cards: " + inputText);
-		
-		return selectedCard;
+		Character slotNumber = ' ';
+		while(!Character.isDigit(slotNumber))
+			slotNumber = Utils.askUser("Select 1 of the following cards: " + inputText);
+
+		return selectionList.get(Integer.parseInt(slotNumber.toString()));
 	}
 
 	public static void start(String pointerFileName) {
