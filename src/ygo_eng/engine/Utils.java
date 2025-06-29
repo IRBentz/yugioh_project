@@ -205,4 +205,13 @@ public abstract class Utils {
 		System.exit(1);
 		return null;
 	}
+	
+	public static Character askUser(String text) {
+		Scanner kb = new Scanner(System.in);
+		System.out.println(text);
+		String input = kb.next();
+		kb.close();
+		
+		return input.charAt(0);
+	}
 }
