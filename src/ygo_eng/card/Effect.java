@@ -9,12 +9,12 @@ public class Effect implements EffectTarget {
 		targets = new ArrayList<>();
 	}
 
-	public ArrayList<TargetTypes> getTargetTypes() {
-		return targets;
-	}
-
 	@Override
 	public Object getEffectObject() {
 		return this;
+	}
+
+	public ArrayList<TargetTypes> getTargetTypes() {
+		return targets;
 	}
 }

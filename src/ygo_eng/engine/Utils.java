@@ -92,7 +92,6 @@ public abstract class Utils {
 		}
 		return types_list.toArray(Type[]::new);
 	}
-
 	public static Type[] pullNextTypeBlock(Scanner target_scanner, String delimiter) {
 		ArrayList<Type> types_list = new ArrayList<>();
 		String nextString = target_scanner.next();
@@ -162,6 +161,15 @@ public abstract class Utils {
 		return (LinkArrow) unfoundEnum(inputString);
 	}
 
+	public static LinkArrow[] stringToLinkArrowArray(String target_string) {
+		String[] target_strings = target_string.split(" ");
+		ArrayList<LinkArrow> types_list = new ArrayList<>();
+		for (String in : target_strings) {
+			types_list.add(stringToLinkArrow(in));
+		}
+		return types_list.toArray(LinkArrow[]::new);
+	}
+
 	public static MonAttribute stringToMonAttribute(String inputString) {
 		for (MonAttribute target_enum : MonAttribute.class.getEnumConstants())
 			if (target_enum.toString().equals(inputString))
@@ -181,6 +189,15 @@ public abstract class Utils {
 			if (target_enum.toString().equals(inputString))
 				return target_enum;
 		return (Type) unfoundEnum(inputString);
+	}
+
+	public static Type[] stringToTypeArray(String target_string) {
+		String[] target_strings = target_string.split(" ");
+		ArrayList<Type> types_list = new ArrayList<>();
+		for (String in : target_strings) {
+			types_list.add(stringToType(in));
+		}
+		return types_list.toArray(Type[]::new);
 	}
 
 	private static Object unfoundEnum(String inputString) {

@@ -1,5 +1,6 @@
 package ygo_eng.engine;
 
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -12,7 +13,8 @@ public class QueDB_Builder implements KeyListener {
 	private static JTextField textField;
 
 	public static void queUser() {
-		frame = new JFrame("Use new backend? y/n");
+		frame = new JFrame("Use backend version:");
+		frame.setPreferredSize(new Dimension(300, 60));
 		textField = new JTextField(20);
 		textField.addKeyListener(new QueDB_Builder());
 		frame.add(textField);
@@ -31,14 +33,14 @@ public class QueDB_Builder implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		if (e.getKeyChar() == 'y') {
-			Backend.useNewFileFormat = true;
-			Backend.useNewFileLoading = true;
-			Backend.start("src//ygo_eng//file_pointers_new.txt");
-			frame.setVisible(false);
-		} else if (e.getKeyChar() == 'n') {
-			Backend.start("src//ygo_eng//file_pointers.txt");
-			frame.setVisible(false);
+		System.out.println("QueDB:\t\t" + e.getKeyChar() + " was typed.");
+		if(Character.isDigit(e.getKeyChar())) {
+			Global.back_ver = Integer.parseInt(String.valueOf(e.getKeyChar()));
+			if(Global.back_ver > -1 && Global.back_ver < 4) {
+				frame.setVisible(false);
+				Backend.start("src//ygo_eng//");
+				System.exit(0);
+			}
 		}
 	}
 }

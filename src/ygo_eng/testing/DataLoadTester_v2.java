@@ -101,8 +101,8 @@ public abstract class DataLoadTester_v2 {
 				input.nextLine();
 				baseStats = null;
 			}
+			input.close();
 		}
-		input.close();
 		// */
 		// * XYZ
 		input = fileScanners.get(4);

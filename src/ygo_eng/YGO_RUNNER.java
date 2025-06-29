@@ -6,5 +6,6 @@ public class YGO_RUNNER {
 
 	public static void main(String[] args) {
 		QueDB_Builder.queUser();
+
 	}
 }

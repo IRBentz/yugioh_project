@@ -24,7 +24,7 @@ public class DebugWindow extends JFrame {
 
 	public DebugWindow() {
 		setTitle("Output Window");
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		final int width = 1200;
 		final int height = 800;
 		Dimension windowDim = new Dimension(width, height);

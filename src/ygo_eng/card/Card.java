@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public abstract class Card implements EffectTarget {
 	private Architype[] architype;
 	private final int CARD_IND;
+	private Effect cardEffect;
 	private int max_copies_allowed = 3;
 	private final String NAME, LORE;
 	private final CardType TYPE;
-	private Effect cardEffect;
 
 	public Card() {
 		this.NAME = null;
@@ -37,13 +37,13 @@ public abstract class Card implements EffectTarget {
 		return architype;
 	}
 
-	public int getIndex() {
-		return CARD_IND;
-	}
-
 	@Override
 	public Object getEffectObject() {
 		return this;
+	}
+
+	public int getIndex() {
+		return CARD_IND;
 	}
 
 	public String getLore() {
