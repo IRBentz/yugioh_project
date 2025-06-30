@@ -10,15 +10,15 @@ import ygo_eng.engine.Global;
  * If this card is sent from the field to the GY: You can add 1 "Red-Eyes" card from your Deck to your hand.
  * DARK DRAGON EFFECT ; 1 600 600
  */
-public abstract class _93969023 implements Effect_Interface {
+public abstract class Black_Metal_Dragon /*implements Effect_Interface*/ {
 
-	@Override
-	public boolean check_conditions(int num) {
+	//@Override
+	public static boolean check_conditions(int num) {
 		return false;
 	}
 
-	@Override
-	public void execute_effect(int num) {
+	//@Override
+	public static void execute_effect(int num) {
 		switch (num) {
 		case 0:
 			return;
@@ -29,17 +29,17 @@ public abstract class _93969023 implements Effect_Interface {
 		}
 	}
 	
-	@Override
-	public int get_num_effect() {
+	//@Override
+	public static int get_num_effect() {
 		return 2;
 	}
 	
-	private void effect_1() {
-		
+	private static void effect_1() {
+
 	}
 	
-	private void effect_2() {
-		Global.player.getHand().addCard(Global.searchCard(Global.player.getDeck(), Architype.RED_EYES));
+	private static void effect_2() {
+		Global.player.getHand().addCard(Global.search(Global.player.getDeck(), Architype.RED_EYES));
 	}
 }
 

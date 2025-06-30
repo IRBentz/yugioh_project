@@ -3,6 +3,7 @@ package ygo_eng.engine;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import ygo_eng.card.Card;
 import ygo_eng.card.CardType;
 import ygo_eng.card.Icon;
 import ygo_eng.card.LinkArrow;
@@ -203,6 +204,14 @@ public abstract class Utils {
 	private static Object unfoundEnum(String inputString) {
 		new Error("Enum for \"" + inputString + "\" could not be found.").printStackTrace();
 		System.exit(1);
+		return null;
+	}
+	
+	public static Card findCard(int card_index) {
+		for(Card card : Global.card_db)
+			if (card.getIndex() == card_index)
+				return card;
+		new Error("Could not find card matching: " + card_index).printStackTrace();
 		return null;
 	}
 	
