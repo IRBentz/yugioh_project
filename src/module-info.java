@@ -11,7 +11,6 @@ module yugioh {
 	exports ygo_eng.engine;
 	exports ygo_eng.ui;
 	exports ygo_eng.player;
-	exports ygo_eng.deck;
 	exports ygo_eng;
 
 	requires transitive java.desktop;
