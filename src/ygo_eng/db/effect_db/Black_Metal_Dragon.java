@@ -1,7 +1,7 @@
 package ygo_eng.db.effect_db;
 
-import ygo_eng.card.Architype;
 import ygo_eng.engine.Global;
+import ygo_eng.engine.Utils;
 
 /*
  * Black Metal Dragon
@@ -10,14 +10,12 @@ import ygo_eng.engine.Global;
  * If this card is sent from the field to the GY: You can add 1 "Red-Eyes" card from your Deck to your hand.
  * DARK DRAGON EFFECT ; 1 600 600
  */
-public abstract class Black_Metal_Dragon /*implements Effect_Interface*/ {
+public abstract class Black_Metal_Dragon {
 
-	//@Override
 	public static boolean check_conditions(int num) {
 		return false;
 	}
 
-	//@Override
 	public static void execute_effect(int num) {
 		switch (num) {
 		case 0:
@@ -29,7 +27,6 @@ public abstract class Black_Metal_Dragon /*implements Effect_Interface*/ {
 		}
 	}
 	
-	//@Override
 	public static int get_num_effect() {
 		return 2;
 	}
@@ -39,7 +36,7 @@ public abstract class Black_Metal_Dragon /*implements Effect_Interface*/ {
 	}
 	
 	private static void effect_2() {
-		Global.player.getHand().addCard(Global.search(Global.player.getDeck(), Architype.RED_EYES));
+		Global.player.getHand().addCard(Utils.search(Global.player.getDeck(), "Red-Eyes"));
 	}
 }
 

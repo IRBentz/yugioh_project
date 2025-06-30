@@ -1,8 +1,10 @@
 package ygo_eng.engine;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import ygo_eng.card.Architype;
 import ygo_eng.card.Card;
 import ygo_eng.card.CardType;
 import ygo_eng.card.Icon;
@@ -10,6 +12,7 @@ import ygo_eng.card.LinkArrow;
 import ygo_eng.card.MonAttribute;
 import ygo_eng.card.MonType;
 import ygo_eng.card.Type;
+import ygo_eng.player.Deck;
 
 public abstract class Utils {
 	public static String filterFilePath(String input) {
@@ -222,5 +225,32 @@ public abstract class Utils {
 		kb.close();
 		
 		return input.charAt(0);
+	}
+	
+	public static Card search(Deck deck, Architype filter) {
+		ArrayList<Card> matchedCards = new ArrayList<>();
+		for(Card potentialCard : deck.getDeckList())
+			for(Architype architype : potentialCard.getArchitype())
+				if(architype.equals(filter))
+					matchedCards.add(potentialCard);
+		
+		return Backend.askUserSelection(matchedCards);
+	}
+	
+	public static Card search(Deck deck, String name) {
+		ArrayList<Card> matchedCards = new ArrayList<>();
+		for(Card potentialCard : deck.getDeckList())
+			if(potentialCard.getName().contains(name))
+				matchedCards.add(potentialCard);
+		new Error("Could not find cards containing: " + name).printStackTrace();
+		return null;
+	}
+	
+	public static void execute_card_effect(Card targetCard, int effect_num) {
+		try {
+			Class.forName(Global.EFFECT_CLASS_HEADER + targetCard.getName().replaceAll(" ", "_")).getMethod("execute_effect", int.class).invoke(Object.class, effect_num);
+		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 }

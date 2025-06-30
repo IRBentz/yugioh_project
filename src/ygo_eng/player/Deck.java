@@ -1,4 +1,4 @@
-package ygo_eng.deck;
+package ygo_eng.player;
 
 import java.util.ArrayList;
 

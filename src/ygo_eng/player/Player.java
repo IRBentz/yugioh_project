@@ -1,7 +1,6 @@
 package ygo_eng.player;
 
 import ygo_eng.card.EffectTarget;
-import ygo_eng.deck.Deck;
 
 public class Player implements EffectTarget {
 	private Hand hand;

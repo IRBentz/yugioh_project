@@ -493,7 +493,7 @@ public abstract class Backend {
 			inputText += "\t" + Integer.toString(i++) + card.getName() + "\n";
 		Character slotNumber = ' ';
 		while(!Character.isDigit(slotNumber))
-			slotNumber = Utils.askUser("Select 1 of the following cards: " + inputText);
+			slotNumber = Utils.askUser("Select 1 of the following cards:\n" + inputText);
 
 		return selectionList.get(Integer.parseInt(slotNumber.toString()));
 	}
