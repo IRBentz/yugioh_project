@@ -22,8 +22,4 @@ public class Hand {
 	public ArrayList<Card> getHand() {
 		return hand;
 	}
-
-	public Card getRandomCard() {
-		return this.hand.get((int) (Math.random() * hand.size()));
-	}
 }

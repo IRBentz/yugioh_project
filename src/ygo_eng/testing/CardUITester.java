@@ -13,8 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import ygo_eng.engine.Utils;
-
 public class CardUITester extends JFrame {
 
 	private static ArrayList<ImageIcon> cardBG_II = new ArrayList<>();
@@ -43,7 +41,7 @@ public class CardUITester extends JFrame {
 		// new CardUI();
 		CardUITester.buildCardBG_II("src//ygo_eng//ui//png_pointers.txt");
 		Arrays.stream(cardBG_II.toArray(ImageIcon[]::new))
-				.forEach(image -> new CardUITester(Utils.filterFilePath(image.toString())).setCardBG(image));
+				.forEach(image -> new CardUITester(image.toString()).setCardBG(image));
 	}
 
 	private JPanel cardPanel = new JPanel();

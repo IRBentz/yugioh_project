@@ -15,26 +15,34 @@ import ygo_eng.card.Type;
 import ygo_eng.player.Deck;
 
 public abstract class Utils {
-	public static String filterFilePath(String input) {
-		if (input.contains("src//ygo_eng//"))
-			input = input.replace("src//ygo_eng//", "");
-		if (input.contains("card//")) {
-			input = input.replace("card//", "");
-			if (input.contains("card_png//")) {
-				input = input.replace("card_png//", "");
-				if (input.contains("link_arrows//"))
-					input = input.replace("link_arrows//", "");
-				if (input.contains("other//"))
-					input = input.replace("other//", "");
-				if (input.contains("pend//"))
-					input = input.replace("pend//", "pend ");
-			}
+	public static Character askUser(String text) {
+		Scanner kb = new Scanner(System.in);
+		System.out.println(text);
+		String input = kb.next();
+		kb.close();
+		
+		return input.charAt(0);
+	}
+
+	public static void execute_card_effect(Card targetCard, int effect_num) {
+		try {
+			Class.forName(Global.EFFECT_CLASS_HEADER + targetCard.getName().replaceAll(" ", "_")).getMethod("execute_effect", int.class).invoke(Object.class, effect_num);
+			println("Successfully executed " + targetCard.getName() + "'s effect #" + effect_num);
+		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException | ClassNotFoundException e) {
+			e.printStackTrace();
 		}
-		if (input.contains("data//"))
-			input = input.replace("data//", "");
-		if (input.contains("ui//"))
-			input = input.replace("ui//", "");
-		return input;
+	}
+
+	public static Card findCard(int card_index) {
+		for(Card card : Global.card_db)
+			if (card.getIndex() == card_index)
+				return card;
+		new Error("Could not find card matching: " + card_index).printStackTrace();
+		return null;
+	}
+
+	private static void println(String stringToPrint) {
+		System.out.printf("Utils:\t\t%s", stringToPrint + "\n");
 	}
 
 	public static Object[] pullBaseStats(Scanner target_scanner) {
@@ -56,7 +64,6 @@ public abstract class Utils {
 				stringConvert(target_scanner.next()), pullNextTypeBlock(target_scanner, ";"), target_scanner.nextInt(),
 				target_scanner.nextInt(), target_scanner.nextInt() };
 	}
-
 	public static LinkArrow[] pullNextLinkArrowBlock(Scanner target_scanner) {
 		String[] input = target_scanner.nextLine().split(" ");
 		ArrayList<LinkArrow> linkArrow_list = new ArrayList<>();
@@ -96,6 +103,7 @@ public abstract class Utils {
 		}
 		return types_list.toArray(Type[]::new);
 	}
+
 	public static Type[] pullNextTypeBlock(Scanner target_scanner, String delimiter) {
 		ArrayList<Type> types_list = new ArrayList<>();
 		String nextString = target_scanner.next();
@@ -114,6 +122,24 @@ public abstract class Utils {
 
 	public static Object[] pullSTBaseStats(Scanner target_scanner, String delimiter) {
 		return new Object[] { pullBaseStats(target_scanner, delimiter), stringConvert(target_scanner.next()) };
+	}
+
+	public static Card search(Deck deck, Architype filter) {
+		ArrayList<Card> matchedCards = new ArrayList<>();
+		for(Card potentialCard : deck.getMainDeckList())
+			for(Architype architype : potentialCard.getArchitype())
+				if(architype.equals(filter))
+					matchedCards.add(potentialCard);
+		
+		return Backend.askUserSelection(matchedCards);
+	}
+
+	public static Card search(Deck deck, String name) {
+		ArrayList<Card> matchedCards = new ArrayList<>();
+		for(Card potentialCard : deck.getMainDeckList())
+			if(potentialCard.getName().contains(name))
+				matchedCards.add(potentialCard);
+		return Backend.askUserSelection(matchedCards);
 	}
 
 	public static Object stringConvert(String inputString) {
@@ -164,7 +190,7 @@ public abstract class Utils {
 				return target_enum;
 		return (LinkArrow) unfoundEnum(inputString);
 	}
-
+	
 	public static LinkArrow[] stringToLinkArrowArray(String target_string) {
 		String[] target_strings = target_string.split(" ");
 		ArrayList<LinkArrow> types_list = new ArrayList<>();
@@ -173,28 +199,28 @@ public abstract class Utils {
 		}
 		return types_list.toArray(LinkArrow[]::new);
 	}
-
+	
 	public static MonAttribute stringToMonAttribute(String inputString) {
 		for (MonAttribute target_enum : MonAttribute.class.getEnumConstants())
 			if (target_enum.toString().equals(inputString))
 				return target_enum;
 		return (MonAttribute) unfoundEnum(inputString);
 	}
-
+	
 	public static MonType stringToMonType(String inputString) {
 		for (MonType target_enum : MonType.class.getEnumConstants())
 			if (target_enum.toString().equals(inputString))
 				return target_enum;
 		return (MonType) unfoundEnum(inputString);
 	}
-
+	
 	public static Type stringToType(String inputString) {
 		for (Type target_enum : Type.class.getEnumConstants())
 			if (target_enum.toString().equals(inputString))
 				return target_enum;
 		return (Type) unfoundEnum(inputString);
 	}
-
+	
 	public static Type[] stringToTypeArray(String target_string) {
 		String[] target_strings = target_string.split(" ");
 		ArrayList<Type> types_list = new ArrayList<>();
@@ -203,54 +229,14 @@ public abstract class Utils {
 		}
 		return types_list.toArray(Type[]::new);
 	}
-
+	
 	private static Object unfoundEnum(String inputString) {
 		new Error("Enum for \"" + inputString + "\" could not be found.").printStackTrace();
 		System.exit(1);
 		return null;
 	}
 	
-	public static Card findCard(int card_index) {
-		for(Card card : Global.card_db)
-			if (card.getIndex() == card_index)
-				return card;
-		new Error("Could not find card matching: " + card_index).printStackTrace();
-		return null;
-	}
-	
-	public static Character askUser(String text) {
-		Scanner kb = new Scanner(System.in);
-		System.out.println(text);
-		String input = kb.next();
-		kb.close();
-		
-		return input.charAt(0);
-	}
-	
-	public static Card search(Deck deck, Architype filter) {
-		ArrayList<Card> matchedCards = new ArrayList<>();
-		for(Card potentialCard : deck.getDeckList())
-			for(Architype architype : potentialCard.getArchitype())
-				if(architype.equals(filter))
-					matchedCards.add(potentialCard);
-		
-		return Backend.askUserSelection(matchedCards);
-	}
-	
-	public static Card search(Deck deck, String name) {
-		ArrayList<Card> matchedCards = new ArrayList<>();
-		for(Card potentialCard : deck.getDeckList())
-			if(potentialCard.getName().contains(name))
-				matchedCards.add(potentialCard);
-		new Error("Could not find cards containing: " + name).printStackTrace();
-		return null;
-	}
-	
-	public static void execute_card_effect(Card targetCard, int effect_num) {
-		try {
-			Class.forName(Global.EFFECT_CLASS_HEADER + targetCard.getName().replaceAll(" ", "_")).getMethod("execute_effect", int.class).invoke(Object.class, effect_num);
-		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+	public Card getRandomCard(ArrayList<Card> list) {
+		return list.get((int) (Math.random() * list.size()));
 	}
 }

@@ -10,6 +10,9 @@
         <directory>src</directory>
         <excludes>
           <exclude>**/*.java</exclude>
+          <exclude>**/*.jpg</exclude>
+          <exclude>**/*.png</exclude>
+          <exclude>**/*.7z</exclude>
         </excludes>
       </resource>
     </resources>

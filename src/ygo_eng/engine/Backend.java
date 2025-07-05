@@ -23,6 +23,18 @@ import ygo_eng.card.Type;
 import ygo_eng.card.XyzMonCard;
 
 public abstract class Backend {
+	public static Card askUserSelection(ArrayList<Card> selectionList) {
+		String inputText = "";
+		int i = 0;
+		for(Card card : selectionList)
+			inputText += "\t" + Integer.toString(i++) + " " + card.getName() + "\n";
+		Character slotNumber = ' ';
+		while(!Character.isDigit(slotNumber))
+			slotNumber = Utils.askUser("Select 1 of the following cards:\n" + inputText);
+		println("Card selected: " + Integer.parseInt(slotNumber.toString()) + " " + selectionList.get(Integer.parseInt(slotNumber.toString())).getName());
+		return selectionList.get(Integer.parseInt(slotNumber.toString()));
+	}
+
 	private static void assignFaL() {
 		int num_assigned = 0;
 		for (Card card : Global.card_db)
@@ -33,6 +45,7 @@ public abstract class Backend {
 				}
 		println("Successfully assigned " + num_assigned + " cards their max allowed copies.");
 	}
+
 
 	private static void buildDB_v1(String pointerFileName) {
 		switch (Global.back_ver) {
@@ -76,12 +89,6 @@ public abstract class Backend {
 				return;
 			}
 		}
-
-		/*
-		 * for(Scanner curScanner : fileScanners) { curScanner.useDelimiter(" ;");
-		 * println(curScanner.toString() +
-		 * curScanner.delimiter().toString()); }
-		 */
 
 		Scanner currScanner = fileScanners.get(0);
 		while (currScanner.hasNext()) {
@@ -172,70 +179,7 @@ public abstract class Backend {
 		for (Scanner scanner : fileScanners) {
 			scanner.close();
 		}
-		/**
-		 * Scanner input_file; try { input_file = new Scanner(new File(fileName)); }
-		 * catch (FileNotFoundException e) { e.printStackTrace(); return; }
-		 * println("Successfully found file at: " + new
-		 * File(fileName).getPath()); window.println("Successfully found file at: " +
-		 * new File(fileName).getPath());
-		 *
-		 * while (input_file.hasNext()) { String type = input_file.next();
-		 *
-		 * Object[] returnedList = null;
-		 *
-		 * switch (type) { case "mon": returnedList = pullMonBaseStats(input_file, ";");
-		 *
-		 * card_db.add(new MonCard((String) ((Object[]) returnedList[0])[0], (Integer)
-		 * ((Object[]) returnedList[0])[1], (MonAttribute) returnedList[1], (MonType)
-		 * returnedList[2], (Type[]) returnedList[3], (String) ((Object[])
-		 * returnedList[0])[2], (Integer) returnedList[4], (Integer) returnedList[5],
-		 * (Integer) returnedList[6])); break; case "fus": case "syn": returnedList =
-		 * pullMonBaseStats(input_file, ";");
-		 *
-		 * card_db.add(new ExtraMonCard((String) ((Object[]) returnedList[0])[0],
-		 * (Integer) ((Object[]) returnedList[0])[1], (MonAttribute) returnedList[1],
-		 * (MonType) returnedList[2], (Type[]) returnedList[3],
-		 * pullNextTextBlock(input_file, ";"), (String) ((Object[]) returnedList[0])[2],
-		 * (Integer) returnedList[4], (Integer) returnedList[5], (Integer)
-		 * returnedList[6])); break; case "xyz": returnedList =
-		 * pullMonBaseStats(input_file, ";");
-		 *
-		 * card_db.add(new XyzMonCard((String) ((Object[]) returnedList[0])[0],
-		 * (Integer) ((Object[]) returnedList[0])[1], (MonAttribute) returnedList[1],
-		 * (MonType) returnedList[2], (Type[]) returnedList[3],
-		 * pullNextTextBlock(input_file, ";"), (String) ((Object[]) returnedList[0])[2],
-		 * (Integer) returnedList[4], (Integer) returnedList[5], (Integer)
-		 * returnedList[6])); break; case "pen": returnedList =
-		 * pullMonBaseStats(input_file, ";");
-		 *
-		 * card_db.add(new PenMonCard((String) ((Object[]) returnedList[0])[0],
-		 * (Integer) ((Object[]) returnedList[0])[1], (MonAttribute) returnedList[1],
-		 * (MonType) returnedList[2], (Type[]) returnedList[3],
-		 * pullNextTextBlock(input_file, ";"), (String) ((Object[]) returnedList[0])[2],
-		 * (Integer) returnedList[4], input_file.nextInt(), (Integer) returnedList[5],
-		 * (Integer) returnedList[6])); break; case "lnk": returnedList =
-		 * pullMonBaseStats(input_file, ";");
-		 *
-		 * card_db.add(new LinkMonCard((String) ((Object[]) returnedList[0])[0],
-		 * (Integer) ((Object[]) returnedList[0])[1], (MonAttribute) returnedList[1],
-		 * (MonType) returnedList[2], (Type[]) returnedList[3],
-		 * pullNextTextBlock(input_file, ";"), (String) ((Object[]) returnedList[0])[2],
-		 * (Integer) returnedList[5], (Integer) returnedList[6], (linkArrow[])
-		 * pullNextLinkArrowBlock(input_file, ";"))); break; case "spl": returnedList =
-		 * pullSTBaseStats(input_file, ";");
-		 *
-		 * card_db.add(new SpellCard((String) ((Object[]) returnedList[0])[0], (Integer)
-		 * ((Object[]) returnedList[0])[1], (String) ((Object[]) returnedList[0])[2],
-		 * (Icon) returnedList[1])); break; case "trp": returnedList =
-		 * pullSTBaseStats(input_file, ";");
-		 *
-		 * card_db.add(new TrapCard((String) ((Object[]) returnedList[0])[0], (Integer)
-		 * ((Object[]) returnedList[0])[1], (String) ((Object[]) returnedList[0])[2],
-		 * (Icon) returnedList[1])); break; default: new Error("Type: " + type + " not
-		 * found.").printStackTrace(); break; } } input_file.close();
-		 **/
 	}
-
 
 	private static void buildDB_v2(ArrayList<Scanner> fileScanners) {
 
@@ -371,8 +315,6 @@ public abstract class Backend {
 			return;
 		}
 		println("Successfully found file at: " + new File(fileName).getPath());
-		// window.println("Successfully found file at: " + new
-		// File(fileName).getPath());
 		while (input_file.hasNext()) {
 			Global.fal_list.add(new int[] { input_file.nextInt(), input_file.nextInt() });
 		}
@@ -389,9 +331,6 @@ public abstract class Backend {
 		}
 		println("Successfully found file \"" + filePath.getFileName() + "\" at the following file path: \""
 				+ filePath + "\"");
-		// window.println("Successfully found file \"" +
-		// filePath.resolve(fileName).getFileName() + "\" at the following file path:
-		// \"" + filePath.resolve(fileName) + "\"");
 		while (input_file.hasNext()) {
 			Global.fal_list.add(new int[] { input_file.nextInt(), input_file.nextInt() });
 		}
@@ -443,7 +382,7 @@ public abstract class Backend {
 		pointerFileScanner.close();
 		buildDB_v2(fileScanners);
 	}
-
+	
 	private static void grabFileScanners_v2(String pointerFileName) {
 		Scanner pointerFileScanner;
 		ArrayList<Scanner> fileScanners = new ArrayList<>();
@@ -484,18 +423,6 @@ public abstract class Backend {
 	
 	private static void println(String stringToPrint) {
 		System.out.printf("Back-end_v1:\t%s", stringToPrint + "\n");
-	}
-	
-	public static Card askUserSelection(ArrayList<Card> selectionList) {
-		String inputText = "";
-		int i = 0;
-		for(Card card : selectionList)
-			inputText += "\t" + Integer.toString(i++) + card.getName() + "\n";
-		Character slotNumber = ' ';
-		while(!Character.isDigit(slotNumber))
-			slotNumber = Utils.askUser("Select 1 of the following cards:\n" + inputText);
-
-		return selectionList.get(Integer.parseInt(slotNumber.toString()));
 	}
 
 	public static void start(String pointerFileName) {

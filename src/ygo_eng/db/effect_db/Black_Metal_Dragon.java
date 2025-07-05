@@ -16,6 +16,14 @@ public abstract class Black_Metal_Dragon {
 		return false;
 	}
 
+	private static void effect_1() {
+
+	}
+	
+	private static void effect_2() {
+		Global.player.getHand().addCard(Utils.search(Global.player.getDeck(), "Red-Eyes"));
+	}
+	
 	public static void execute_effect(int num) {
 		switch (num) {
 		case 0:
@@ -29,14 +37,6 @@ public abstract class Black_Metal_Dragon {
 	
 	public static int get_num_effect() {
 		return 2;
-	}
-	
-	private static void effect_1() {
-
-	}
-	
-	private static void effect_2() {
-		Global.player.getHand().addCard(Utils.search(Global.player.getDeck(), "Red-Eyes"));
 	}
 }
 
