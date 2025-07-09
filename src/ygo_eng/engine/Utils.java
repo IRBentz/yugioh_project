@@ -15,6 +15,18 @@ import ygo_eng.card.Type;
 import ygo_eng.player.Deck;
 
 public abstract class Utils {
+	public static Card askUserSelection(ArrayList<Card> selectionList) {
+		String inputText = "";
+		int i = 0;
+		for(Card card : selectionList)
+			inputText += "\t" + Integer.toString(i++) + " " + card.getName() + "\n";
+		Character slotNumber = ' ';
+		while(!Character.isDigit(slotNumber))
+			slotNumber = askUser("Select 1 of the following cards:\n" + inputText);
+		println("Card selected: " + Integer.parseInt(slotNumber.toString()) + " " + selectionList.get(Integer.parseInt(slotNumber.toString())).getName());
+		return selectionList.get(Integer.parseInt(slotNumber.toString()));
+	}
+	
 	public static Character askUser(String text) {
 		Scanner kb = new Scanner(System.in);
 		System.out.println(text);

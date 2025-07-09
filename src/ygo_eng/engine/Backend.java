@@ -23,17 +23,6 @@ import ygo_eng.card.Type;
 import ygo_eng.card.XyzMonCard;
 
 public abstract class Backend {
-	public static Card askUserSelection(ArrayList<Card> selectionList) {
-		String inputText = "";
-		int i = 0;
-		for(Card card : selectionList)
-			inputText += "\t" + Integer.toString(i++) + " " + card.getName() + "\n";
-		Character slotNumber = ' ';
-		while(!Character.isDigit(slotNumber))
-			slotNumber = Utils.askUser("Select 1 of the following cards:\n" + inputText);
-		println("Card selected: " + Integer.parseInt(slotNumber.toString()) + " " + selectionList.get(Integer.parseInt(slotNumber.toString())).getName());
-		return selectionList.get(Integer.parseInt(slotNumber.toString()));
-	}
 
 	private static void assignFaL() {
 		int num_assigned = 0;
@@ -47,23 +36,8 @@ public abstract class Backend {
 	}
 
 
-	private static void buildDB_v1(String pointerFileName) {
-		switch (Global.back_ver) {
-		case 1:
-			println("Using Back-end v1.1");
-			grabFileScanners_v1(pointerFileName + "file_pointers_new.txt");
-			return;
-		case 2:
-			println("Using Back-end v1.2");
-			grabFileScanners_v2(pointerFileName + "file_pointers_new.txt");
-			return;
-		case 3:
-			Backend_v2.buildDB(pointerFileName + "file_pointers_new.txt");
-			return;
-		default:
-			println("Using Back-end v1.0");
-			pointerFileName += "file_pointers.txt";
-		}
+	private static void buildDB(String pointerFileName) {
+		
 		Scanner pointerFileScanner;
 		try {
 			pointerFileScanner = new Scanner(new File(pointerFileName));
@@ -173,7 +147,7 @@ public abstract class Backend {
 							(String) ((Object[]) returnedList[0])[2], (Icon) returnedList[1]));
 		}
 
-		buildFaL_v1(pointerFileScanner.nextLine());
+		buildFaL(pointerFileScanner.nextLine());
 
 		pointerFileScanner.close();
 		for (Scanner scanner : fileScanners) {
@@ -181,8 +155,69 @@ public abstract class Backend {
 		}
 	}
 
-	private static void buildDB_v2(ArrayList<Scanner> fileScanners) {
+	
 
+	private static void buildFaL(String fileName) {
+		Scanner input_file;
+		try {
+			input_file = new Scanner(new File(fileName));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return;
+		}
+		println("Successfully found file at: " + new File(fileName).getPath());
+		while (input_file.hasNext()) {
+			Global.fal_list.add(new int[] { input_file.nextInt(), input_file.nextInt() });
+		}
+		input_file.close();
+	}
+
+	
+
+	private static void debugCheck() {
+		Global.card_db.sort(Comparator.comparing(Card::getAllowedCopies));
+		// Arrays.stream(card_db.toArray(Card[]::new)).forEach(card ->
+		// println(card));
+
+		// Arrays.stream(card_db.toArray(Card[]::new)).forEach(card ->
+		// window.println(card.toString() + "\n"));
+	}
+
+	private static void grabFileScanners(String pointerFileName) {
+		Scanner pointerFileScanner;
+		ArrayList<Scanner> fileScanners = new ArrayList<>();
+		try {
+			pointerFileScanner = new Scanner(new File(pointerFileName));
+			println("Found file at: " + new File(pointerFileName).getPath());
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return;
+		}
+
+		String filePath = pointerFileScanner.nextLine();
+		println("Successfully found designated file path at: " + filePath.replace("//", "\\"));
+
+		int numberOfFiles = 8;
+		for (int i = 0; i < numberOfFiles; i++) {
+			try {
+				String fileLoc = filePath + pointerFileScanner.nextLine();
+				println("Successfully found Target file: " + fileLoc.replace("//", "\\"));
+				fileScanners.add(new Scanner(new File(fileLoc)));
+
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+				pointerFileScanner.close();
+				if (i != 0) {
+					for (Scanner scanner : fileScanners) {
+						scanner.close();
+					}
+				}
+				return;
+			}
+		}
+		buildFaL(pointerFileScanner.nextLine());
+		pointerFileScanner.close();
+		
 		Scanner input = fileScanners.get(0);
 		Object[] baseStats;
 		int ttl_count = 0;
@@ -306,127 +341,28 @@ public abstract class Backend {
 		println("Created " + ttl_count + " cards in total.");
 	}
 
-	private static void buildFaL_v1(String fileName) {
-		Scanner input_file;
-		try {
-			input_file = new Scanner(new File(fileName));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return;
-		}
-		println("Successfully found file at: " + new File(fileName).getPath());
-		while (input_file.hasNext()) {
-			Global.fal_list.add(new int[] { input_file.nextInt(), input_file.nextInt() });
-		}
-		input_file.close();
-	}
-
-	private static void buildFaL_v2(Path filePath) {
-		Scanner input_file;
-		try {
-			input_file = new Scanner(filePath);
-		} catch (IOException e) {
-			e.printStackTrace();
-			return;
-		}
-		println("Successfully found file \"" + filePath.getFileName() + "\" at the following file path: \""
-				+ filePath + "\"");
-		while (input_file.hasNext()) {
-			Global.fal_list.add(new int[] { input_file.nextInt(), input_file.nextInt() });
-		}
-		input_file.close();
-	}
-
-	private static void debugCheck() {
-		Global.card_db.sort(Comparator.comparing(Card::getAllowedCopies));
-		// Arrays.stream(card_db.toArray(Card[]::new)).forEach(card ->
-		// println(card));
-
-		// Arrays.stream(card_db.toArray(Card[]::new)).forEach(card ->
-		// window.println(card.toString() + "\n"));
-	}
-
-	private static void grabFileScanners_v1(String pointerFileName) {
-		Scanner pointerFileScanner;
-		ArrayList<Scanner> fileScanners = new ArrayList<>();
-		try {
-			pointerFileScanner = new Scanner(new File(pointerFileName));
-			println("Found file at: " + new File(pointerFileName).getPath());
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return;
-		}
-
-		String filePath = pointerFileScanner.nextLine();
-		println("Successfully found designated file path at: " + filePath.replace("//", "\\"));
-
-		int numberOfFiles = 8;
-		for (int i = 0; i < numberOfFiles; i++) {
-			try {
-				String fileLoc = filePath + pointerFileScanner.nextLine();
-				println("Successfully found Target file: " + fileLoc.replace("//", "\\"));
-				fileScanners.add(new Scanner(new File(fileLoc)));
-
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-				pointerFileScanner.close();
-				if (i != 0) {
-					for (Scanner scanner : fileScanners) {
-						scanner.close();
-					}
-				}
-				return;
-			}
-		}
-		buildFaL_v1(pointerFileScanner.nextLine());
-		pointerFileScanner.close();
-		buildDB_v2(fileScanners);
-	}
-	
-	private static void grabFileScanners_v2(String pointerFileName) {
-		Scanner pointerFileScanner;
-		ArrayList<Scanner> fileScanners = new ArrayList<>();
-		Path pointerFilePath = FileSystems.getDefault().getPath("src//ygo_eng//", "file_pointers_new.txt");
-		try {
-			pointerFileScanner = new Scanner(pointerFilePath);
-			println("Successfully found file \"" + pointerFilePath.getFileName()
-					+ "\" at the following file path: \"" + pointerFilePath + "\"");
-		} catch (IOException e) {
-			e.printStackTrace();
-			return;
-		}
-		Path filePath = FileSystems.getDefault().getPath(pointerFileScanner.nextLine());
-		println("Successfully found designated file path: \"" + filePath + "\"");
-
-		int numberOfFiles = 8;
-		for (int i = 0; i < numberOfFiles; i++) {
-			try {
-				String fileLoc = pointerFileScanner.nextLine();
-				fileScanners.add(new Scanner(filePath.resolve(fileLoc)));
-				println("Successfully found file \"" + filePath.resolve(fileLoc).getFileName()
-						+ "\" at the following file path: \"" + filePath.resolve(fileLoc) + "\"");
-			} catch (IOException e) {
-				e.printStackTrace();
-				pointerFileScanner.close();
-				if (i != 0) {
-					for (Scanner scanner : fileScanners) {
-						scanner.close();
-					}
-				}
-				return;
-			}
-		}
-		buildFaL_v2(filePath.resolve(pointerFileScanner.nextLine()));
-		pointerFileScanner.close();
-		buildDB_v2(fileScanners);
-	}
 	
 	private static void println(String stringToPrint) {
 		System.out.printf("Back-end_v1:\t%s", stringToPrint + "\n");
 	}
 
 	public static void start(String pointerFileName) {
-		buildDB_v1(pointerFileName);
+		switch (Global.back_ver) {
+		case 1:
+			grabFileScanners(pointerFileName + "file_pointers_new.txt");
+			return;
+		case 2:
+			Backend_v2.buildDB(pointerFileName + "file_pointers_new.txt");
+			return;
+		case 3:
+			Backend_v3.buildDB(pointerFileName + "file_pointers_new.txt");
+			return;
+		default:
+			println("Using Back-end v1.0");
+			pointerFileName += "file_pointers.txt";
+		}
+		
+		buildDB(pointerFileName);
 		assignFaL();
 		debugCheck();
 	}
