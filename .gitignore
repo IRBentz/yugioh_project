@@ -27,5 +27,6 @@ replay_pid*
 bin/
 target/
 .settings/
+
 #Preventing the upload of 15k files. See the .7z of the same name.
-src/ygo_eng/db/_jpg/
+src/ygo_eng/db/_jpg/*
