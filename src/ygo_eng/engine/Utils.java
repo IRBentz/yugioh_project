@@ -143,7 +143,7 @@ public abstract class Utils {
 				if(architype.equals(filter))
 					matchedCards.add(potentialCard);
 		
-		return Backend.askUserSelection(matchedCards);
+		return askUserSelection(matchedCards);
 	}
 
 	public static Card search(Deck deck, String name) {
@@ -151,7 +151,7 @@ public abstract class Utils {
 		for(Card potentialCard : deck.getMainDeckList())
 			if(potentialCard.getName().contains(name))
 				matchedCards.add(potentialCard);
-		return Backend.askUserSelection(matchedCards);
+		return askUserSelection(matchedCards);
 	}
 
 	public static Object stringConvert(String inputString) {
