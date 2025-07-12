@@ -1,13 +1,13 @@
 module yugioh {
-	exports ygo_eng.board;
-	exports ygo_eng.db.effect_db;
-	exports ygo_eng.card;
-	exports ygo_eng.card.component;
-	exports ygo_eng.testing;
-	exports ygo_eng.engine;
-	exports ygo_eng.ui;
-	exports ygo_eng.player;
-	exports ygo_eng;
+	exports com.board;
+	exports com.db.effect_db;
+	exports com.card;
+	exports com.card.component;
+	exports com.testing;
+	exports com.engine;
+	exports com.ui;
+	exports com.player;
+	exports com;
 
 	requires transitive java.desktop;
 }

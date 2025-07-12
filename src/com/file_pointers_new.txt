@@ -1,0 +1,10 @@
+src//com//db//_info//
+monster.info
+pendulum_monster.info
+fusion_monster.info
+synchro_monster.info
+xyz_monster.info
+link_monster.info
+spell.info
+trap.info
+forbidden_and_limited.info
