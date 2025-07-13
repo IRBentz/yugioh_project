@@ -9,9 +9,6 @@ import java.util.Scanner;
 
 import com.card.Card;
 import com.card.component.ArchitypeComponent;
-import com.card.component.CardComponent;
-import com.card.component.CardComponentInterface;
-import com.card.component.CardSubcomponentInterface;
 import com.card.component.LinkArrowComponent;
 import com.card.component.TypeComponent;
 import com.player.Deck;
@@ -66,20 +63,48 @@ public abstract class Utils {
 		System.out.printf("Utils:\t\t%s", stringToPrint + "\n");
 	}
 
+	public static Card search(Deck deck, ArchitypeComponent filter) {
+		ArrayList<Card> matchedCards = new ArrayList<>();
+		for(Card potentialCard : deck.getMainDeckList())
+			for(ArchitypeComponent architype : potentialCard.getArchitype())
+				if(architype.equals(filter))
+					matchedCards.add(potentialCard);
+		
+		return askUserSelection(matchedCards);
+	}
+
+	public static Card search(Deck deck, String name) {
+		ArrayList<Card> matchedCards = new ArrayList<>();
+		for(Card potentialCard : deck.getMainDeckList())
+			if(potentialCard.getName().contains(name))
+				matchedCards.add(potentialCard);
+		return askUserSelection(matchedCards);
+	}
+	
+	
+	
+	public Card getRandomCard(ArrayList<Card> list) {
+		return list.get((int) (Math.random() * list.size()));
+	}
+	
+	@Deprecated
 	public static Object[] pullBaseStats(Scanner target_scanner) {
 		return new Object[] { target_scanner.nextLine(), Integer.parseInt(target_scanner.nextLine()), };
 	}
-
+	
+	@Deprecated
 	public static Object[] pullBaseStats(Scanner target_scanner, String delimiter) {
 		return new Object[] { pullNextTextBlock(target_scanner, delimiter), target_scanner.nextInt(),
 				pullNextTextBlock(target_scanner, delimiter) };
 	}
-
+	
+	@Deprecated
 	public static Object[] pullMonBaseStats(Scanner target_scanner) {
 		return new Object[] { pullBaseStats(target_scanner), Utils.stringToMonAttribute(target_scanner.nextLine()),
 				Utils.stringToMonType(target_scanner.nextLine()), Utils.pullNextTypeBlock(target_scanner) };
 	}
-
+	
+	@Deprecated
 	public static Object[] pullMonBaseStats(Scanner target_scanner, String delimiter) {
 		return new Object[] { pullBaseStats(target_scanner, delimiter), stringConvert(target_scanner.next()),
 				stringConvert(target_scanner.next()), pullNextTypeBlock(target_scanner, ";"), target_scanner.nextInt(),
@@ -107,7 +132,8 @@ public abstract class Utils {
 
 		return linkArrow_list.toArray(LinkArrow[]::new);
 	}
-
+	
+	@Deprecated
 	public static String pullNextTextBlock(Scanner target_scanner, String delimiter) {
 		String nextString = target_scanner.next();
 		String return_string = "";
@@ -140,48 +166,19 @@ public abstract class Utils {
 
 		return types_list.toArray(Type[]::new);
 	}
-
+	
+	@Deprecated
 	public static Object[] pullSTBaseStats(Scanner target_scanner) {
 		return new Object[] { pullBaseStats(target_scanner), target_scanner.nextLine(),
 				Utils.stringToIcon(target_scanner.nextLine()) };
 	}
-
+	
+	@Deprecated
 	public static Object[] pullSTBaseStats(Scanner target_scanner, String delimiter) {
 		return new Object[] { pullBaseStats(target_scanner, delimiter), stringConvert(target_scanner.next()) };
 	}
-
-	public static Card search(Deck deck, ArchitypeComponent filter) {
-		ArrayList<Card> matchedCards = new ArrayList<>();
-		for(Card potentialCard : deck.getMainDeckList())
-			for(ArchitypeComponent architype : potentialCard.getArchitype())
-				if(architype.equals(filter))
-					matchedCards.add(potentialCard);
-		
-		return askUserSelection(matchedCards);
-	}
-
-	public static Card search(Deck deck, String name) {
-		ArrayList<Card> matchedCards = new ArrayList<>();
-		for(Card potentialCard : deck.getMainDeckList())
-			if(potentialCard.getName().contains(name))
-				matchedCards.add(potentialCard);
-		return askUserSelection(matchedCards);
-	}
 	
-	
-	public static CardComponentInterface stringConvert(String inputString) {
-		try {
-		for(CardComponent component : CardComponent.class.getEnumConstants())
-			for (CardSubcomponentInterface subcomponent : (CardSubcomponentInterface[]) Class.forName("com.card.component." + component.name() + "Component").getEnumConstants())
-				if (subcomponent.match(inputString) != null)
-					return subcomponent.match(inputString);
-		} catch (SecurityException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		return (CardComponentInterface) unfoundEnum(inputString);
-	}
-	
-	/*
+	@Deprecated
 	public static Object stringConvert(String inputString) {
 		for (MonAttribute target_enum : MonAttribute.class.getEnumConstants())
 			if (target_enum.toString().equals(inputString))
@@ -209,7 +206,6 @@ public abstract class Utils {
 
 		return unfoundEnum(inputString);
 	}
-	*/
 
 	@Deprecated
 	public static CardType stringToCardType(String inputString) {
@@ -233,15 +229,6 @@ public abstract class Utils {
 			if (target_enum.toString().equals(inputString))
 				return target_enum;
 		return (LinkArrow) unfoundEnum(inputString);
-	}
-	
-	public static LinkArrowComponent[] stringToLinkArrowArray(String target_string) {
-		String[] target_strings = target_string.split(" ");
-		ArrayList<LinkArrowComponent> types_list = new ArrayList<>();
-		for (String in : target_strings) {
-			types_list.add((LinkArrowComponent) stringConvert(in));
-		}
-		return types_list.toArray(LinkArrowComponent[]::new);
 	}
 	
 	@Deprecated
@@ -268,22 +255,10 @@ public abstract class Utils {
 		return (Type) unfoundEnum(inputString);
 	}
 	
-	public static TypeComponent[] stringToTypeArray(String target_string) {
-		String[] target_strings = target_string.split(" ");
-		ArrayList<TypeComponent> types_list = new ArrayList<>();
-		for (String in : target_strings) {
-			types_list.add((TypeComponent) stringConvert(in));
-		}
-		return types_list.toArray(TypeComponent[]::new);
-	}
-	
+	@Deprecated
 	private static Object unfoundEnum(String inputString) {
 		new Error("Enum for \"" + inputString + "\" could not be found.").printStackTrace();
 		System.exit(1);
 		return null;
-	}
-	
-	public Card getRandomCard(ArrayList<Card> list) {
-		return list.get((int) (Math.random() * list.size()));
 	}
 }
