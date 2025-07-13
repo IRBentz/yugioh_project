@@ -1,4 +1,4 @@
-package com.testing;
+package dep.testing;
 
 import java.awt.Image;
 import java.io.File;
@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+@Deprecated
 public class CardUITester extends JFrame {
 
 	private static ArrayList<ImageIcon> cardBG_II = new ArrayList<>();

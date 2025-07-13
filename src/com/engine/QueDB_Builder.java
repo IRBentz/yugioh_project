@@ -31,7 +31,7 @@ public class QueDB_Builder implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 	}
 
-	@SuppressWarnings("deprecation")
+	
 	@Override
 	public void keyTyped(KeyEvent e) {
 		System.out.println("QueDB:\t\t" + e.getKeyChar() + " was typed.");
@@ -39,7 +39,7 @@ public class QueDB_Builder implements KeyListener {
 			Global.back_ver = Integer.parseInt(String.valueOf(e.getKeyChar()));
 			if(Global.back_ver > -1 && Global.back_ver < 4) {
 				frame.setVisible(false);
-				Backend.start("src//ygo_eng//");
+				//Backend.start();
 				System.exit(0);
 			}
 		}

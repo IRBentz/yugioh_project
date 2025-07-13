@@ -3,7 +3,7 @@ package com.card.component;
 import static com.card.component.CardComponent.Architype;
 import static com.card.component.HexCode.*;
 
-public enum ArchitypeComponent implements CardComponentInterface, CardSubcomponentInterface {
+public enum ArchitypeComponent implements CardSubcomponentInterface {
 	AllyOfJustice(Hex_1), Genex(Hex_2), RGenex(Hex_100_2), GenexAlly(Hex_200_2), Horus(Hex_3),
 	HorusBlackFlameDragon(Hex_100_3), Amazoness(Hex_4), ArcanaForce(Hex_5), DarkWorld(Hex_6), AncientGear(Hex_7),
 	Hero(Hex_8), ElementalHero(Hex_300_8), VisionHero(Hex_500_8), EvilHero(Hex_600_8), MaskedHero(Hex_A00_8),
@@ -126,20 +126,20 @@ public enum ArchitypeComponent implements CardComponentInterface, CardSubcompone
 		return cardComponent.getComponentName();
 	}
 
+	public HexCode getHexCode() {
+		return this.hexCode;
+	}
+	
 	@Override
 	public String getName() {
 		return this.name();
 	}
-	
+
 	@Override
 	public ArchitypeComponent match(String name) {
 		for (ArchitypeComponent architypeComponent : ArchitypeComponent.class.getEnumConstants())
 			if (architypeComponent.name().equals(name))
 				return architypeComponent;
 		return null;
-	}
-
-	public HexCode getHexCode() {
-		return this.hexCode;
 	}
 }

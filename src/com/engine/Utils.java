@@ -7,7 +7,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.card.enums.Architype;
 import com.card.Card;
 import com.card.component.ArchitypeComponent;
 import com.card.component.CardComponent;
@@ -15,15 +14,25 @@ import com.card.component.CardComponentInterface;
 import com.card.component.CardSubcomponentInterface;
 import com.card.component.LinkArrowComponent;
 import com.card.component.TypeComponent;
-import com.card.enums.CardType;
-import com.card.enums.Icon;
-import com.card.enums.LinkArrow;
-import com.card.enums.MonAttribute;
-import com.card.enums.MonType;
-import com.card.enums.Type;
 import com.player.Deck;
 
+import dep.card.enums.CardType;
+import dep.card.enums.Icon;
+import dep.card.enums.LinkArrow;
+import dep.card.enums.MonAttribute;
+import dep.card.enums.MonType;
+import dep.card.enums.Type;
+
 public abstract class Utils {
+	public static Character askUser(String text) {
+		Scanner kb = new Scanner(System.in);
+		System.out.println(text);
+		String input = kb.next();
+		kb.close();
+		
+		return input.charAt(0);
+	}
+	
 	public static Card askUserSelection(ArrayList<Card> selectionList) {
 		String inputText = "";
 		int i = 0;
@@ -34,15 +43,6 @@ public abstract class Utils {
 			slotNumber = askUser("Select 1 of the following cards:\n" + inputText);
 		println("Card selected: " + Integer.parseInt(slotNumber.toString()) + " " + selectionList.get(Integer.parseInt(slotNumber.toString())).getName());
 		return selectionList.get(Integer.parseInt(slotNumber.toString()));
-	}
-	
-	public static Character askUser(String text) {
-		Scanner kb = new Scanner(System.in);
-		System.out.println(text);
-		String input = kb.next();
-		kb.close();
-		
-		return input.charAt(0);
 	}
 
 	public static void execute_card_effect(Card targetCard, int effect_num) {
@@ -85,6 +85,8 @@ public abstract class Utils {
 				stringConvert(target_scanner.next()), pullNextTypeBlock(target_scanner, ";"), target_scanner.nextInt(),
 				target_scanner.nextInt(), target_scanner.nextInt() };
 	}
+	
+	@Deprecated
 	public static LinkArrow[] pullNextLinkArrowBlock(Scanner target_scanner) {
 		String[] input = target_scanner.nextLine().split(" ");
 		ArrayList<LinkArrow> linkArrow_list = new ArrayList<>();
@@ -94,6 +96,7 @@ public abstract class Utils {
 		return linkArrow_list.toArray(LinkArrow[]::new);
 	}
 
+	@Deprecated
 	public static LinkArrow[] pullNextLinkArrowBlock(Scanner target_scanner, String delimiter) {
 		ArrayList<LinkArrowComponent> linkArrow_list = new ArrayList<>();
 		String nextString = target_scanner.next();
@@ -115,7 +118,8 @@ public abstract class Utils {
 
 		return return_string.substring(0, return_string.length() - 1);
 	}
-
+	
+	@Deprecated
 	public static Type[] pullNextTypeBlock(Scanner target_scanner) {
 		String[] input = target_scanner.nextLine().split(" ");
 		ArrayList<Type> types_list = new ArrayList<>();
@@ -124,7 +128,8 @@ public abstract class Utils {
 		}
 		return types_list.toArray(Type[]::new);
 	}
-
+	
+	@Deprecated
 	public static Type[] pullNextTypeBlock(Scanner target_scanner, String delimiter) {
 		ArrayList<TypeComponent> types_list = new ArrayList<>();
 		String nextString = target_scanner.next();
@@ -206,6 +211,7 @@ public abstract class Utils {
 	}
 	*/
 
+	@Deprecated
 	public static CardType stringToCardType(String inputString) {
 		for (CardType target_enum : CardType.class.getEnumConstants())
 			if (target_enum.toString().equals(inputString))
@@ -213,6 +219,7 @@ public abstract class Utils {
 		return (CardType) unfoundEnum(inputString);
 	}
 
+	@Deprecated
 	public static Icon stringToIcon(String inputString) {
 		for (Icon target_enum : Icon.class.getEnumConstants())
 			if (target_enum.toString().equals(inputString))
@@ -220,6 +227,7 @@ public abstract class Utils {
 		return (Icon) unfoundEnum(inputString);
 	}
 
+	@Deprecated
 	public static LinkArrow stringToLinkArrow(String inputString) {
 		for (LinkArrow target_enum : LinkArrow.class.getEnumConstants())
 			if (target_enum.toString().equals(inputString))
@@ -236,6 +244,7 @@ public abstract class Utils {
 		return types_list.toArray(LinkArrowComponent[]::new);
 	}
 	
+	@Deprecated
 	public static MonAttribute stringToMonAttribute(String inputString) {
 		for (MonAttribute target_enum : MonAttribute.class.getEnumConstants())
 			if (target_enum.toString().equals(inputString))
@@ -243,6 +252,7 @@ public abstract class Utils {
 		return (MonAttribute) unfoundEnum(inputString);
 	}
 	
+	@Deprecated
 	public static MonType stringToMonType(String inputString) {
 		for (MonType target_enum : MonType.class.getEnumConstants())
 			if (target_enum.toString().equals(inputString))
@@ -250,6 +260,7 @@ public abstract class Utils {
 		return (MonType) unfoundEnum(inputString);
 	}
 	
+	@Deprecated
 	public static Type stringToType(String inputString) {
 		for (Type target_enum : Type.class.getEnumConstants())
 			if (target_enum.toString().equals(inputString))

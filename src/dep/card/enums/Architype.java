@@ -1,5 +1,5 @@
-package com.card.enums;
-
+package dep.card.enums;
+@Deprecated
 public enum Architype {
 	ALLY_OF_JUSTICE(0x1), GENEX(0x2), R_GENEX(0x100_2), GENEX_ALLY(0x200_2), HORUS(0x3), HORUS_BLACK_FLAME_DRAGON(0x100_3),
 	AMAZONESS(0x4), ARCANA_FORCE(0x5), DARK_WORLD(0x6), ANCIENT_GEAR(0x7), HERO(0x8), ELEMENTAL_HERO(0x300_8),

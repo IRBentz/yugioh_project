@@ -2,7 +2,7 @@ package com.card.component;
 
 import static com.card.component.CardComponent.Type;
 
-public enum TypeComponent implements CardComponentInterface, CardSubcomponentInterface {
+public enum TypeComponent implements CardSubcomponentInterface {
 	Effect, Flip, Fusion, Gemini, Link, Normal, Pendulum, Ritual, Spirit, Synchro, Toon, Tuner, Union, Xyz;
 	
 	private final CardComponent cardComponent = Type;
@@ -14,15 +14,15 @@ public enum TypeComponent implements CardComponentInterface, CardSubcomponentInt
 	}
 	
 	@Override
+	public String getName() {
+		return this.name();
+	}
+	
+	@Override
 	public TypeComponent match(String name) {
 		for (TypeComponent typeComponent : TypeComponent.class.getEnumConstants())
 			if (typeComponent.name().equals(name))
 				return typeComponent;
 		return null;
-	}
-	
-	@Override
-	public String getName() {
-		return this.name();
 	}
 }

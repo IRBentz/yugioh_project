@@ -1,5 +1,5 @@
-package com.testing;
-/*
+package dep.testing;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -13,12 +13,9 @@ import com.card.PenMonCard;
 import com.card.SpellCard;
 import com.card.TrapCard;
 import com.card.XyzMonCard;
-import com.card.enums.Icon;
-import com.card.enums.MonAttribute;
-import com.card.enums.MonType;
-import com.card.enums.Type;
 import com.engine.Utils;
 
+@Deprecated
 public abstract class DataLoadTester {
 	public static void main(String[] args) {
 		DataLoadTester.run();
@@ -59,10 +56,7 @@ public abstract class DataLoadTester {
 		// * Monster
 		while (input.hasNext()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			cards.add(new MonCard((String) ((Object[]) baseStats[0])[0], (int) ((Object[]) baseStats[0])[1],
-					(MonAttribute) baseStats[1], (MonType) baseStats[2], (Type[]) baseStats[3], input.nextLine(),
-					Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine()),
-					Integer.parseInt(input.nextLine())));
+			cards.add(new MonCard());
 			input.nextLine();
 			baseStats = null;
 		}
@@ -72,10 +66,7 @@ public abstract class DataLoadTester {
 		input = fileScanners.get(1);
 		while (input.hasNext()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			cards.add(new PenMonCard((String) ((Object[]) baseStats[0])[0], (int) ((Object[]) baseStats[0])[1],
-					(MonAttribute) baseStats[1], (MonType) baseStats[2], (Type[]) baseStats[3], input.nextLine(),
-					input.nextLine(), Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine()),
-					Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine())));
+			cards.add(new PenMonCard());
 			input.nextLine();
 			baseStats = null;
 		}
@@ -86,10 +77,7 @@ public abstract class DataLoadTester {
 			input = fileScanners.get(i);
 			while (input.hasNextLine()) {
 				baseStats = Utils.pullMonBaseStats(input);
-				cards.add(new ExtraMonCard((String) ((Object[]) baseStats[0])[0], (int) ((Object[]) baseStats[0])[1],
-						(MonAttribute) baseStats[1], (MonType) baseStats[2], (Type[]) baseStats[3], input.nextLine(),
-						input.nextLine(), Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine()),
-						Integer.parseInt(input.nextLine())));
+				cards.add(new ExtraMonCard());
 				input.nextLine();
 				baseStats = null;
 			}
@@ -100,10 +88,7 @@ public abstract class DataLoadTester {
 		input = fileScanners.get(4);
 		while (input.hasNext()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			cards.add(new XyzMonCard((String) ((Object[]) baseStats[0])[0], (int) ((Object[]) baseStats[0])[1],
-					(MonAttribute) baseStats[1], (MonType) baseStats[2], (Type[]) baseStats[3], input.nextLine(),
-					input.nextLine(), Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine()),
-					Integer.parseInt(input.nextLine())));
+			cards.add(new XyzMonCard());
 			input.nextLine();
 			baseStats = null;
 		}
@@ -113,10 +98,7 @@ public abstract class DataLoadTester {
 		input = fileScanners.get(5);
 		while (input.hasNextLine()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			cards.add(new LinkMonCard((String) ((Object[]) baseStats[0])[0], (int) ((Object[]) baseStats[0])[1],
-					(MonAttribute) baseStats[1], (MonType) baseStats[2], (Type[]) baseStats[3], input.nextLine(),
-					input.nextLine(), Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine()),
-					Utils.pullNextLinkArrowBlock(input)));
+			cards.add(new LinkMonCard());
 			input.nextLine();
 			baseStats = null;
 		}
@@ -126,8 +108,7 @@ public abstract class DataLoadTester {
 		input = fileScanners.get(6);
 		while (input.hasNextLine()) {
 			baseStats = Utils.pullSTBaseStats(input);
-			cards.add(new SpellCard((String) ((Object[]) baseStats[0])[0], (int) ((Object[]) baseStats[0])[1],
-					(String) baseStats[1], (Icon) baseStats[2]));
+			cards.add(new SpellCard());
 			input.nextLine();
 			baseStats = null;
 		}
@@ -137,8 +118,7 @@ public abstract class DataLoadTester {
 		input = fileScanners.get(7);
 		while (input.hasNextLine()) {
 			baseStats = Utils.pullSTBaseStats(input);
-			cards.add(new TrapCard((String) ((Object[]) baseStats[0])[0], (int) ((Object[]) baseStats[0])[1],
-					(String) baseStats[1], (Icon) baseStats[2]));
+			cards.add(new TrapCard());
 			input.nextLine();
 			baseStats = null;
 		}
@@ -148,6 +128,4 @@ public abstract class DataLoadTester {
 			System.out.println(card);
 		}
 	}
-
 }
-*/

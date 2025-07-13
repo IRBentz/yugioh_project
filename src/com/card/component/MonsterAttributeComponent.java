@@ -2,7 +2,7 @@ package com.card.component;
 
 import static com.card.component.CardComponent.MonsterAttribute;
 
-public enum MonsterAttributeComponent implements CardComponentInterface, CardSubcomponentInterface {
+public enum MonsterAttributeComponent implements CardSubcomponentInterface {
 	Dark, Divine, Earth, Fire, Light, Water, Wind;
 
 	private final CardComponent cardComponent = MonsterAttribute;
@@ -13,15 +13,15 @@ public enum MonsterAttributeComponent implements CardComponentInterface, CardSub
 	}
 	
 	@Override
+	public String getName() {
+		return this.name();
+	}
+
+	@Override
 	public MonsterAttributeComponent match(String name) {
 		for (MonsterAttributeComponent monsterAttributeComponent : MonsterAttributeComponent.class.getEnumConstants())
 			if (monsterAttributeComponent.name().equals(name))
 				return monsterAttributeComponent;
 		return null;
-	}
-
-	@Override
-	public String getName() {
-		return this.name();
 	}
 }

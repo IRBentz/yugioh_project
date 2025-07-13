@@ -13,15 +13,15 @@ public enum LinkArrowComponent implements CardSubcomponentInterface {
 	}
 	
 	@Override
+	public String getName() {
+		return this.name();
+	}
+	
+	@Override
 	public LinkArrowComponent match(String name) {
 		for (LinkArrowComponent linkArrowComponent : LinkArrowComponent.class.getEnumConstants())
 			if (linkArrowComponent.name().equals(name))
 				return linkArrowComponent;
 		return null;
-	}
-	
-	@Override
-	public String getName() {
-		return this.name();
 	}
 }

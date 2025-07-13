@@ -1,4 +1,4 @@
-package com.engine;
+package dep.engine;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,10 +14,13 @@ import com.card.PenMonCard;
 import com.card.SpellCard;
 import com.card.TrapCard;
 import com.card.XyzMonCard;
+import com.engine.Backend_v3;
+import com.engine.Global;
+import com.engine.Utils;
 
 @Deprecated
 public abstract class Backend {
-
+	@Deprecated
 	private static void assignFaL() {
 		int num_assigned = 0;
 		for (Card card : Global.card_db)
@@ -29,8 +32,8 @@ public abstract class Backend {
 		println("Successfully assigned " + num_assigned + " cards their max allowed copies.");
 	}
 
-
 	@SuppressWarnings("unused")
+	@Deprecated
 	private static void buildDB(String pointerFileName) {
 		
 		Scanner pointerFileScanner;
@@ -126,8 +129,7 @@ public abstract class Backend {
 		}
 	}
 
-	
-
+	@Deprecated
 	private static void buildFaL(String fileName) {
 		Scanner input_file;
 		try {
@@ -142,9 +144,8 @@ public abstract class Backend {
 		}
 		input_file.close();
 	}
-
 	
-
+	@Deprecated
 	private static void debugCheck() {
 		Global.card_db.sort(Comparator.comparing(Card::getAllowedCopies));
 		// Arrays.stream(card_db.toArray(Card[]::new)).forEach(card ->
@@ -154,6 +155,7 @@ public abstract class Backend {
 		// window.println(card.toString() + "\n"));
 	}
 
+	@Deprecated
 	private static void grabFileScanners(String pointerFileName) {
 		Scanner pointerFileScanner;
 		ArrayList<Scanner> fileScanners = new ArrayList<>();
@@ -296,11 +298,12 @@ public abstract class Backend {
 		println("Created " + ttl_count + " cards in total.");
 	}
 
-	
+	@Deprecated
 	private static void println(String stringToPrint) {
 		System.out.printf("Back-end_v1:\t%s", stringToPrint + "\n");
 	}
 
+	@Deprecated
 	public static void start(String pointerFileName) {
 		switch (Global.back_ver) {
 		case 1:
@@ -310,7 +313,7 @@ public abstract class Backend {
 			Backend_v2.buildDB(pointerFileName + "file_pointers_new.txt");
 			return;
 		case 3:
-			Backend_v3.buildDB(pointerFileName + "file_pointers_new.txt");
+			Backend_v3.buildDB();
 			return;
 		default:
 			println("Using Back-end v1.0");

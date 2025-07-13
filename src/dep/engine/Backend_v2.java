@@ -1,4 +1,4 @@
-package com.engine;
+package dep.engine;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -13,9 +13,15 @@ import com.card.PenMonCard;
 import com.card.SpellCard;
 import com.card.TrapCard;
 import com.card.XyzMonCard;
+import com.engine.Global;
+import com.engine.Utils;
 
 @Deprecated
 public class Backend_v2 {
+	public static void buildDB(ArrayList<Scanner> fileScanners) {
+		
+	}
+	
 	public static void buildDB(String pointerFileName) {
 		Scanner pointerFileScanner;
 		ArrayList<Scanner> fileScanners = new ArrayList<>();
@@ -53,6 +59,7 @@ public class Backend_v2 {
 		pointerFileScanner.close();
 		
 		Scanner input = fileScanners.get(0);
+		@SuppressWarnings("unused")
 		Object[] baseStats;
 		int ttl_count = 0;
 		int cur_count = 0;
@@ -156,10 +163,6 @@ public class Backend_v2 {
 		println("Created " + cur_count + " cards.");
 		cur_count = 0;
 		println("Created " + ttl_count + " cards in total.");
-	}
-	
-	public static void buildDB(ArrayList<Scanner> fileScanners) {
-		
 	}
 	
 	private static void buildFaL(Path filePath) {
