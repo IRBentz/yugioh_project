@@ -1,25 +1,25 @@
 package com.card.component;
 
-enum MonsterTypeComponent implements CardComponentInterface, CardSubcomponentInterface {
-	Aqua(CardComponent.MonsterAttribute), Beast(CardComponent.MonsterAttribute), Beast_Warrior(CardComponent.MonsterAttribute), 
-	Creator_God(CardComponent.MonsterAttribute), Cyberse(CardComponent.MonsterAttribute), Dinosaur(CardComponent.MonsterAttribute), 
-	Divine_Beast(CardComponent.MonsterAttribute), Dragon(CardComponent.MonsterAttribute), Fairy(CardComponent.MonsterAttribute), 
-	Fiend(CardComponent.MonsterAttribute), Fish(CardComponent.MonsterAttribute), Illusion(CardComponent.MonsterAttribute),
-	Insect(CardComponent.MonsterAttribute), Machine(CardComponent.MonsterAttribute), Plant(CardComponent.MonsterAttribute), 
-	Psychic(CardComponent.MonsterAttribute), Pyro(CardComponent.MonsterAttribute), Reptile(CardComponent.MonsterAttribute), 
-	Rock(CardComponent.MonsterAttribute), Sea_Serpent(CardComponent.MonsterAttribute), Spellcaster(CardComponent.MonsterAttribute), 
-	Thunder(CardComponent.MonsterAttribute), Warrior(CardComponent.MonsterAttribute), Winged_Beast(CardComponent.MonsterAttribute), 
-	Wyrm(CardComponent.MonsterAttribute), Zombie(CardComponent.MonsterAttribute);
+import static com.card.component.CardComponent.MonsterType;
 
-	private final CardComponent cardComponent;
-	
-	private MonsterTypeComponent(CardComponent cardComponent) {
-		this.cardComponent = cardComponent;
-	}
-	
+public enum MonsterTypeComponent implements CardComponentInterface, CardSubcomponentInterface {
+	Aqua, Beast, Beast_Warrior, Creator_God, Cyberse, Dinosaur, Divine_Beast, Dragon, Fairy, Fiend, Fish, Illusion,
+	Insect, Machine, Plant, Psychic, Pyro, Reptile, Rock, Sea_Serpent, Spellcaster, Thunder, Warrior, Winged_Beast,
+	Wyrm, Zombie;
+
+	private final CardComponent cardComponent = MonsterType;
+
 	@Override
 	public String getComponentName() {
 		return cardComponent.getComponentName();
+	}
+	
+	@Override
+	public MonsterTypeComponent match(String name) {
+		for (MonsterTypeComponent monsterTypeComponent : MonsterTypeComponent.class.getEnumConstants())
+			if (monsterTypeComponent.name().equals(name))
+				return monsterTypeComponent;
+		return null;
 	}
 
 	@Override

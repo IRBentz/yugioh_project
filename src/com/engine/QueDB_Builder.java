@@ -31,6 +31,7 @@ public class QueDB_Builder implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void keyTyped(KeyEvent e) {
 		System.out.println("QueDB:\t\t" + e.getKeyChar() + " was typed.");

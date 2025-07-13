@@ -1,5 +1,5 @@
 package com.testing;
-
+/*
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import com.card.Card;
 import com.card.ExtraMonCard;
 import com.card.LinkMonCard;
-import com.card.MonAttribute;
 import com.card.MonCard;
-import com.card.MonType;
 import com.card.PenMonCard;
 import com.card.SpellCard;
 import com.card.TrapCard;
 import com.card.XyzMonCard;
+import com.card.enums.MonAttribute;
+import com.card.enums.MonType;
 import com.engine.Utils;
 
 public abstract class DataLoadTester_v3 {
@@ -90,3 +90,4 @@ public abstract class DataLoadTester_v3 {
 		}
 	}
 }
+*/

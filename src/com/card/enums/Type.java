@@ -1,4 +1,4 @@
-package com.card;
+package com.card.enums;
 
 public enum Type {
 	EFFECT, FLIP, FUSION, GEMINI, LINK, NORMAL, PENDULUM, RITUAL, SPIRIT, SYNCHRO, TOON, TUNER, UNION, XYZ;

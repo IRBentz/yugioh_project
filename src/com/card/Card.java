@@ -2,13 +2,15 @@ package com.card;
 
 import java.util.ArrayList;
 
-public abstract class Card implements EffectTarget {
-	private Architype[] architype;
+import com.card.component.ArchitypeComponent;
+import com.card.component.CardTypeComponent;
+
+public abstract class Card {
+	private ArchitypeComponent[] architype;
 	private final int CARD_IND;
-	private Effect cardEffect;
 	private int max_copies_allowed = 3;
 	private final String NAME, LORE;
-	private final CardType TYPE;
+	private final CardTypeComponent TYPE;
 
 	public Card() {
 		this.NAME = null;
@@ -18,28 +20,19 @@ public abstract class Card implements EffectTarget {
 		this.max_copies_allowed = 0;
 	}
 
-	public Card(String name, int index, CardType type, String lore) {
+	public Card(String name, int index, CardTypeComponent type, String lore) {
 		this.NAME = name;
 		this.CARD_IND = index;
 		this.TYPE = type;
 		this.LORE = lore;
 	}
 
-	public Effect effect() {
-		return cardEffect;
-	}
-
 	public int getAllowedCopies() {
 		return max_copies_allowed;
 	}
 
-	public Architype[] getArchitype() {
+	public ArchitypeComponent[] getArchitype() {
 		return architype;
-	}
-
-	@Override
-	public Object getEffectObject() {
-		return this;
 	}
 
 	public int getIndex() {
@@ -54,7 +47,7 @@ public abstract class Card implements EffectTarget {
 		return NAME;
 	}
 
-	public CardType getType() {
+	public CardTypeComponent getType() {
 		return TYPE;
 	}
 
@@ -62,12 +55,8 @@ public abstract class Card implements EffectTarget {
 		max_copies_allowed = newAmount;
 	}
 
-	public void setArchitype(ArrayList<Architype> architype) {
-		this.architype = architype.toArray(new Architype[architype.size()]);
-	}
-
-	public void setEffect(Effect effect) {
-		this.cardEffect = effect;
+	public void setArchitype(ArrayList<ArchitypeComponent> architype) {
+		this.architype = architype.toArray(new ArchitypeComponent[architype.size()]);
 	}
 
 	@Override

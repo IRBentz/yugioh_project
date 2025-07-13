@@ -19,13 +19,14 @@ import java.util.ArrayList;
 
 import com.card.ExtraMonCard;
 import com.card.LinkMonCard;
-import com.card.MonAttribute;
 import com.card.MonCard;
-import com.card.MonType;
 import com.card.PenMonCard;
 import com.card.SpellCard;
 import com.card.TrapCard;
 import com.card.XyzMonCard;
+import com.card.component.IconComponent;
+import com.card.component.MonsterAttributeComponent;
+import com.card.component.MonsterTypeComponent;
 
 
 public abstract class Backend_v3 {
@@ -51,8 +52,8 @@ public abstract class Backend_v3 {
 			ArrayList<String> currentFile = importedFiles.get(Monster.index);
 			for (int i = 0; i < currentFile.size(); i++) {
 				card_db.add(new MonCard(currentFile.get(i++), Integer.parseInt(currentFile.get(i++)),
-						(MonAttribute) Utils.stringConvert(currentFile.get(i++)),
-						(MonType) Utils.stringConvert(currentFile.get(i++)),
+						(MonsterAttributeComponent) Utils.stringConvert(currentFile.get(i++)),
+						(MonsterTypeComponent) Utils.stringConvert(currentFile.get(i++)),
 						Utils.stringToTypeArray(currentFile.get(i++)), currentFile.get(i++),
 						Integer.parseInt(currentFile.get(i++)), Integer.parseInt(currentFile.get(i++)),
 						Integer.parseInt(currentFile.get(i++))));
@@ -62,8 +63,8 @@ public abstract class Backend_v3 {
 			currentFile = importedFiles.get(Pendulum.index);
 			for (int i = 0; i < currentFile.size(); i++) {
 				card_db.add(new PenMonCard(currentFile.get(i++), Integer.parseInt(currentFile.get(i++)),
-						(MonAttribute) Utils.stringConvert(currentFile.get(i++)),
-						(MonType) Utils.stringConvert(currentFile.get(i++)),
+						(MonsterAttributeComponent) Utils.stringConvert(currentFile.get(i++)),
+						(MonsterTypeComponent) Utils.stringConvert(currentFile.get(i++)),
 						Utils.stringToTypeArray(currentFile.get(i++)), currentFile.get(i++), currentFile.get(i++),
 						Integer.parseInt(currentFile.get(i++)), Integer.parseInt(currentFile.get(i++)),
 						Integer.parseInt(currentFile.get(i++)), Integer.parseInt(currentFile.get(i++))));
@@ -74,8 +75,8 @@ public abstract class Backend_v3 {
 				currentFile = importedFiles.get(loc.index);
 				for (int i = 0; i < currentFile.size(); i++) {
 					card_db.add(new ExtraMonCard(currentFile.get(i++), Integer.parseInt(currentFile.get(i++)),
-							(MonAttribute) Utils.stringConvert(currentFile.get(i++)),
-							(MonType) Utils.stringConvert(currentFile.get(i++)),
+							(MonsterAttributeComponent) Utils.stringConvert(currentFile.get(i++)),
+							(MonsterTypeComponent) Utils.stringConvert(currentFile.get(i++)),
 							Utils.stringToTypeArray(currentFile.get(i++)), currentFile.get(i++),
 							currentFile.get(i++), Integer.parseInt(currentFile.get(i++)),
 							Integer.parseInt(currentFile.get(i++)), Integer.parseInt(currentFile.get(i++))));
@@ -86,8 +87,8 @@ public abstract class Backend_v3 {
 			currentFile = importedFiles.get(Xyz.index);
 			for (int i = 0; i < currentFile.size(); i++) {
 				card_db.add(new XyzMonCard(currentFile.get(i++), Integer.parseInt(currentFile.get(i++)),
-						(MonAttribute) Utils.stringConvert(currentFile.get(i++)),
-						(MonType) Utils.stringConvert(currentFile.get(i++)),
+						(MonsterAttributeComponent) Utils.stringConvert(currentFile.get(i++)),
+						(MonsterTypeComponent) Utils.stringConvert(currentFile.get(i++)),
 						Utils.stringToTypeArray(currentFile.get(i++)), currentFile.get(i++), currentFile.get(i++),
 						Integer.parseInt(currentFile.get(i++)), Integer.parseInt(currentFile.get(i++)),
 						Integer.parseInt(currentFile.get(i++))));
@@ -97,25 +98,24 @@ public abstract class Backend_v3 {
 			currentFile = importedFiles.get(Link.index);
 			for (int i = 0; i < currentFile.size(); i++) {
 				card_db.add(new LinkMonCard(currentFile.get(i++), Integer.parseInt(currentFile.get(i++)),
-						(MonAttribute) Utils.stringConvert(currentFile.get(i++)),
-						(MonType) Utils.stringConvert(currentFile.get(i++)),
+						(MonsterAttributeComponent) Utils.stringConvert(currentFile.get(i++)),
+						(MonsterTypeComponent) Utils.stringConvert(currentFile.get(i++)),
 						Utils.stringToTypeArray(currentFile.get(i++)), currentFile.get(i++), currentFile.get(i++),
 						Integer.parseInt(currentFile.get(i++)), Integer.parseInt(currentFile.get(i++)),
 						Utils.stringToLinkArrowArray(currentFile.get(i++))));
 			}
-
 			// * Spell
 			currentFile = importedFiles.get(Spell.index);
 			for (int i = 0; i < currentFile.size(); i++) {
 				card_db.add(new SpellCard(currentFile.get(i++), Integer.parseInt(currentFile.get(i++)),
-						currentFile.get(i++), Utils.stringToIcon(currentFile.get(i++))));
+						currentFile.get(i++), (IconComponent) Utils.stringConvert(currentFile.get(i++))));
 			}
 
 			// * Trap
 			currentFile = importedFiles.get(Trap.index);
 			for (int i = 0; i < currentFile.size(); i++) {
 				card_db.add(new TrapCard(currentFile.get(i++), Integer.parseInt(currentFile.get(i++)),
-						currentFile.get(i++), Utils.stringToIcon(currentFile.get(i++))));
+						currentFile.get(i++), (IconComponent) Utils.stringConvert(currentFile.get(i++))));
 			}
 
 			ArrayList<String> input_file = new ArrayList<>(Files.readAllLines(filePath.resolve(importFile.getLast())));

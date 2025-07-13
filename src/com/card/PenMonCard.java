@@ -1,5 +1,9 @@
 package com.card;
 
+import com.card.component.MonsterAttributeComponent;
+import com.card.component.MonsterTypeComponent;
+import com.card.component.TypeComponent;
+
 public class PenMonCard extends MonCard {
 	final int PEND_LEVEL;
 	final String PEND_LORE;
@@ -10,7 +14,7 @@ public class PenMonCard extends MonCard {
 		this.PEND_LORE = null;
 	}
 
-	public PenMonCard(String name, int index, MonAttribute mon_attri, MonType mon_type, Type[] types, String pend_lore,
+	public PenMonCard(String name, int index, MonsterAttributeComponent mon_attri, MonsterTypeComponent mon_type, TypeComponent[] types, String pend_lore,
 			String lore, int level_rank, int pend_level, int attack, int defense) {
 		super(name, index, mon_attri, mon_type, types, lore, level_rank, attack, defense);
 		this.PEND_LEVEL = pend_level;

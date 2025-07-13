@@ -1,5 +1,5 @@
 package com.card.component;
 
-interface CardSubcomponentInterface {
+public interface CardSubcomponentInterface extends CardComponentInterface{
 	String getName();
 }

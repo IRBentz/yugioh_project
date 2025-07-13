@@ -1,5 +1,5 @@
 package com.testing;
-
+/*
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
@@ -8,16 +8,16 @@ import java.util.Scanner;
 
 import com.card.Card;
 import com.card.ExtraMonCard;
-import com.card.Icon;
 import com.card.LinkMonCard;
-import com.card.MonAttribute;
 import com.card.MonCard;
-import com.card.MonType;
 import com.card.PenMonCard;
 import com.card.SpellCard;
 import com.card.TrapCard;
-import com.card.Type;
 import com.card.XyzMonCard;
+import com.card.enums.Icon;
+import com.card.enums.MonAttribute;
+import com.card.enums.MonType;
+import com.card.enums.Type;
 import com.engine.Utils;
 
 public abstract class DataLoadTester_v2 {
@@ -75,7 +75,7 @@ public abstract class DataLoadTester_v2 {
 			baseStats = null;
 		}
 		input.close();
-		// */
+		
 		// * Pendulum
 		input = fileScanners.get(1);
 		while (input.hasNext()) {
@@ -88,7 +88,6 @@ public abstract class DataLoadTester_v2 {
 			baseStats = null;
 		}
 		input.close();
-		// */
 		// *Fusion and Synchro Monster
 		for (int i = 2; i < 4; i++) {
 			input = fileScanners.get(i);
@@ -103,7 +102,6 @@ public abstract class DataLoadTester_v2 {
 			}
 			input.close();
 		}
-		// */
 		// * XYZ
 		input = fileScanners.get(4);
 		while (input.hasNext()) {
@@ -116,7 +114,6 @@ public abstract class DataLoadTester_v2 {
 			baseStats = null;
 		}
 		input.close();
-		// */
 		// * Link
 		input = fileScanners.get(5);
 		while (input.hasNextLine()) {
@@ -129,7 +126,6 @@ public abstract class DataLoadTester_v2 {
 			baseStats = null;
 		}
 		input.close();
-		// */
 		// * Spell
 		input = fileScanners.get(6);
 		while (input.hasNextLine()) {
@@ -140,7 +136,6 @@ public abstract class DataLoadTester_v2 {
 			baseStats = null;
 		}
 		input.close();
-		// */
 		// * Trap
 		input = fileScanners.get(7);
 		while (input.hasNextLine()) {
@@ -151,10 +146,10 @@ public abstract class DataLoadTester_v2 {
 			baseStats = null;
 		}
 		input.close();
-		// */
 		for (Card card : cards) {
 			System.out.println(card);
 		}
 	}
 
 }
+*/

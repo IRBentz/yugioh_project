@@ -1,18 +1,23 @@
 package com.card.component;
 
-enum LinkArrowComponent implements CardComponentInterface, CardSubcomponentInterface {
-	Down(CardComponent.LinkArrow), DownLeft(CardComponent.LinkArrow), DownRight(CardComponent.LinkArrow), Left(CardComponent.LinkArrow), 
-	Right(CardComponent.LinkArrow), Up(CardComponent.LinkArrow), UpLeft(CardComponent.LinkArrow), UpRight(CardComponent.LinkArrow);
+import static com.card.component.CardComponent.LinkArrow;
 
-	LinkArrowComponent(CardComponent cardComponent) {
-		this.cardComponent = cardComponent;
-	}
-	
-	private final CardComponent cardComponent;
+public enum LinkArrowComponent implements CardSubcomponentInterface {
+	Down, DownLeft, DownRight, Left, Right, Up, UpLeft, UpRight;
+
+	private final CardComponent cardComponent = LinkArrow;
 
 	@Override
 	public String getComponentName() {
 		return cardComponent.getComponentName();
+	}
+	
+	@Override
+	public LinkArrowComponent match(String name) {
+		for (LinkArrowComponent linkArrowComponent : LinkArrowComponent.class.getEnumConstants())
+			if (linkArrowComponent.name().equals(name))
+				return linkArrowComponent;
+		return null;
 	}
 	
 	@Override

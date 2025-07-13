@@ -7,14 +7,20 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.card.Architype;
+import com.card.enums.Architype;
 import com.card.Card;
-import com.card.CardType;
-import com.card.Icon;
-import com.card.LinkArrow;
-import com.card.MonAttribute;
-import com.card.MonType;
-import com.card.Type;
+import com.card.component.ArchitypeComponent;
+import com.card.component.CardComponent;
+import com.card.component.CardComponentInterface;
+import com.card.component.CardSubcomponentInterface;
+import com.card.component.LinkArrowComponent;
+import com.card.component.TypeComponent;
+import com.card.enums.CardType;
+import com.card.enums.Icon;
+import com.card.enums.LinkArrow;
+import com.card.enums.MonAttribute;
+import com.card.enums.MonType;
+import com.card.enums.Type;
 import com.player.Deck;
 
 public abstract class Utils {
@@ -89,10 +95,10 @@ public abstract class Utils {
 	}
 
 	public static LinkArrow[] pullNextLinkArrowBlock(Scanner target_scanner, String delimiter) {
-		ArrayList<LinkArrow> linkArrow_list = new ArrayList<>();
+		ArrayList<LinkArrowComponent> linkArrow_list = new ArrayList<>();
 		String nextString = target_scanner.next();
 		while (!nextString.equals(delimiter)) {
-			linkArrow_list.add((LinkArrow) stringConvert(nextString));
+			linkArrow_list.add((LinkArrowComponent) stringConvert(nextString));
 			nextString = target_scanner.next();
 		}
 
@@ -120,10 +126,10 @@ public abstract class Utils {
 	}
 
 	public static Type[] pullNextTypeBlock(Scanner target_scanner, String delimiter) {
-		ArrayList<Type> types_list = new ArrayList<>();
+		ArrayList<TypeComponent> types_list = new ArrayList<>();
 		String nextString = target_scanner.next();
 		while (!nextString.equals(delimiter)) {
-			types_list.add((Type) stringConvert(nextString));
+			types_list.add((TypeComponent) stringConvert(nextString));
 			nextString = target_scanner.next();
 		}
 
@@ -139,10 +145,10 @@ public abstract class Utils {
 		return new Object[] { pullBaseStats(target_scanner, delimiter), stringConvert(target_scanner.next()) };
 	}
 
-	public static Card search(Deck deck, Architype filter) {
+	public static Card search(Deck deck, ArchitypeComponent filter) {
 		ArrayList<Card> matchedCards = new ArrayList<>();
 		for(Card potentialCard : deck.getMainDeckList())
-			for(Architype architype : potentialCard.getArchitype())
+			for(ArchitypeComponent architype : potentialCard.getArchitype())
 				if(architype.equals(filter))
 					matchedCards.add(potentialCard);
 		
@@ -156,7 +162,21 @@ public abstract class Utils {
 				matchedCards.add(potentialCard);
 		return askUserSelection(matchedCards);
 	}
-
+	
+	
+	public static CardComponentInterface stringConvert(String inputString) {
+		try {
+		for(CardComponent component : CardComponent.class.getEnumConstants())
+			for (CardSubcomponentInterface subcomponent : (CardSubcomponentInterface[]) Class.forName("com.card.component." + component.name() + "Component").getEnumConstants())
+				if (subcomponent.match(inputString) != null)
+					return subcomponent.match(inputString);
+		} catch (SecurityException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return (CardComponentInterface) unfoundEnum(inputString);
+	}
+	
+	/*
 	public static Object stringConvert(String inputString) {
 		for (MonAttribute target_enum : MonAttribute.class.getEnumConstants())
 			if (target_enum.toString().equals(inputString))
@@ -184,6 +204,7 @@ public abstract class Utils {
 
 		return unfoundEnum(inputString);
 	}
+	*/
 
 	public static CardType stringToCardType(String inputString) {
 		for (CardType target_enum : CardType.class.getEnumConstants())
@@ -206,13 +227,13 @@ public abstract class Utils {
 		return (LinkArrow) unfoundEnum(inputString);
 	}
 	
-	public static LinkArrow[] stringToLinkArrowArray(String target_string) {
+	public static LinkArrowComponent[] stringToLinkArrowArray(String target_string) {
 		String[] target_strings = target_string.split(" ");
-		ArrayList<LinkArrow> types_list = new ArrayList<>();
+		ArrayList<LinkArrowComponent> types_list = new ArrayList<>();
 		for (String in : target_strings) {
-			types_list.add(stringToLinkArrow(in));
+			types_list.add((LinkArrowComponent) stringConvert(in));
 		}
-		return types_list.toArray(LinkArrow[]::new);
+		return types_list.toArray(LinkArrowComponent[]::new);
 	}
 	
 	public static MonAttribute stringToMonAttribute(String inputString) {
@@ -236,13 +257,13 @@ public abstract class Utils {
 		return (Type) unfoundEnum(inputString);
 	}
 	
-	public static Type[] stringToTypeArray(String target_string) {
+	public static TypeComponent[] stringToTypeArray(String target_string) {
 		String[] target_strings = target_string.split(" ");
-		ArrayList<Type> types_list = new ArrayList<>();
+		ArrayList<TypeComponent> types_list = new ArrayList<>();
 		for (String in : target_strings) {
-			types_list.add(stringToType(in));
+			types_list.add((TypeComponent) stringConvert(in));
 		}
-		return types_list.toArray(Type[]::new);
+		return types_list.toArray(TypeComponent[]::new);
 	}
 	
 	private static Object unfoundEnum(String inputString) {

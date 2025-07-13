@@ -1,10 +1,16 @@
 package com.card;
 
+import static com.card.component.CardTypeComponent.Monster;
+
+import com.card.component.MonsterAttributeComponent;
+import com.card.component.MonsterTypeComponent;
+import com.card.component.TypeComponent;
+
 public class MonCard extends Card {
 	private final int LEVEL_RANK, ATTACK, DEFENSE;
-	private final MonAttribute MON_ATTRI;
-	private final MonType MON_TYPE;
-	private final Type[] TYPES;
+	private final MonsterAttributeComponent MON_ATTRI;
+	private final MonsterTypeComponent MON_TYPE;
+	private final TypeComponent[] TYPES;
 
 	public MonCard() {
 		super();
@@ -16,9 +22,9 @@ public class MonCard extends Card {
 		this.DEFENSE = 0;
 	}
 
-	public MonCard(String name, int index, MonAttribute mon_attri, MonType mon_type, Type[] types, String lore,
+	public MonCard(String name, int index, MonsterAttributeComponent mon_attri, MonsterTypeComponent mon_type, TypeComponent[] types, String lore,
 			int level_rank, int attack, int defense) {
-		super(name, index, CardType.MONSTER, lore);
+		super(name, index, Monster, lore);
 		this.MON_ATTRI = mon_attri;
 		this.MON_TYPE = mon_type;
 		this.TYPES = types;
@@ -31,7 +37,7 @@ public class MonCard extends Card {
 		return ATTACK;
 	}
 
-	public MonAttribute getAttribute() {
+	public MonsterAttributeComponent getAttribute() {
 		return MON_ATTRI;
 	}
 
@@ -43,18 +49,18 @@ public class MonCard extends Card {
 		return LEVEL_RANK;
 	}
 
-	public MonType getMonType() {
+	public MonsterTypeComponent getMonType() {
 		return MON_TYPE;
 	}
 
-	public Type[] getTypes() {
+	public TypeComponent[] getTypes() {
 		return TYPES;
 	}
 
 	@Override
 	public String toString() {
 		String types = "";
-		for (Type type : TYPES) {
+		for (TypeComponent type : TYPES) {
 			types += type.toString() + " ";
 		}
 		types = types.substring(0, types.length() - 1);

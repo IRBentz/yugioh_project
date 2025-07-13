@@ -1,4 +1,4 @@
-package com.card;
+package com.card.enums;
 
 public enum MonType {
 	AQUA, BEAST, BEAST_WARRIOR, CREATOR_GOD, CYBERSE, DINOSAUR, DIVINE_BEAST, DRAGON, FAIRY, FIEND, FISH, ILLUSION,

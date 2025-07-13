@@ -7,17 +7,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.card.ExtraMonCard;
-import com.card.Icon;
 import com.card.LinkMonCard;
-import com.card.MonAttribute;
 import com.card.MonCard;
-import com.card.MonType;
 import com.card.PenMonCard;
 import com.card.SpellCard;
 import com.card.TrapCard;
-import com.card.Type;
 import com.card.XyzMonCard;
 
+@Deprecated
 public class Backend_v2 {
 	public static void buildDB(String pointerFileName) {
 		Scanner pointerFileScanner;
@@ -63,10 +60,7 @@ public class Backend_v2 {
 		// * Monster
 		while (input.hasNext()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			Global.card_db.add(new MonCard((String) ((Object[]) baseStats[0])[0], (int) ((Object[]) baseStats[0])[1],
-					(MonAttribute) baseStats[1], (MonType) baseStats[2], (Type[]) baseStats[3], input.nextLine(),
-					Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine()),
-					Integer.parseInt(input.nextLine())));
+			Global.card_db.add(new MonCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -80,10 +74,7 @@ public class Backend_v2 {
 		input = fileScanners.get(1);
 		while (input.hasNext()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			Global.card_db.add(new PenMonCard((String) ((Object[]) baseStats[0])[0], (int) ((Object[]) baseStats[0])[1],
-					(MonAttribute) baseStats[1], (MonType) baseStats[2], (Type[]) baseStats[3], input.nextLine(),
-					input.nextLine(), Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine()),
-					Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine())));
+			Global.card_db.add(new PenMonCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -98,10 +89,7 @@ public class Backend_v2 {
 			input = fileScanners.get(i);
 			while (input.hasNextLine()) {
 				baseStats = Utils.pullMonBaseStats(input);
-				Global.card_db.add(new ExtraMonCard((String) ((Object[]) baseStats[0])[0], (int) ((Object[]) baseStats[0])[1],
-						(MonAttribute) baseStats[1], (MonType) baseStats[2], (Type[]) baseStats[3], input.nextLine(),
-						input.nextLine(), Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine()),
-						Integer.parseInt(input.nextLine())));
+				Global.card_db.add(new ExtraMonCard());
 				input.nextLine();
 				baseStats = null;
 				cur_count++;
@@ -116,10 +104,7 @@ public class Backend_v2 {
 		input = fileScanners.get(4);
 		while (input.hasNext()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			Global.card_db.add(new XyzMonCard((String) ((Object[]) baseStats[0])[0], (int) ((Object[]) baseStats[0])[1],
-					(MonAttribute) baseStats[1], (MonType) baseStats[2], (Type[]) baseStats[3], input.nextLine(),
-					input.nextLine(), Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine()),
-					Integer.parseInt(input.nextLine())));
+			Global.card_db.add(new XyzMonCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -133,10 +118,7 @@ public class Backend_v2 {
 		input = fileScanners.get(5);
 		while (input.hasNextLine()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			Global.card_db.add(new LinkMonCard((String) ((Object[]) baseStats[0])[0], (int) ((Object[]) baseStats[0])[1],
-					(MonAttribute) baseStats[1], (MonType) baseStats[2], (Type[]) baseStats[3], input.nextLine(),
-					input.nextLine(), Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine()),
-					Utils.pullNextLinkArrowBlock(input)));
+			Global.card_db.add(new LinkMonCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -150,8 +132,7 @@ public class Backend_v2 {
 		input = fileScanners.get(6);
 		while (input.hasNextLine()) {
 			baseStats = Utils.pullSTBaseStats(input);
-			Global.card_db.add(new SpellCard((String) ((Object[]) baseStats[0])[0], (int) ((Object[]) baseStats[0])[1],
-					(String) baseStats[1], (Icon) baseStats[2]));
+			Global.card_db.add(new SpellCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -165,8 +146,7 @@ public class Backend_v2 {
 		input = fileScanners.get(7);
 		while (input.hasNextLine()) {
 			baseStats = Utils.pullSTBaseStats(input);
-			Global.card_db.add(new TrapCard((String) ((Object[]) baseStats[0])[0], (int) ((Object[]) baseStats[0])[1],
-					(String) baseStats[1], (Icon) baseStats[2]));
+			Global.card_db.add(new TrapCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;

@@ -2,6 +2,10 @@ package com.card;
 
 import java.util.ArrayList;
 
+import com.card.component.MonsterAttributeComponent;
+import com.card.component.MonsterTypeComponent;
+import com.card.component.TypeComponent;
+
 public class XyzMonCard extends ExtraMonCard {
 	private ArrayList<Card> xyzMaterials = new ArrayList<>();
 
@@ -9,7 +13,7 @@ public class XyzMonCard extends ExtraMonCard {
 		super();
 	}
 
-	public XyzMonCard(String name, int index, MonAttribute mon_attri, MonType mon_type, Type[] types, String summon_req,
+	public XyzMonCard(String name, int index, MonsterAttributeComponent mon_attri, MonsterTypeComponent mon_type, TypeComponent[] types, String summon_req,
 			String lore, int rank, int attack, int defense) {
 		super(name, index, mon_attri, mon_type, types, summon_req, lore, rank, attack, defense);
 	}

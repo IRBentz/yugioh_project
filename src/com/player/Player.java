@@ -1,8 +1,6 @@
 package com.player;
 
-import com.card.EffectTarget;
-
-public class Player implements EffectTarget {
+public class Player {
 	private Banishment banished;
 	private Deck deck;
 	private Graveyard gy;
@@ -21,11 +19,6 @@ public class Player implements EffectTarget {
 
 	public Deck getDeck() {
 		return this.deck;
-	}
-	
-	@Override
-	public Object getEffectObject() {
-		return this;
 	}
 	
 	public Graveyard getGY() {

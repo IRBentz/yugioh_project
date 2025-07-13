@@ -1,19 +1,22 @@
 package com.card;
 
+import com.card.component.CardTypeComponent;
+import com.card.component.IconComponent;
+
 public abstract class StCard extends Card {
-	private final Icon ICON;
+	private final IconComponent ICON;
 
 	public StCard() {
 		super();
 		this.ICON = null;
 	}
 
-	public StCard(String name, int index, CardType cardType, String lore, Icon st_icon) {
+	public StCard(String name, int index, CardTypeComponent cardType, String lore, IconComponent st_icon) {
 		super(name, index, cardType, lore);
 		this.ICON = st_icon;
 	}
 
-	public Icon returnIcon() {
+	public IconComponent returnIcon() {
 		return ICON;
 	}
 

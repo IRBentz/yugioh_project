@@ -1,17 +1,23 @@
 package com.card.component;
 
-enum CardTypeComponent implements CardComponentInterface, CardSubcomponentInterface {
-	Monster(CardComponent.CardType), Spell(CardComponent.CardType), Token(CardComponent.CardType), Trap(CardComponent.CardType);
+import static com.card.component.CardComponent.CardType;
 
-	private final CardComponent cardComponent;
-	
-	private CardTypeComponent(CardComponent cardComponent) {
-		this.cardComponent = cardComponent;
-	}
+public enum CardTypeComponent implements CardComponentInterface, CardSubcomponentInterface {
+	Monster, Spell, Token, Trap;
+
+	private final CardComponent cardComponent = CardType;
 	
 	@Override
 	public String getComponentName() {
 		return cardComponent.getComponentName();
+	}
+	
+	@Override
+	public CardTypeComponent match(String name) {
+		for (CardTypeComponent cardTypeComponent : CardTypeComponent.class.getEnumConstants())
+			if (cardTypeComponent.name().equals(name))
+				return cardTypeComponent;
+		return null;
 	}
 
 	@Override

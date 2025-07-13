@@ -1,4 +1,4 @@
-package com.card;
+package com.card.enums;
 
 public enum Architype {
 	ALLY_OF_JUSTICE(0x1), GENEX(0x2), R_GENEX(0x100_2), GENEX_ALLY(0x200_2), HORUS(0x3), HORUS_BLACK_FLAME_DRAGON(0x100_3),

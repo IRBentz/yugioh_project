@@ -1,20 +1,24 @@
 package com.card.component;
 
-enum TypeComponent implements CardComponentInterface, CardSubcomponentInterface {
-	Effect(CardComponent.Type), Flip(CardComponent.Type), Fusion(CardComponent.Type), Gemini(CardComponent.Type), 
-	Link(CardComponent.Type), Normal(CardComponent.Type), Pendulum(CardComponent.Type), Ritual(CardComponent.Type), 
-	Spirit(CardComponent.Type), Synchro(CardComponent.Type), Toon(CardComponent.Type), Tuner(CardComponent.Type), 
-	Union(CardComponent.Type), Xyz(CardComponent.Type);
+import static com.card.component.CardComponent.Type;
+
+public enum TypeComponent implements CardComponentInterface, CardSubcomponentInterface {
+	Effect, Flip, Fusion, Gemini, Link, Normal, Pendulum, Ritual, Spirit, Synchro, Toon, Tuner, Union, Xyz;
 	
-	private final CardComponent cardComponent;
+	private final CardComponent cardComponent = Type;
 	
-	private TypeComponent(CardComponent cardComponent) {
-		this.cardComponent = cardComponent;
-	}
 	
 	@Override
 	public String getComponentName() {
 		return cardComponent.getComponentName();
+	}
+	
+	@Override
+	public TypeComponent match(String name) {
+		for (TypeComponent typeComponent : TypeComponent.class.getEnumConstants())
+			if (typeComponent.name().equals(name))
+				return typeComponent;
+		return null;
 	}
 	
 	@Override

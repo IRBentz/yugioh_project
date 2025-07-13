@@ -3,9 +3,8 @@ package com.player;
 import java.util.ArrayList;
 
 import com.card.Card;
-import com.card.EffectTarget;
 
-public class Deck implements EffectTarget {
+public class Deck {
 	private ArrayList<Card> extra_deck_list;
 	private ArrayList<Card> main_deck_list;
 	private ArrayList<Card> side_deck_list;
@@ -31,11 +30,6 @@ public class Deck implements EffectTarget {
 		this.main_deck_list = main;
 		this.extra_deck_list = extra;
 		this.side_deck_list = side;
-	}
-	
-	@Override
-	public Object getEffectObject() {
-		return this;
 	}
 	
 	public ArrayList<Card> getExtraDeckList() {

@@ -1,17 +1,23 @@
 package com.card.component;
 
-enum IconComponent implements CardComponentInterface, CardSubcomponentInterface {
-	Continuous(CardComponent.Icon), Counter(CardComponent.Icon), Equip(CardComponent.Icon), Field(CardComponent.Icon), Normal(CardComponent.Icon), QuickPlay(CardComponent.Icon), Ritual(CardComponent.Icon);
+import static com.card.component.CardComponent.Icon;
+
+public enum IconComponent implements CardComponentInterface, CardSubcomponentInterface {
+	Continuous, Counter, Equip, Field, None, QuickPlay, Ritual;
 	
-	private final CardComponent cardComponent;
-	
-	private IconComponent(CardComponent cardComponent) {
-		this.cardComponent = cardComponent;
-	}
+	private final CardComponent cardComponent = Icon;
 	
 	@Override
 	public String getComponentName() {
 		return cardComponent.getComponentName();
+	}
+	
+	@Override
+	public IconComponent match(String name) {
+		for (IconComponent iconComponent : IconComponent.class.getEnumConstants())
+			if (iconComponent.name().equals(name))
+				return iconComponent;
+		return null;
 	}
 	
 	@Override

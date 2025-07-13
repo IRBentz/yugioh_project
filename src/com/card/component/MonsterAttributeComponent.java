@@ -1,18 +1,23 @@
 package com.card.component;
 
-enum MonsterAttributeComponent implements CardComponentInterface, CardSubcomponentInterface {
-	Dark(CardComponent.MonsterAttribute), Divine(CardComponent.MonsterAttribute), Earth(CardComponent.MonsterAttribute), 
-	Fire(CardComponent.MonsterAttribute), Light(CardComponent.MonsterAttribute), Water(CardComponent.MonsterAttribute), 
-	Wind(CardComponent.MonsterAttribute);
+import static com.card.component.CardComponent.MonsterAttribute;
 
-	private final CardComponent cardComponent;
+public enum MonsterAttributeComponent implements CardComponentInterface, CardSubcomponentInterface {
+	Dark, Divine, Earth, Fire, Light, Water, Wind;
+
+	private final CardComponent cardComponent = MonsterAttribute;
 	
-	private MonsterAttributeComponent(CardComponent cardComponent) {
-		this.cardComponent = cardComponent;
-	}
 	@Override
 	public String getComponentName() {
 		return cardComponent.getComponentName();
+	}
+	
+	@Override
+	public MonsterAttributeComponent match(String name) {
+		for (MonsterAttributeComponent monsterAttributeComponent : MonsterAttributeComponent.class.getEnumConstants())
+			if (monsterAttributeComponent.name().equals(name))
+				return monsterAttributeComponent;
+		return null;
 	}
 
 	@Override
