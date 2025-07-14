@@ -11,18 +11,4 @@ public enum IconComponent implements CardSubcomponentInterface {
 	public String getComponentName() {
 		return cardComponent.getComponentName();
 	}
-	
-	@Override
-	public String getName() {
-		return this.name();
-	}
-	
-	@Override
-	public IconComponent match(String name) {
-		for (IconComponent iconComponent : IconComponent.class.getEnumConstants())
-			if (iconComponent.name().equals(name))
-				return iconComponent;
-		return null;
-	}
-	
 }

@@ -11,17 +11,4 @@ public enum LinkArrowComponent implements CardSubcomponentInterface {
 	public String getComponentName() {
 		return cardComponent.getComponentName();
 	}
-	
-	@Override
-	public String getName() {
-		return this.name();
-	}
-	
-	@Override
-	public LinkArrowComponent match(String name) {
-		for (LinkArrowComponent linkArrowComponent : LinkArrowComponent.class.getEnumConstants())
-			if (linkArrowComponent.name().equals(name))
-				return linkArrowComponent;
-		return null;
-	}
 }

@@ -11,17 +11,4 @@ public enum MonsterAttributeComponent implements CardSubcomponentInterface {
 	public String getComponentName() {
 		return cardComponent.getComponentName();
 	}
-	
-	@Override
-	public String getName() {
-		return this.name();
-	}
-
-	@Override
-	public MonsterAttributeComponent match(String name) {
-		for (MonsterAttributeComponent monsterAttributeComponent : MonsterAttributeComponent.class.getEnumConstants())
-			if (monsterAttributeComponent.name().equals(name))
-				return monsterAttributeComponent;
-		return null;
-	}
 }
