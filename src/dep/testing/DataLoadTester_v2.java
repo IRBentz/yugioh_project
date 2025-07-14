@@ -60,6 +60,7 @@ public abstract class DataLoadTester_v2 {
 
 		Scanner input = fileScanners.get(0);
 		ArrayList<Card> cards = new ArrayList<>();
+		@SuppressWarnings("unused")
 		Object[] baseStats;
 		// * Monster
 		while (input.hasNext()) {
