@@ -6,6 +6,7 @@ import static com.engine.Global.card_db;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import com.card.Card;
@@ -28,6 +29,13 @@ public abstract class Utils {
 		String input = kb.next();
 		kb.nextLine();
 		return input;
+	}
+	
+	public static String concatStringArray(List<String> list) {
+		String string = "";
+		for(String s : list)
+			string += s;
+		return string;
 	}
 	
 	public static Card askUserSelection(Card[] selectionList) {

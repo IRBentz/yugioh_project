@@ -12,6 +12,7 @@ module yugioh {
 	exports dep.card.enums;
 	exports dep.engine;
 	exports dep.testing;
-
+	
+	requires org.json;
 	requires transitive java.desktop;
 }
