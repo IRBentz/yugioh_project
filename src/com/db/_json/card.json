@@ -1,0 +1,615 @@
+[
+	{
+		"card_type": "monster",
+		"cards": [
+			{
+				"name": "Bystial Druiswurm",
+				"index": 6637331,
+				"monsterAttribute": "Dark",
+				"monsterType": "Dragon",
+				"type": [
+					"Effect"
+				],
+				"lore": "You can target 1 LIGHT or DARK monster in either GY; banish it, and if you do, Special Summon this card from your hand. This is a Quick Effect if your opponent controls a monster. If this card is sent from the field to the GY: You can target 1 Special Summoned monster your opponent controls; send it to the GY. You can only use each effect of \"Bystial Druiswurm\" once per turn.",
+				"level": 6,
+				"attack": 2500,
+				"defense": 2000
+			},
+			{
+				"name": "Ash Blossom & Joyous Spring",
+				"index": 14558127,
+				"monsterAttribute": "Fire",
+				"monsterType": "Zombie",
+				"type": [
+					"Tuner",
+					"Effect"
+				],
+				"lore": "When a card or effect is activated that includes any of these effects (Quick Effect): You can discard this card; negate that effect. • Add a card from the Deck to the hand. • Special Summon from the Deck. • Send a card from the Deck to the GY. You can only use this effect of \"Ash Blossom & Joyous Spring\" once per turn.",
+				"level": 3,
+				"attack": 0,
+				"defense": 1800
+			},
+			{
+				"name": "Starliege Seyfert",
+				"index": 15381421,
+				"monsterAttribute": "Light",
+				"monsterType": "Dragon",
+				"type": [
+					"Effect"
+				],
+				"lore": "You can send any number of Dragon monsters from your hand and/or face-up field to the GY; add 1 Dragon monster from your Deck to your hand, whose Level equals the total original Levels of those monsters sent to the GY. You can banish this card from your GY, then target 1 Level 8 LIGHT or DARK Dragon monster in your GY; add it to your hand. You can only use each effect of \"Starliege Seyfert\" once per turn.",
+				"level": 4,
+				"attack": 1800,
+				"defense": 0
+			},
+			{
+				"name": "Nibiru, the Primal Being",
+				"index": 27204311,
+				"monsterAttribute": "Light",
+				"monsterType": "Rock",
+				"type": [
+					"Effect"
+				],
+				"lore": "During the Main Phase, if your opponent Normal or Special Summoned 5 or more monsters this turn (Quick Effect): You can Tribute as many face-up monsters on the field as possible, and if you do, Special Summon this card from your hand, then Special Summon 1 \"Primal Being Token\" (Rock/LIGHT/Level 11/ATK ?/DEF ?) to your opponent's field. (This Token's ATK/DEF become the combined original ATK/DEF of the Tributed monsters.) You can only use this effect of \"Nibiru, the Primal Being\" once per turn.",
+				"level": 11,
+				"attack": 3000,
+				"defense": 600
+			},
+			{
+				"name": "Metal Illusionist",
+				"index": 29157292,
+				"monsterAttribute": "Light",
+				"monsterType": "Spellcaster",
+				"type": [
+					"Effect"
+				],
+				"lore": "Increase this card's Level by 4 during your opponent's turn only. You can only use each of the following effects of \"Metal Illusionist\" once per turn. If this card is Normal or Special Summoned: You can set 1 \"Metalmorph\" Trap from your Deck, then if \"Max Metalmorph\" is in your GY, you can draw 1 card. You can declare 1 other Monster Type; this card becomes that Type, until the end of your opponent's turn.",
+				"level": 1,
+				"attack": 0,
+				"defense": 0
+			},
+			{
+				"name": "The Bystial Lubellion",
+				"index": 32731036,
+				"monsterAttribute": "Light",
+				"monsterType": "Dragon",
+				"type": [
+					"Effect"
+				],
+				"lore": "Cannot be Normal Summoned/Set. Must be Special Summoned (from your hand or GY) by Tributing 1 Level 6 or higher DARK Dragon monster. You can only Special Summon \"The Bystial Lubellion\" once per turn this way. You can send this card from your hand to the GY; add 1 \"Bystial\" monster from your Deck to your hand, except \"The Bystial Lubellion\". During your Main Phase: You can place 1 \"Branded\" Continuous Spell/Trap from your Deck face-up on your field. You can only use each effect of \"The Bystial Lubellion\" once per turn.",
+				"level": 8,
+				"attack": 2500,
+				"defense": 3000
+			},
+			{
+				"name": "Samsara Dragon",
+				"index": 33750025,
+				"monsterAttribute": "Light",
+				"monsterType": "Dragon",
+				"type": [
+					"Effect"
+				],
+				"lore": "This card can be treated as 2 Tributes for the Tribute Summon of a Dragon monster. You can banish this card from your GY, then target 1 Level 5 or higher Dragon monster in your GY; add it to your hand, then, immediately after this effect resolves, you can Tribute Summon that monster. You can only use this effect of \"Samara Dragon\" once per turn.",
+				"level": 1,
+				"attack": 0,
+				"defense": 0
+			},
+			{
+				"name": "Bystial Magnamhut",
+				"index": 33854624,
+				"monsterAttribute": "Dark",
+				"monsterType": "Dragon",
+				"type": [
+					"Effect"
+				],
+				"lore": "You can target 1 LIGHT or DARK monster in either GY; banish it, and if you do, Special Summon this card from your hand. This is a Quick Effect if your opponent controls a monster. If this card is Special Summoned: You can activate this effect; during the End Phase of this turn, add 1 Dragon monster from your Deck or GY to your hand, except \"Bystial Magnamhut\". You can only use each effect of \"Bystial Magnamhut\" once per turn.",
+				"level": 6,
+				"attack": 2500,
+				"defense": 2000
+			},
+			{
+				"name": "Ghost Ogre & Snow Rabbit",
+				"index": 59438930,
+				"monsterAttribute": "Light",
+				"monsterType": "Psychic",
+				"type": [
+					"Tuner",
+					"Effect"
+				],
+				"lore": "When a monster on the field activates its effects, or when a Spell/Trap this is already face-up on the field activates its effects (Quick Effect): You can send this card from your hand or field to the GY; destroy that card on the field. You can only use this effect of \"Ghost Ogre & Snow Rabbit\" once per turn.",
+				"level": 3,
+				"attack": 0,
+				"defense": 1800
+			},
+			{
+				"name": "Bystial Saronir",
+				"index": 60242223,
+				"monsterAttribute": "Dark",
+				"monsterType": "Dragon",
+				"type": [
+					"Effect"
+				],
+				"lore": "You can target 1 LIGHT or DARK monster in either GY; banish it, and if you do, Special Summon this card from your hand. This is a Quick Effect if your opponent controls a monster. If this card is sent to the GY: You can send 1 \"Bystial\" monster or 1 \"Branded\" Spell/Trap from your Deck to the GY, except \"Bystial Saronir\". You can only use each effect of \"Bystial Saronir\" once per turn.",
+				"level": 6,
+				"attack": 2500,
+				"defense": 2000
+			},
+			{
+				"name": "Ghost Sister & Spooky Dogwood",
+				"index": 60643553,
+				"monsterAttribute": "Water",
+				"monsterType": "Zombie",
+				"type": [
+					"Tuner",
+					"Effect"
+				],
+				"lore": "During either turn, except during the End Phase (Quick Effect): You can discard this card; apply this effect this turn. You can only use this effect of \"Ghost Sister & Spooky Dogwood\" once per turn. • Each time your opponent Special Summons an Effect Monster(s) during the Main Phase or Battle Phase, you gain LP equal to to that monster's ATK. If you did not gain LP by this effect, your LP are halved during the End Phase.",
+				"level": 3,
+				"attack": 0,
+				"defense": 1800
+			},
+			{
+				"name": "Black Dragon Collapserpent",
+				"index": 61901281,
+				"monsterAttribute": "Dark",
+				"monsterType": "Dragon",
+				"type": [
+					"Effect"
+				],
+				"lore": "Cannot be Normal Summoned/Set. Must be Special Summoned (from your hand) by banishing 1 LIGHT monster from your GY. You can only Special Summon \"Black Dragon Collapserpent\" once per turn this way. If this card is sent from the field to the GY: You can add 1 \"White Dragon Wyverburster\" from your Deck to your hand.",
+				"level": 4,
+				"attack": 1800,
+				"defense": 1700
+			},
+			{
+				"name": "Dark End Evaporation Dragon",
+				"index": 62002838,
+				"monsterAttribute": "Dark",
+				"monsterType": "Dragon",
+				"type": [
+					"Effect"
+				],
+				"lore": "You can banish 1 Level 8 Dragon monster from your Extra Deck, Special Summon this card from your hand, also you cannot Special Summon for the rest of this turn, except Dragon monsters. You can activate 1 of these effects; • Fusion Summon 1 Fusion Monster from your Extra Deck, using monsters from your hand or field. • Target 1 other Attack Position monster on the field; make this card lose exactly 500 ATK/DEF, and if you do, destroy that monster. You can only use each effect of \"Dark End Evaporation Dragon\" once per turn.",
+				"level": 8,
+				"attack": 2600,
+				"defense": 2100
+			},
+			{
+				"name": "Bystial Baldrake",
+				"index": 72656408,
+				"monsterAttribute": "Dark",
+				"monsterType": "Dragon",
+				"type": [
+					"Effect"
+				],
+				"lore": "You can target 1 LIGHT or DARK monster in either GY; banish it, and if you do, Special Summon this card from your hand. This is a Quick Effect if your opponent controls a monster. If your opponent Special Summons a Ritual, Fusion, Synchro, Xyz, and/or Link Monster(s) (except during the Damage Step): You can Tribute 1 other LIGHT or DARK monster, then target 1 of those Special Summoned monsters; banish it. You can only use each effect of \"Bystial Baldrake\" once per turn.",
+				"level": 6,
+				"attack": 2500,
+				"defense": 2000
+			},
+			{
+				"name": "Red-Eyes Black Fullmetal Dragon",
+				"index": 80870883,
+				"monsterAttribute": "Dark",
+				"monsterType": "Machine",
+				"type": [
+					"Effect"
+				],
+				"lore": "Cannot be Normal Summoned/Set. Must first be Special Summoned with \"Max Metalmorph\" that was activated by Tributing a Level 5 or higher Dragon monster. You can reveal this card in your hand; Set 1 \"Metalmorph\" Trap from your Deck, and if you do, shuffle this card into the Deck. When your opponent activates a card or effect (Quick Effect): You can negate the activation, then you can inflict damage to your opponent equal to the original ATK of 1 Attack Position monster your opponent controls. You can only use each effect of \"Red-Eyes Black Fullmetal Dragon\" once per turn.",
+				"level": 8,
+				"attack": 3400,
+				"defense": 2400
+			},
+			{
+				"name": "Red-Eyes Darkness Metal Dragon",
+				"index": 88264978,
+				"monsterAttribute": "Dark",
+				"monsterType": "Dragon",
+				"type": [
+					"Effect"
+				],
+				"lore": "You can Special Summon this card (from your hand) by banishing 1 face-up Dragon monster you control. You can only Special Summon \"Red-Eyes Darkness Metal Dragon\" once per turn this way. During your Main Phase: You can Special Summon 1 Dragon monster from your hand or GY, except \"Red-Eyes Darkness Metal Dragon\". You can only use this effect of \"Red-Eyes Darkness Metal Dragon\" once per turn.",
+				"level": 10,
+				"attack": 2800,
+				"defense": 2400
+			},
+			{
+				"name": "Black Metal Dragon",
+				"index": 93969023,
+				"monsterAttribute": "Dark",
+				"monsterType": "Dragon",
+				"type": [
+					"Effect"
+				],
+				"lore": "You can target 1 \"Red-Eyes\" monster you control; equip this monster from your hand or field to that target. It gains 600 ATK. If this card is sent from the field to the GY: You can add 1 \"Red-Eyes\" card from your Deck to your hand.",
+				"level": 1,
+				"attack": 600,
+				"defense": 600
+			},
+			{
+				"name": "Effect Veiler",
+				"index": 97268402,
+				"monsterAttribute": "Light",
+				"monsterType": "Spellcaster",
+				"type": [
+					"Tuner",
+					"Effect"
+				],
+				"lore": "During your opponent's Main Phase (Quick Effect): You can send this card from your hand to the GY, then target 1 Effect Monster your opponent controls; negate the effects of that face-up monster your opponent controls, until the end of this turn.",
+				"level": 1,
+				"attack": 0,
+				"defense": 0
+			},
+			{
+				"name": "Grandtusk Dragon",
+				"index": 98898163,
+				"monsterAttribute": "Earth",
+				"monsterType": "Dragon",
+				"type": [
+					"Effect"
+				],
+				"lore": "If this card is Normal or Special Summoned: You can target up to 2 other cards on the field; destroy them, and if you do, this card gains 600 ATK for each card destroyed. You can only use this effect of \"Grandtusk Dragon\" once per turn.",
+				"level": 8,
+				"attack": 1400,
+				"defense": 2400
+			},
+			{
+				"name": "White Dragon Whyverburster",
+				"index": 99234526,
+				"monsterAttribute": "Light",
+				"monsterType": "Dragon",
+				"type": [
+					"Effect"
+				],
+				"lore": "Cannot be Normal Summoned/Set. Must be Special Summoned (from your hand) by banishing 1 DARK monster from your GY. You can only Special Summon \"White Dragon Wyverburster\" once per turn this way. If this card is sent from the field to the GY: You can add 1 \"Black Dragon Collapserpent\" from your Deck to your hand.",
+				"level": 4,
+				"attack": 1700,
+				"defense": 1800
+			}
+		]
+	},
+	{
+		"card_type": "pendulumMonster",
+		"cards": [
+			{
+				"name": "Chaos Emperor, the Dragon of Armageddon",
+				"index": 4538825,
+				"monsterAttribute": "Dark",
+				"monsterType": "Dragon",
+				"type": [
+					"Pendulum",
+					"Effect"
+				],
+				"pendulumLore": "You can pay 1000 LP, then target 1 of your banished Dragon monsters; destroy this card, and if you do, add that monster to your hand. You can only use this effect of \"Chaos Emperor, the Dragon of Armageddon\" once per turn.",
+				"lore": "Cannot be Normal Summoned/Set. Must be Special Summoned (from your hand or Extra Deck) by banishing 1 LIGHT and 1 DARK monster from your GY. You can only Special Summon \"Chaos Emperor, the Dragon of Armageddon\" once per turn this way. Once per turn: You can pay half your LP; send as many cards you control as possible to the GY, except from the Extra Monster Zone, and if you do, send cards your opponent controls to the GY, up to the number of your cards sent to the GY, then, inflict 300 damage to your opponent for each card sent to their GY by this card's effect. If this face-up Special Summoned card leaves the field, return it to the bottom of the Deck.",
+				"level": 8,
+				"pendulumLevel": 1,
+				"attack": 3000,
+				"defense": 2500
+			}
+		]
+	},
+	{
+		"card_type": "fusionMonster",
+		"cards": [
+			{
+				"name": "Light and Darkness Dragonlord",
+				"index": 19652159,
+				"monsterAttribute": "Light",
+				"monsterType": "Dragon",
+				"type": [
+					"Fusion",
+					"Effect"
+				],
+				"summonRequirement": "1 Level 8 LIGHT Dragon monster + 1 Level 8 DARK Dragon monster",
+				"lore": "Must be Fusion Summoned. While face-up on the field, this card is also DARK-Attribute. Once per Chain, if a Spell/Trap Card, or monster effect, is activated (Quick Effect): This card loses exactly 1000 ATK/DEF, and if it does, negate the activation. If this card in its owner's possession is destroyed by an opponent's card: You can target 1 Dragon monster in your GY; Special Summon it.",
+				"level": 10,
+				"attack": 3400,
+				"defense": 3000
+			},
+			{
+				"name": "Khaos Starsource Dragon",
+				"index": 72578374,
+				"monsterAttribute": "Light",
+				"monsterType": "Dragon",
+				"type": [
+					"Fusion",
+					"Effect"
+				],
+				"summonRequirement": "1 LIGHT or DARK Dragon monster + 1 Dragon monster",
+				"lore": "If this card is Fusion Summoned: You can target cards your opponent controls, up to the number of LIGHT and DARK monsters used as this card's material; destroy them. If this card is banished: You can target 1 Level 4 LIGHT or DARK Dragon monster you control; its Level becomes 8. You can only use each effect of \"Khaos Starsource Dragon\" once per turn.",
+				"level": 8,
+				"attack": 2500,
+				"defense": 2500
+			},
+			{
+				"name": "Borreload Furious Dragon",
+				"index": 92892239,
+				"monsterAttribute": "Dark",
+				"monsterType": "Dragon",
+				"type": [
+					"Fusion",
+					"Effect"
+				],
+				"summonRequirement": "2 DARK Dragon monsters",
+				"lore": "(Quick Effect): You can target 1 monster you control and 1 card your opponent controls; destroy them. You can banish this card from your GY, then target 1 DARK Link Monster in your GY; Special Summon it, but it cannot activate its effects this turn. You can only use each effect of \"Borreload Furious Dragon\" once per turn.",
+				"level": 10,
+				"attack": 3000,
+				"defense": 2500
+			}
+		]
+	},
+	{
+		"card_type": "synchroMonster",
+		"cards": [
+			{
+				"name": "Chaos Angel",
+				"index": 22850702,
+				"monsterAttribute": "Dark",
+				"monsterType": "Fiend",
+				"type": [
+					"Synchro",
+					"Effect"
+				],
+				"summonRequirement": "1 Tuner + 1+ non-Tuner LIGHT or DARK monsters",
+				"lore": "For this card's Synchro Summon, you can treat 1 LIGHT or DARK monster you control as a Tuner. If this card is Special Summoned: You can target 1 card on the field; banish it. This card gains these effects based on the original Attributes of materials used for its Synchro Summon. • LIGHT: Synchro Monsters you control are unaffected by monster effects activated by your opponent. • DARK: Monsters you control cannot be destroyed by battle.",
+				"level": 10,
+				"attack": 3500,
+				"defense": 2800
+			}
+		]
+	},
+	{
+		"card_type": "xyzMonster",
+		"cards": [
+			{
+				"name": "Number 38: Hope Harbinger Dragon Titanic Galaxy",
+				"index": 63767246,
+				"monsterAttribute": "Light",
+				"monsterType": "Dragon",
+				"type": [
+					"Xyz",
+					"Effect"
+				],
+				"summonRequirement": "2 Level 8 monsters",
+				"lore": "Once per turn, when a Spell Card or effect is activated on the field (Quick Effect): You can negate that effect, and if you do, attach that card to this card as material. When an opponent's monster declares an attack: You can detach 1 material from this card; change the attack target to this card and perform damage calculation. If a face-up Xyz Monster(s) you control is destroyed by battle or card effect: You can target 1 face-up Xyz Monster you control; it gains ATK equal to 1 of those destroyed monster's original ATK.",
+				"rank": 8,
+				"attack": 3000,
+				"defense": 2500
+			},
+			{
+				"name": "Super Starslayer TY-PHON - Sky Crsis",
+				"index": 93039339,
+				"monsterAttribute": "Dark",
+				"monsterType": "Fiend",
+				"type": [
+					"Xyz",
+					"Effect"
+				],
+				"summonRequirement": "2 Level 12 monsters",
+				"lore": "During the turn, or turn after, your opponent Special Summoned 2 or more monsters from the Extra Deck, you can also Xyz Summon this card by using 1 monster you control with the highest ATK (your choice, if tied). (Transfer its materials to this card.) If you do, you cannot Normal or Special Summon monsters for the rest of this turn. While this Xyz Summoned monster is on the field, neither player can activate the effects of monsters with 3000 or more ATK. Once per turn: You can detach 1 material from this card; return 1 monster from the field to the hand.",
+				"level": 12,
+				"attack": 2900,
+				"defense": 2900
+			}
+		]
+	},
+	{
+		"card_type": "linkMonster",
+		"cards": [
+			{
+				"name": "Dharc the Dark Charmer, Gloomy",
+				"index": 8264361,
+				"monsterAttribute": "Dark",
+				"monsterType": "Spellcaster",
+				"type": [
+					"Link",
+					"Effect"
+				],
+				"summonRequirement": "2 monsters, including a DARK monster",
+				"lore": "(This card is always treated as a \"Familiar-Possessed\" card.) You can target 1 DARK monster in your opponent's GY; Special Summon it to your zone this card points to. If this Link Summoned card is destroyed by battle, or is destroyed by an opponent's card effect while in its owner's Monster Zone: You can add 1 DARK monster with 1500 or less DEF from your Deck to your hand. You can only use each effect of \"Dharc the Dark Charmer, Gloomy\" once per turn.",
+				"linkRating": 2,
+				"attack": 1850,
+				"defense": [
+					"DownLeft",
+					"DownRight"
+				]
+			},
+			{
+				"name": "Dragunity Knight - Romulus",
+				"index": 11969228,
+				"monsterAttribute": "Wind",
+				"monsterType": "Dragon",
+				"type": [
+					"Link",
+					"Effect"
+				],
+				"summonRequirement": "2 Dragon and/or Winged Beast monsters, except Tokens",
+				"lore": "If this card is Link Summoned: You can add 1 \"Dragunity\" Spell/Trap or 1 \"Dragon Ravine\" from your Deck to your hand. If a Dragon monster(s) is Special Summoned from the Extra Deck to a zone this card points to (except during the Damage Step): You can Special Summon 1 Dragon or Winged Beast monster from your hand in Defense Position, but for the rest of this turn, its effects (if any) are negated and it cannot be used as Link Material. You can only use each effect of \"Dragunity Knight - Romulus\" once per turn.",
+				"linkRating": 2,
+				"attack": 1200,
+				"defense": [
+					"DownLeft",
+					"DownRight"
+				]
+			},
+			{
+				"name": "Guardragon Pisty",
+				"index": 13143275,
+				"monsterAttribute": "Dark",
+				"monsterType": "Dragon",
+				"type": [
+					"Link",
+					"Effect"
+				],
+				"summonRequirement": "1 Level 4 or lower Dragon monster",
+				"lore": "You cannot Special Summon monsters, except Dragon monsters. During your Main Phase: You can target 1 of your Dragon monsters that is banished or in your GY; Special Summon it to your zone that 2 or more Link Monsters point to. You can only use this effect of \"Guardragon Pisty\" once per turn. You can only Special Summon \"Guardragon Pisty(s)\" once per turn.",
+				"linkRating": 1,
+				"attack": 1000,
+				"defense": [
+					"Right"
+				]
+			},
+			{
+				"name": "Hieratic Seal of the Heavenly Spheres",
+				"index": 24361622,
+				"monsterAttribute": "Light",
+				"monsterType": "Dragon",
+				"type": [
+					"Link",
+					"Effect"
+				],
+				"summonRequirement": "2 Dragon monsters",
+				"lore": "Once per opponent's turn, if this card is in the Extra Monster Zone (Quick Effect): You can Tribute 1 monster from your hand or field; return 1 face-up card on the field to the hand. If this card is Tributed: Special Summon 1 Dragon monster from your hand or Deck, and make its ATK/DEF 0. You can only use this effect of \"Hieratic Seal of the Heavenly Spheres\" once per turn.",
+				"linkRating": 2,
+				"attack": 0,
+				"defense": [
+					"DownLeft",
+					"DownRight"
+				]
+			},
+			{
+				"name": "S:P Little Knight",
+				"index": 29301450,
+				"monsterAttribute": "Dark",
+				"monsterType": "Warrior",
+				"type": [
+					"Link",
+					"Effect"
+				],
+				"summonRequirement": "2 Effect Monsters",
+				"lore": "If this card is Link Summoned using a Fusion, Synchro, Xyz, or Link Monster as material: You can target 1 card on the field or in either GY; banish it, also your monsters cannot attack directly this turn. When your opponent activates a card or effect (Quick Effect): You can target 2 face-up monsters on the field, including a monster you control; banish both until the End Phase. You can only use each effect of \"S:P Little Knight\" once per turn.",
+				"linkRating": 2,
+				"attack": 1600,
+				"defense": [
+					"Left",
+					"Right"
+				]
+			},
+			{
+				"name": "Triple Burst Dragon",
+				"index": 49725936,
+				"monsterAttribute": "Dark",
+				"monsterType": "Dragon",
+				"type": [
+					"Link",
+					"Effect"
+				],
+				"summonRequirement": "2+ monsters, except Tokens",
+				"lore": "Once per turn, during the Damage Step, when a Spell/Trap Card, or monster effect, is activated (Quick Effect): You can negate the activation. If this card attacks a Defense Position monster, inflict piercing battle damage. During your Main Phase, except the turn this card was Special Summoned: You can Tribute this card, then target 1 Link-2 or lower monster in your GY; Special Summon it, then you can Special Summon 1 Level 4 or lower Dragon monster from your hand.",
+				"linkRating": 3,
+				"attack": 2400,
+				"defense": [
+					"Up",
+					"Left",
+					"Down"
+				]
+			},
+			{
+				"name": "I:P Masquerena",
+				"index": 65741786,
+				"monsterAttribute": "Dark",
+				"monsterType": "Cyberse",
+				"type": [
+					"Link",
+					"Effect"
+				],
+				"summonRequirement": "2 non-Link Monsters",
+				"lore": "During your opponent's Main Phase, you can (Quick Effect): Immediately after this effect resolves, Link Summon 1 Link Monster using materials you control, including this card. You can only use this effect of \"I:P Masquerena\" once per turn. A Link Monster that used this card as material cannot be destroyed by your opponent's card effects.",
+				"linkRating": 2,
+				"attack": 800,
+				"defense": [
+					"DownLeft",
+					"DownRight"
+				]
+			},
+			{
+				"name": "Striker Dragon",
+				"index": 73539069,
+				"monsterAttribute": "Dark",
+				"monsterType": "Dragon",
+				"type": [
+					"Link",
+					"Effect"
+				],
+				"summonRequirement": "1 Level 4 or lower Dragon monster",
+				"lore": "If this card is Link Summoned: You can add 1 \"Boot Sector Launch\" from your Deck to your hand. You can target 1 face-up monster you control and 1 \"Rokket\" monster in your GY; destroy that monster on the field, and if you do, add that other monster from the GY to your hand. You can only use each effect of \"Striker Dragon\" once per turn.",
+				"linkRating": 1,
+				"attack": 1000,
+				"defense": [
+					"Left"
+				]
+			}
+		]
+	},
+	{
+		"card_type": "spell",
+		"cards": [
+			{
+				"name": "One for One",
+				"index": 2295440,
+				"lore": "Send 1 monster from your hand to the GY; Special Summon 1 Level 1 monster from your hand or Deck.",
+				"icon": "None"
+			},
+			{
+				"name": "Lightning Storm",
+				"index": 14532163,
+				"lore": "If you control no face-up cards: Activate 1 of these effects; • Destroy all Attack Position monsters your opponent controls. • Destroy all Spells and Traps your opponent controls. You can only activate 1 \"Lightning Storm\" per turn.",
+				"icon": "None"
+			},
+			{
+				"name": "Harpie's Feather Duster",
+				"index": 18144506,
+				"lore": "Destroy all Spells and Traps your opponent controls.",
+				"icon": "None"
+			},
+			{
+				"name": "Called by the Grave",
+				"index": 24224830,
+				"lore": "Target 1 monster in your opponent's GY; banish it, and if you do, until the end of the next turn, its effects are negated, as well as the activated effects and effects on the field of monsters with the same original name.",
+				"icon": "QuickPlay"
+			},
+			{
+				"name": "Branded Regained",
+				"index": 34090915,
+				"lore": "If a LIGHT or DARK monster(s) is banished (except during the Damage step): You can target 1 of those monsters; place that monster on the bottom of the Deck, and if you do, draw 1 card. You can only use this effect of \"Branded Regained\" once per turn. Once per turn, if your opponent Normal or Special Summons a monster (except during the Damage Step): You can target 1 \"Bystial\" monster in your GY; Special Summon it. You can only activate this effect of \"Branded Regained\" once per Chain.",
+				"icon": "Continuous"
+			},
+			{
+				"name": "Dragon Ravine",
+				"index": 62265044,
+				"lore": "Once per turn: You can discard 1 card, then activate 1 of these effects; • Add 1 Level 4 or lower \"Dragunity\" monster from your deck to your hand. • Send 1 Dragon-Type monster from your Deck to the GY.",
+				"icon": "Field"
+			},
+			{
+				"name": "Chaos Space",
+				"index": 99266988,
+				"lore": "Send 1 LIGHT or DARK monster from your hand to the GY; add 1 LIGHT or DARK monster that cannot be Normal Summoned/Set from your Deck to your hand, with a Level from 4 to 8, and with a different Attribute than that monster. You can banish this card from your GY, then target 1 of your banished LIGHT or DARK monsters that cannot be Normal Summoned/Set; place that monster on the bottom of the Deck, then draw 1 card. You can only use each effect of \"Chaos Space\" once per turn.",
+				"icon": "None"
+			}
+		]
+	},
+	{
+		"card_type": "trap",
+		"cards": [
+			{
+				"name": "Infinite Impermanence",
+				"index": 10045474,
+				"lore": "Target 1 face-up monster your opponent controls; negate its effects (until the end of this turn), then, if this card was Set before activation and is on the field at resolution, for the rest of the turn all other Spell/Trap effects in this column are negated. If you control no cards, you can activate this card from your hand.",
+				"icon": "None"
+			},
+			{
+				"name": "Evenly Matched",
+				"index": 15693423,
+				"lore": "At the end of the Battle Phase, if your opponent controls more cards than you do: You can make your opponent banish cards from their face-down so they control the same number of cards as you do. If you control no cards, you can activate this card from your hand.",
+				"icon": "None"
+			},
+			{
+				"name": "Max Metalmorph",
+				"index": 89812483,
+				"lore": "Tribute 1 face-up monster; Special Summon 1 monster that cannot be Normal Summoned/Set and mentions \"Max Metalmorph\" from your hand, Deck, or GY, then you can equip this card to it with the following effect, • The eqquipped monster gains 400 ATK/DEF, it cannot be destroyed by Spell or monster effects, also your opponent cannot target it with monster effects or Spell Cards or effects. You can only activate 1 \"Max Metalmorph\" per turn.",
+				"icon": "None"
+			}
+		]
+	}
+]
