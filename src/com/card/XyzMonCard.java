@@ -6,7 +6,7 @@ import com.card.component.MonsterAttributeComponent;
 import com.card.component.MonsterTypeComponent;
 import com.card.component.TypeComponent;
 
-public class XyzMonCard extends ExtraMonCard {
+public class XyzMonCard extends ExtraMonCard implements ExtraCard {
 	private ArrayList<Card> xyzMaterials = new ArrayList<>();
 
 	public XyzMonCard() {

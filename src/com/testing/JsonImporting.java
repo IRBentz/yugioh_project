@@ -44,15 +44,8 @@ public class JsonImporting {
 			}
 			System.out.println(Global.card_db);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	private static ArrayList<CardComponentInterface> stringToCCIArrayList(JSONArray jsonArray) {
-		ArrayList<CardComponentInterface> componentList = new ArrayList<>();
-		jsonArray.forEach(json -> componentList.add(stringConvertCCI(String.class.cast(json))));
-		return componentList;
 	}
 
 	private static CardComponentInterface stringConvertCCI(String inputString) {
@@ -66,5 +59,11 @@ public class JsonImporting {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	private static ArrayList<CardComponentInterface> stringToCCIArrayList(JSONArray jsonArray) {
+		ArrayList<CardComponentInterface> componentList = new ArrayList<>();
+		jsonArray.forEach(json -> componentList.add(stringConvertCCI(String.class.cast(json))));
+		return componentList;
 	}
 }

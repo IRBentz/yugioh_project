@@ -4,7 +4,7 @@ import com.card.component.MonsterAttributeComponent;
 import com.card.component.MonsterTypeComponent;
 import com.card.component.TypeComponent;
 
-public class PenMonCard extends MonCard {
+public class PenMonCard extends MonCard implements PenCard {
 	final int PEND_LEVEL;
 	final String PEND_LORE;
 
@@ -20,7 +20,8 @@ public class PenMonCard extends MonCard {
 		this.PEND_LEVEL = pend_level;
 		this.PEND_LORE = pend_lore;
 	}
-
+	
+	@Override
 	public int getPendLevel() {
 		return PEND_LEVEL;
 	}

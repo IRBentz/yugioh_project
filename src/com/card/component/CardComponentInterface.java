@@ -6,7 +6,7 @@ public interface CardComponentInterface {
 	default <T> T castTo(Class<T> t) {
 		if (t.isInstance(this))
 			return t.cast(this);
-		new Error("Invalid cast from " + this.getClass().toString() + " to " + t.toString()).printStackTrace();
+		new RuntimeException("Invalid cast from " + this.getClass().toString() + " to " + t.toString()).printStackTrace();
 		return null;
 	}
 	default String getComponentName() {
@@ -26,6 +26,7 @@ public interface CardComponentInterface {
 			} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 				e.printStackTrace();
 			}
+		new RuntimeException("Unmatched name: " + name + " could not be matched to a cardComponent.");
 		return null;
 	}
 }

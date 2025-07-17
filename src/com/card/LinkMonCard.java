@@ -5,7 +5,7 @@ import com.card.component.MonsterAttributeComponent;
 import com.card.component.MonsterTypeComponent;
 import com.card.component.TypeComponent;
 
-public class LinkMonCard extends ExtraMonCard {
+public class LinkMonCard extends ExtraMonCard implements ExtraCard {
 	final LinkArrowComponent[] LINK_ARROWS;
 
 	public LinkMonCard() {

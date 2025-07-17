@@ -4,7 +4,7 @@ import com.card.component.MonsterAttributeComponent;
 import com.card.component.MonsterTypeComponent;
 import com.card.component.TypeComponent;
 
-public class ExtraMonCard extends MonCard {
+public class ExtraMonCard extends MonCard implements ExtraCard {
 	final String SUMMON_REQ;
 
 	public ExtraMonCard() {
@@ -17,7 +17,8 @@ public class ExtraMonCard extends MonCard {
 		super(name, index, mon_attri, mon_type, types, lore, level_rank, attack, defense);
 		this.SUMMON_REQ = summon_req;
 	}
-
+	
+	@Override
 	public String getSumMonsterReq() {
 		return SUMMON_REQ;
 	}

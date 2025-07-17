@@ -56,7 +56,7 @@ public abstract class Card {
 	}
 
 	public void setArchitype(ArrayList<ArchitypeComponent> architype) {
-		this.architype = architype.toArray(new ArchitypeComponent[architype.size()]);
+		this.architype = architype.toArray(ArchitypeComponent[]::new);
 	}
 
 	@Override

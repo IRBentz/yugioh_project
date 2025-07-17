@@ -31,13 +31,6 @@ public abstract class Utils {
 		return input;
 	}
 	
-	public static String concatStringArray(List<String> list) {
-		String string = "";
-		for(String s : list)
-			string += s;
-		return string;
-	}
-	
 	public static Card askUserSelection(Card[] selectionList) {
 		String inputText = "";
 		int i = 0;
@@ -60,6 +53,13 @@ public abstract class Utils {
 		println("Card selected: " + Integer.parseInt(slotNumber) + " \"" + selectionList[Integer.parseInt(slotNumber) - 1].getName() + "\"");
 		return selectionList[Integer.parseInt(slotNumber) - 1];
 	}
+	
+	public static String concatStringArray(List<String> list) {
+		String string = "";
+		for(String s : list)
+			string += s;
+		return string;
+	}
 
 	public static void execute_card_effect(Card targetCard, int effect_num) {
 		try {
@@ -76,12 +76,8 @@ public abstract class Utils {
 		for(Card card : card_db)
 			if (card.getIndex() == card_index)
 				return card;
-		new Error("Could not find card matching: " + card_index).printStackTrace();
+		new RuntimeException("Could not find card matching: " + card_index).printStackTrace();
 		return null;
-	}
-
-	private static void println(String stringToPrint) {
-		System.out.printf("Utils:\t\t%s", stringToPrint + "\n");
 	}
 
 	@SuppressWarnings("unused")
@@ -89,35 +85,15 @@ public abstract class Utils {
 		println("");
 	}
 
-	public static Card searchByArchitype(Deck deck, ArchitypeComponent filter) {
-		ArrayList<Card> matchedCards = new ArrayList<>();
-		deck.getMainDeckList().forEach(potentialCard -> Arrays.asList(potentialCard.getArchitype()).forEach(architype -> {
-				if(architype.equals(filter)) 
-					matchedCards.add(potentialCard);
-				}));
-		
-		return askUserSelection(matchedCards.toArray(Card[]::new));
+	private static void println(String stringToPrint) {
+		System.out.printf("Utils:\t\t%s", stringToPrint + "\n");
 	}
 
-	public static Card searchByName(Deck deck, String filter) {
-		ArrayList<Card> matchedCards = new ArrayList<>();
-		deck.getMainDeckList().forEach(potentialCard -> Arrays.asList(potentialCard.getName()).forEach(name -> {
-			if(name.contains(filter)) 
-				matchedCards.add(potentialCard);
-			}));
-		
-		return askUserSelection(matchedCards.toArray(Card[]::new));
-	}
-	
-	public Card getRandomCard(ArrayList<Card> list) {
-		return list.get((int) (Math.random() * list.size()));
-	}
-	
 	@Deprecated
 	public static Object[] pullBaseStats(Scanner target_scanner) {
 		return new Object[] { target_scanner.nextLine(), Integer.parseInt(target_scanner.nextLine())};
 	}
-	
+
 	@Deprecated
 	public static Object[] pullBaseStats(Scanner target_scanner, String delimiter) {
 		return new Object[] { pullNextTextBlock(target_scanner, delimiter), target_scanner.nextInt(),
@@ -146,7 +122,7 @@ public abstract class Utils {
 		}
 		return linkArrow_list.toArray(LinkArrow[]::new);
 	}
-
+	
 	@Deprecated
 	public static LinkArrow[] pullNextLinkArrowBlock(Scanner target_scanner, String delimiter) {
 		ArrayList<LinkArrowComponent> linkArrow_list = new ArrayList<>();
@@ -180,7 +156,7 @@ public abstract class Utils {
 		}
 		return types_list.toArray(Type[]::new);
 	}
-	
+
 	@Deprecated
 	public static Type[] pullNextTypeBlock(Scanner target_scanner, String delimiter) {
 		ArrayList<TypeComponent> types_list = new ArrayList<>();
@@ -202,6 +178,26 @@ public abstract class Utils {
 	@Deprecated
 	public static Object[] pullSTBaseStats(Scanner target_scanner, String delimiter) {
 		return new Object[] { pullBaseStats(target_scanner, delimiter), stringConvert(target_scanner.next()) };
+	}
+	
+	public static Card searchByArchitype(Deck deck, ArchitypeComponent filter) {
+		ArrayList<Card> matchedCards = new ArrayList<>();
+		deck.getMainDeckList().forEach(potentialCard -> Arrays.asList(potentialCard.getArchitype()).forEach(architype -> {
+				if(architype.equals(filter)) 
+					matchedCards.add(potentialCard);
+				}));
+		
+		return askUserSelection(matchedCards.toArray(Card[]::new));
+	}
+	
+	public static Card searchByName(Deck deck, String filter) {
+		ArrayList<Card> matchedCards = new ArrayList<>();
+		deck.getMainDeckList().forEach(potentialCard -> Arrays.asList(potentialCard.getName()).forEach(name -> {
+			if(name.contains(filter)) 
+				matchedCards.add(potentialCard);
+			}));
+		
+		return askUserSelection(matchedCards.toArray(Card[]::new));
 	}
 	
 	@Deprecated
@@ -232,7 +228,7 @@ public abstract class Utils {
 
 		return unfoundEnum(inputString);
 	}
-
+	
 	@Deprecated
 	public static CardType stringToCardType(String inputString) {
 		for (CardType target_enum : CardType.class.getEnumConstants())
@@ -256,7 +252,7 @@ public abstract class Utils {
 				return target_enum;
 		return (LinkArrow) unfoundEnum(inputString);
 	}
-	
+
 	@Deprecated
 	public static MonAttribute stringToMonAttribute(String inputString) {
 		for (MonAttribute target_enum : MonAttribute.class.getEnumConstants())
@@ -286,5 +282,9 @@ public abstract class Utils {
 		new Error("Enum for \"" + inputString + "\" could not be found.").printStackTrace();
 		System.exit(1);
 		return null;
+	}
+	
+	public Card getRandomCard(ArrayList<Card> list) {
+		return list.get((int) (Math.random() * list.size()));
 	}
 }
