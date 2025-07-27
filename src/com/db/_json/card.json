@@ -388,7 +388,7 @@
 				],
 				"summonRequirement": "2 Level 12 monsters",
 				"lore": "During the turn, or turn after, your opponent Special Summoned 2 or more monsters from the Extra Deck, you can also Xyz Summon this card by using 1 monster you control with the highest ATK (your choice, if tied). (Transfer its materials to this card.) If you do, you cannot Normal or Special Summon monsters for the rest of this turn. While this Xyz Summoned monster is on the field, neither player can activate the effects of monsters with 3000 or more ATK. Once per turn: You can detach 1 material from this card; return 1 monster from the field to the hand.",
-				"level": 12,
+				"rank": 12,
 				"attack": 2900,
 				"defense": 2900
 			}
@@ -410,7 +410,7 @@
 				"lore": "(This card is always treated as a \"Familiar-Possessed\" card.) You can target 1 DARK monster in your opponent's GY; Special Summon it to your zone this card points to. If this Link Summoned card is destroyed by battle, or is destroyed by an opponent's card effect while in its owner's Monster Zone: You can add 1 DARK monster with 1500 or less DEF from your Deck to your hand. You can only use each effect of \"Dharc the Dark Charmer, Gloomy\" once per turn.",
 				"linkRating": 2,
 				"attack": 1850,
-				"defense": [
+				"linkArrow": [
 					"DownLeft",
 					"DownRight"
 				]
@@ -428,7 +428,7 @@
 				"lore": "If this card is Link Summoned: You can add 1 \"Dragunity\" Spell/Trap or 1 \"Dragon Ravine\" from your Deck to your hand. If a Dragon monster(s) is Special Summoned from the Extra Deck to a zone this card points to (except during the Damage Step): You can Special Summon 1 Dragon or Winged Beast monster from your hand in Defense Position, but for the rest of this turn, its effects (if any) are negated and it cannot be used as Link Material. You can only use each effect of \"Dragunity Knight - Romulus\" once per turn.",
 				"linkRating": 2,
 				"attack": 1200,
-				"defense": [
+				"linkArrow": [
 					"DownLeft",
 					"DownRight"
 				]
@@ -446,7 +446,7 @@
 				"lore": "You cannot Special Summon monsters, except Dragon monsters. During your Main Phase: You can target 1 of your Dragon monsters that is banished or in your GY; Special Summon it to your zone that 2 or more Link Monsters point to. You can only use this effect of \"Guardragon Pisty\" once per turn. You can only Special Summon \"Guardragon Pisty(s)\" once per turn.",
 				"linkRating": 1,
 				"attack": 1000,
-				"defense": [
+				"linkArrow": [
 					"Right"
 				]
 			},
@@ -463,7 +463,7 @@
 				"lore": "Once per opponent's turn, if this card is in the Extra Monster Zone (Quick Effect): You can Tribute 1 monster from your hand or field; return 1 face-up card on the field to the hand. If this card is Tributed: Special Summon 1 Dragon monster from your hand or Deck, and make its ATK/DEF 0. You can only use this effect of \"Hieratic Seal of the Heavenly Spheres\" once per turn.",
 				"linkRating": 2,
 				"attack": 0,
-				"defense": [
+				"linkArrow": [
 					"DownLeft",
 					"DownRight"
 				]
@@ -481,7 +481,7 @@
 				"lore": "If this card is Link Summoned using a Fusion, Synchro, Xyz, or Link Monster as material: You can target 1 card on the field or in either GY; banish it, also your monsters cannot attack directly this turn. When your opponent activates a card or effect (Quick Effect): You can target 2 face-up monsters on the field, including a monster you control; banish both until the End Phase. You can only use each effect of \"S:P Little Knight\" once per turn.",
 				"linkRating": 2,
 				"attack": 1600,
-				"defense": [
+				"linkArrow": [
 					"Left",
 					"Right"
 				]
@@ -499,7 +499,7 @@
 				"lore": "Once per turn, during the Damage Step, when a Spell/Trap Card, or monster effect, is activated (Quick Effect): You can negate the activation. If this card attacks a Defense Position monster, inflict piercing battle damage. During your Main Phase, except the turn this card was Special Summoned: You can Tribute this card, then target 1 Link-2 or lower monster in your GY; Special Summon it, then you can Special Summon 1 Level 4 or lower Dragon monster from your hand.",
 				"linkRating": 3,
 				"attack": 2400,
-				"defense": [
+				"linkArrow": [
 					"Up",
 					"Left",
 					"Down"
@@ -518,7 +518,7 @@
 				"lore": "During your opponent's Main Phase, you can (Quick Effect): Immediately after this effect resolves, Link Summon 1 Link Monster using materials you control, including this card. You can only use this effect of \"I:P Masquerena\" once per turn. A Link Monster that used this card as material cannot be destroyed by your opponent's card effects.",
 				"linkRating": 2,
 				"attack": 800,
-				"defense": [
+				"linkArrow": [
 					"DownLeft",
 					"DownRight"
 				]
@@ -536,7 +536,7 @@
 				"lore": "If this card is Link Summoned: You can add 1 \"Boot Sector Launch\" from your Deck to your hand. You can target 1 face-up monster you control and 1 \"Rokket\" monster in your GY; destroy that monster on the field, and if you do, add that other monster from the GY to your hand. You can only use each effect of \"Striker Dragon\" once per turn.",
 				"linkRating": 1,
 				"attack": 1000,
-				"defense": [
+				"linkArrow": [
 					"Left"
 				]
 			}
