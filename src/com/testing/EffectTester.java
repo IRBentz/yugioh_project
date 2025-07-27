@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 public abstract class EffectTester {
 	public static void main(String args[]) {
-		com.engine.Backend_v3.buildDB();
+		com.engine.Backend_v4.buildDB();
 		findCard(88264978).setArchitype(new ArrayList<>(Arrays.asList(RedEyes_A)));
 		player.getDeck().getMainDeckList().addAll(Arrays.asList(findCard(88264978), findCard(88264978)));
 		execute_card_effect(findCard(93969023), 2);

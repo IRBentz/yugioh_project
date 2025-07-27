@@ -1,15 +1,16 @@
 package com.engine;
 
 public enum FileNameEnum {
-	Monster("monster.info"),
-	Pendulum("pendulum_monster.info"),
-	Fusion("fusion_monster.info"),
-	Synchro("synchro_monster.info"),
-	Xyz("xyz_monster.info"),
-	Link("link_monster.info"),
-	Spell("spell.info"),
-	Trap("trap.info"),
-	FaL("forbidden_and_limited.info");
+	Monster_info("monster.info"),
+	Pendulum_info("pendulum_monster.info"),
+	Fusion_info("fusion_monster.info"),
+	Synchro_info("synchro_monster.info"),
+	Xyz_info("xyz_monster.info"),
+	Link_info("link_monster.info"),
+	Spell_info("spell.info"),
+	Trap_info("trap.info"),
+	FaL_info("forbidden_and_limited.info"),
+	Card_json("card.json");
 	public final String name;
 	private FileNameEnum(String name) {
 		this.name = name;

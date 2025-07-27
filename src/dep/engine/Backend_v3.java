@@ -1,15 +1,15 @@
-package com.engine;
+package dep.engine;
 
-import static com.engine.FileNameEnum.FaL;
-import static com.engine.FileNameEnum.Fusion;
-import static com.engine.FileNameEnum.Link;
-import static com.engine.FileNameEnum.Monster;
-import static com.engine.FileNameEnum.Pendulum;
-import static com.engine.FileNameEnum.Spell;
-import static com.engine.FileNameEnum.Synchro;
-import static com.engine.FileNameEnum.Trap;
-import static com.engine.FileNameEnum.Xyz;
-import static com.engine.FilePathEnum.ComPath;
+import static com.engine.FileNameEnum.FaL_info;
+import static com.engine.FileNameEnum.Fusion_info;
+import static com.engine.FileNameEnum.Link_info;
+import static com.engine.FileNameEnum.Monster_info;
+import static com.engine.FileNameEnum.Pendulum_info;
+import static com.engine.FileNameEnum.Spell_info;
+import static com.engine.FileNameEnum.Synchro_info;
+import static com.engine.FileNameEnum.Trap_info;
+import static com.engine.FileNameEnum.Xyz_info;
+import static com.engine.FilePathEnum.DepPath;
 import static com.engine.FilePathEnum.InfoPath;
 import static com.engine.ClassPathEnum.Component;
 import static com.engine.Global.card_db;
@@ -37,6 +37,7 @@ import com.card.component.LinkArrowComponent;
 import com.card.component.MonsterAttributeComponent;
 import com.card.component.MonsterTypeComponent;
 import com.card.component.TypeComponent;
+import com.engine.FileNameEnum;
 
 public abstract class Backend_v3 {
 	private static void assignFaL() {
@@ -46,24 +47,26 @@ public abstract class Backend_v3 {
 			}
 		}));
 	}
-
+	@Deprecated
 	public static void buildDB() {
-		Path filePath = FileSystems.getDefault().getPath(ComPath.path + InfoPath.path);
+		Path filePath = FileSystems.getDefault().getPath(DepPath.path + InfoPath.path);
 		println("Successfully found designated file path: \"" + filePath + "\"");
 
 		ArrayList<ArrayList<String>> importedFiles = new ArrayList<>();
 		Arrays.asList(FileNameEnum.values()).forEach(file -> {
 			try {
-				importedFiles.add(new ArrayList<>(Files.readAllLines(filePath.resolve(file.name))));
-				println("Successfully found file \"" + filePath.resolve(file.name).getFileName()
-						+ "\" at the following file path: \"" + filePath.resolve(file.name) + "\"");
+				if(file.name.contains("_info")) {
+					importedFiles.add(new ArrayList<>(Files.readAllLines(filePath.resolve(file.name))));
+					println("Successfully found file \"" + filePath.resolve(file.name).getFileName()
+							+ "\" at the following file path: \"" + filePath.resolve(file.name) + "\"");
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		});
 
 		// * Monster
-		ArrayList<String> currentFile = importedFiles.get(Monster.ordinal());
+		ArrayList<String> currentFile = importedFiles.get(Monster_info.ordinal());
 		for (int i = 0; i < currentFile.size(); i++) {
 			card_db.add(new MonCard(currentFile.get(i++), Integer.parseInt(currentFile.get(i++)),
 					stringConvertCCI(currentFile.get(i++)).castTo((MonsterAttributeComponent.class)),
@@ -74,7 +77,7 @@ public abstract class Backend_v3 {
 		}
 
 		// * Pendulum
-		currentFile = importedFiles.get(Pendulum.ordinal());
+		currentFile = importedFiles.get(Pendulum_info.ordinal());
 		for (int i = 0; i < currentFile.size(); i++) {
 			card_db.add(new PenMonCard(currentFile.get(i++), Integer.parseInt(currentFile.get(i++)),
 					stringConvertCCI(currentFile.get(i++)).castTo((MonsterAttributeComponent.class)),
@@ -86,7 +89,7 @@ public abstract class Backend_v3 {
 		}
 
 		// * Fusion and Synchro
-		for (FileNameEnum loc : new FileNameEnum[] { Fusion, Synchro }) {
+		for (FileNameEnum loc : new FileNameEnum[] { Fusion_info, Synchro_info }) {
 			currentFile = importedFiles.get(loc.ordinal());
 			for (int i = 0; i < currentFile.size(); i++) {
 				card_db.add(new ExtraMonCard(currentFile.get(i++), Integer.parseInt(currentFile.get(i++)),
@@ -99,7 +102,7 @@ public abstract class Backend_v3 {
 		}
 
 		// * XYZ
-		currentFile = importedFiles.get(Xyz.ordinal());
+		currentFile = importedFiles.get(Xyz_info.ordinal());
 		for (int i = 0; i < currentFile.size(); i++) {
 			card_db.add(new XyzMonCard(currentFile.get(i++), Integer.parseInt(currentFile.get(i++)),
 					stringConvertCCI(currentFile.get(i++)).castTo((MonsterAttributeComponent.class)),
@@ -110,7 +113,7 @@ public abstract class Backend_v3 {
 		}
 
 		// * Link
-		currentFile = importedFiles.get(Link.ordinal());
+		currentFile = importedFiles.get(Link_info.ordinal());
 		for (int i = 0; i < currentFile.size(); i++) {
 			card_db.add(new LinkMonCard(currentFile.get(i++), Integer.parseInt(currentFile.get(i++)),
 					stringConvertCCI(currentFile.get(i++)).castTo((MonsterAttributeComponent.class)),
@@ -122,21 +125,21 @@ public abstract class Backend_v3 {
 		}
 
 		// * Spell
-		currentFile = importedFiles.get(Spell.ordinal());
+		currentFile = importedFiles.get(Spell_info.ordinal());
 		for (int i = 0; i < currentFile.size(); i++) {
 			card_db.add(new SpellCard(currentFile.get(i++), Integer.parseInt(currentFile.get(i++)),
 					currentFile.get(i++), stringConvertCCI(currentFile.get(i++)).castTo(IconComponent.class)));
 		}
 
 		// * Trap
-		currentFile = importedFiles.get(Trap.ordinal());
+		currentFile = importedFiles.get(Trap_info.ordinal());
 		for (int i = 0; i < currentFile.size(); i++) {
 			card_db.add(new TrapCard(currentFile.get(i++), Integer.parseInt(currentFile.get(i++)), currentFile.get(i++),
 					stringConvertCCI(currentFile.get(i++)).castTo(IconComponent.class)));
 		}
 
 		// * FaL
-		currentFile = importedFiles.get(FaL.ordinal());
+		currentFile = importedFiles.get(FaL_info.ordinal());
 		for (String pair : currentFile) {
 			String[] pairs = pair.split(" ");
 			fal_list.add(new int[] { Integer.parseInt(pairs[0]), Integer.parseInt(pairs[1]) });

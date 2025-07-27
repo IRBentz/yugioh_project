@@ -13,6 +13,6 @@ module yugioh {
 	exports dep.engine;
 	exports dep.testing;
 	
-	requires org.json;
+	requires transitive org.json;
 	requires transitive java.desktop;
 }
