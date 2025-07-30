@@ -1,24 +1,24 @@
 package com.testing;
 
 import static com.engine.Global.card_db;
-import static com.engine.JsonKeyValues.attack;
-import static com.engine.JsonKeyValues.card_type;
-import static com.engine.JsonKeyValues.cards;
-import static com.engine.JsonKeyValues.defense;
-import static com.engine.JsonKeyValues.icon;
-import static com.engine.JsonKeyValues.index;
-import static com.engine.JsonKeyValues.level;
-import static com.engine.JsonKeyValues.linkArrow;
-import static com.engine.JsonKeyValues.linkRating;
-import static com.engine.JsonKeyValues.lore;
-import static com.engine.JsonKeyValues.monsterAttribute;
-import static com.engine.JsonKeyValues.monsterType;
-import static com.engine.JsonKeyValues.name;
-import static com.engine.JsonKeyValues.pendulumLevel;
-import static com.engine.JsonKeyValues.pendulumLore;
-import static com.engine.JsonKeyValues.rank;
-import static com.engine.JsonKeyValues.summonRequirement;
-import static com.engine.JsonKeyValues.type;
+import static com.engine.JsonKeyValues.JKV_attack;
+import static com.engine.JsonKeyValues.JKV_card_type;
+import static com.engine.JsonKeyValues.JKV_cards;
+import static com.engine.JsonKeyValues.JKV_defense;
+import static com.engine.JsonKeyValues.JKV_icon;
+import static com.engine.JsonKeyValues.JKV_index;
+import static com.engine.JsonKeyValues.JKV_level;
+import static com.engine.JsonKeyValues.JKV_linkArrow;
+import static com.engine.JsonKeyValues.JKV_linkRating;
+import static com.engine.JsonKeyValues.JKV_lore;
+import static com.engine.JsonKeyValues.JKV_monsterAttribute;
+import static com.engine.JsonKeyValues.JKV_monsterType;
+import static com.engine.JsonKeyValues.JKV_name;
+import static com.engine.JsonKeyValues.JKV_pendulumLevel;
+import static com.engine.JsonKeyValues.JKV_pendulumLore;
+import static com.engine.JsonKeyValues.JKV_rank;
+import static com.engine.JsonKeyValues.JKV_summonRequirement;
+import static com.engine.JsonKeyValues.JKV_type;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -44,10 +44,11 @@ import com.engine.Backend_v4;
 import com.engine.Global;
 import com.engine.Utils;
 
+@SuppressWarnings("unused")
 public class JsonImporting {
 
 	public static void main(String[] args) {
-
+/*
 		Path filePath = FileSystems.getDefault().getPath("src/com/db/_json/card.json");
 		try {
 			JSONArray jsonArray = new JSONArray(Utils.concatStringArray(Files.readAllLines(filePath)));
@@ -144,6 +145,6 @@ public class JsonImporting {
 			System.out.println(Global.card_db);
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 }
