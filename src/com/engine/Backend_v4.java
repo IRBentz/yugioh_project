@@ -1,9 +1,9 @@
 package com.engine;
 
 import static com.engine.ClassPathEnum.Component;
-import static com.engine.FileNameEnum.Card_json;
-import static com.engine.FilePathEnum.ComPath;
-import static com.engine.FilePathEnum.JsonPath;
+import static com.engine.FileEnums.FileNameEnum.Card_json;
+import static com.engine.FileEnums.FilePathEnum.ComPath;
+import static com.engine.FileEnums.FilePathEnum.JsonPath;
 import static com.engine.Global.card_db;
 import static com.engine.Global.fal_list;
 import static com.engine.JsonKeyValues.JKV_attack;

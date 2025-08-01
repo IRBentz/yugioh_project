@@ -1,16 +1,16 @@
 package dep.engine;
 
-import static com.engine.FileNameEnum.FaL_info;
-import static com.engine.FileNameEnum.Fusion_info;
-import static com.engine.FileNameEnum.Link_info;
-import static com.engine.FileNameEnum.Monster_info;
-import static com.engine.FileNameEnum.Pendulum_info;
-import static com.engine.FileNameEnum.Spell_info;
-import static com.engine.FileNameEnum.Synchro_info;
-import static com.engine.FileNameEnum.Trap_info;
-import static com.engine.FileNameEnum.Xyz_info;
-import static com.engine.FilePathEnum.DepPath;
-import static com.engine.FilePathEnum.InfoPath;
+import static com.engine.FileEnums.FileNameEnum.FaL_info;
+import static com.engine.FileEnums.FileNameEnum.Fusion_info;
+import static com.engine.FileEnums.FileNameEnum.Link_info;
+import static com.engine.FileEnums.FileNameEnum.Monster_info;
+import static com.engine.FileEnums.FileNameEnum.Pendulum_info;
+import static com.engine.FileEnums.FileNameEnum.Spell_info;
+import static com.engine.FileEnums.FileNameEnum.Synchro_info;
+import static com.engine.FileEnums.FileNameEnum.Trap_info;
+import static com.engine.FileEnums.FileNameEnum.Xyz_info;
+import static com.engine.FileEnums.FilePathEnum.DepPath;
+import static com.engine.FileEnums.FilePathEnum.InfoPath;
 import static com.engine.ClassPathEnum.Component;
 import static com.engine.Global.card_db;
 import static com.engine.Global.fal_list;
@@ -37,7 +37,7 @@ import com.card.component.LinkArrowComponent;
 import com.card.component.MonsterAttributeComponent;
 import com.card.component.MonsterTypeComponent;
 import com.card.component.TypeComponent;
-import com.engine.FileNameEnum;
+import com.engine.FileEnums.FileNameEnum;
 
 public abstract class Backend_v3 {
 	private static void assignFaL() {
