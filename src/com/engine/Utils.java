@@ -41,7 +41,7 @@ public abstract class Utils {
 		do {
 			flag = false;
 			slotNumber = askUser("Select 1 of the following cards:\n" + inputText);
-			for (char character : slotNumber.toCharArray()) {
+			for (char character : slotNumber.replaceAll("\\s", "").toCharArray()) {
 				if(!Character.isDigit(character))
 					flag = true;
 			}
