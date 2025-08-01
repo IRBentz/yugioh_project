@@ -14,7 +14,6 @@ import com.card.SpellCard;
 import com.card.TrapCard;
 import com.card.XyzMonCard;
 import com.engine.Global;
-import com.engine.Utils;
 
 @Deprecated
 public class Backend_v2 {
