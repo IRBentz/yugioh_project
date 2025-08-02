@@ -1,14 +1,13 @@
 package com.testing;
 
 import com.card.component.ArchitypeComponent;
-import com.card.component.HexCode;
 
 public abstract class ArchitypeHexEnumParser {
-	public static int archtypeHexParseInt(HexCode hexCode) {
+	public static int archtypeHexParseInt(ArchitypeComponent.HexCode hexCode) {
 		return Integer.parseInt(archtypeHexParseString(hexCode), 16);
 	}
 	
-	public static String archtypeHexParseString(HexCode hexCode) {
+	public static String archtypeHexParseString(ArchitypeComponent.HexCode hexCode) {
 		return hexCode.name().substring(4).replace("_", "");
 	}
 	

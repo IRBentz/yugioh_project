@@ -14,7 +14,8 @@ import com.card.PenMonCard;
 import com.card.SpellCard;
 import com.card.TrapCard;
 import com.card.XyzMonCard;
-import com.engine.Utils;
+
+import dep.engine.Utils;
 
 @Deprecated
 public abstract class DataLoadTester_v2 {

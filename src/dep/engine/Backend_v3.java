@@ -1,5 +1,6 @@
 package dep.engine;
 
+import static com.engine.ClassPathEnum.Component;
 import static com.engine.FileEnums.FileNameEnum.FaL_info;
 import static com.engine.FileEnums.FileNameEnum.Fusion_info;
 import static com.engine.FileEnums.FileNameEnum.Link_info;
@@ -11,7 +12,6 @@ import static com.engine.FileEnums.FileNameEnum.Trap_info;
 import static com.engine.FileEnums.FileNameEnum.Xyz_info;
 import static com.engine.FileEnums.FilePathEnum.DepPath;
 import static com.engine.FileEnums.FilePathEnum.InfoPath;
-import static com.engine.ClassPathEnum.Component;
 import static com.engine.Global.card_db;
 import static com.engine.Global.fal_list;
 
@@ -31,7 +31,6 @@ import com.card.TrapCard;
 import com.card.XyzMonCard;
 import com.card.component.CardComponent;
 import com.card.component.CardComponentInterface;
-import com.card.component.CardSubcomponentInterface;
 import com.card.component.IconComponent;
 import com.card.component.LinkArrowComponent;
 import com.card.component.MonsterAttributeComponent;
@@ -155,7 +154,7 @@ public abstract class Backend_v3 {
 	private static CardComponentInterface stringConvertCCI(String inputString) {
 		try {
 			for (CardComponent component : CardComponent.values())
-				for (CardSubcomponentInterface subcomponent : (CardSubcomponentInterface[]) Class
+				for (CardComponentInterface.SubInterface subcomponent : (CardComponentInterface.SubInterface[]) Class
 						.forName(Component.path + component.name() + "Component").getEnumConstants())
 					if (subcomponent.match(inputString) != null)
 						return subcomponent.match(inputString);
