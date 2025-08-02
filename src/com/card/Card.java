@@ -11,6 +11,7 @@ public abstract class Card {
 	private int max_copies_allowed = 3;
 	private final String NAME, LORE;
 	private final CardTypeComponent TYPE;
+	private Class<?> boundClass;
 
 	public Card() {
 		this.NAME = null;
@@ -33,6 +34,10 @@ public abstract class Card {
 
 	public ArchitypeComponent[] getArchitype() {
 		return architype;
+	}
+	
+	public Class<?> getBoundClass() {
+		return boundClass;
 	}
 
 	public int getIndex() {
@@ -57,6 +62,10 @@ public abstract class Card {
 
 	public void setArchitype(ArrayList<ArchitypeComponent> architype) {
 		this.architype = architype.toArray(ArchitypeComponent[]::new);
+	}
+	
+	public void setBoundClass(Class<?> clazz) {
+		this.boundClass = clazz;
 	}
 
 	@Override
