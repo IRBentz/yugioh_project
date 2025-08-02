@@ -1,4 +1,4 @@
-package com.engine;
+package dep.engine;
 
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+import com.engine.Global;
+@Deprecated
 public class QueDB_Builder implements KeyListener {
 	private static JFrame frame;
 	private static JTextField textField;
@@ -31,7 +33,6 @@ public class QueDB_Builder implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 	}
 
-	
 	@Override
 	public void keyTyped(KeyEvent e) {
 		System.out.println("QueDB:\t\t" + e.getKeyChar() + " was typed.");
