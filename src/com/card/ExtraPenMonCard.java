@@ -4,7 +4,7 @@ import com.card.component.MonsterAttributeComponent;
 import com.card.component.MonsterTypeComponent;
 import com.card.component.TypeComponent;
 
-public class ExtraPenMonCard extends ExtraMonCard implements PenCard, ExtraCard {
+public class ExtraPenMonCard extends ExtraMonCard implements CardInterfaces.PenCard, CardInterfaces.ExtraCard {
 	final int PEND_LEVEL;
 	final String PEND_LORE;
 	

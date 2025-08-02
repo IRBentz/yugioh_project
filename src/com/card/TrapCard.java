@@ -1,7 +1,6 @@
 package com.card;
 
-import static com.card.component.CardTypeComponent.Trap;
-
+import com.card.component.CardTypeComponent;
 import com.card.component.IconComponent;
 
 public class TrapCard extends StCard {
@@ -10,6 +9,6 @@ public class TrapCard extends StCard {
 	}
 
 	public TrapCard(String name, int index, String lore, IconComponent st_icon) {
-		super(name, index, Trap, lore, st_icon);
+		super(name, index, CardTypeComponent.Trap, lore, st_icon);
 	}
 }

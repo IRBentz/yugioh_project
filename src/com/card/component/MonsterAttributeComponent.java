@@ -1,11 +1,9 @@
 package com.card.component;
 
-import static com.card.component.CardComponent.MonsterAttribute;
-
-public enum MonsterAttributeComponent implements CardSubcomponentInterface {
+public enum MonsterAttributeComponent implements CardComponentInterface.SubInterface {
 	Dark, Divine, Earth, Fire, Light, Water, Wind;
 
-	private final CardComponent cardComponent = MonsterAttribute;
+	private final CardComponent cardComponent = CardComponent.MonsterAttribute;
 	
 	@Override
 	public String getComponentName() {

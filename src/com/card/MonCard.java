@@ -1,7 +1,6 @@
 package com.card;
 
-import static com.card.component.CardTypeComponent.Monster;
-
+import com.card.component.CardTypeComponent;
 import com.card.component.MonsterAttributeComponent;
 import com.card.component.MonsterTypeComponent;
 import com.card.component.TypeComponent;
@@ -24,7 +23,7 @@ public class MonCard extends Card {
 
 	public MonCard(String name, int index, MonsterAttributeComponent mon_attri, MonsterTypeComponent mon_type, TypeComponent[] types, String lore,
 			int level_rank, int attack, int defense) {
-		super(name, index, Monster, lore);
+		super(name, index, CardTypeComponent.Monster, lore);
 		this.MON_ATTRI = mon_attri;
 		this.MON_TYPE = mon_type;
 		this.TYPES = types;

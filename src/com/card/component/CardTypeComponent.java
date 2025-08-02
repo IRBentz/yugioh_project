@@ -1,11 +1,9 @@
 package com.card.component;
 
-import static com.card.component.CardComponent.CardType;
-
-public enum CardTypeComponent implements CardSubcomponentInterface {
+public enum CardTypeComponent implements CardComponentInterface.SubInterface {
 	Monster, Spell, Token, Trap;
 
-	private final CardComponent cardComponent = CardType;
+	private final CardComponent cardComponent = CardComponent.CardType;
 	
 	@Override
 	public String getComponentName() {

@@ -4,7 +4,7 @@ import com.card.component.MonsterAttributeComponent;
 import com.card.component.MonsterTypeComponent;
 import com.card.component.TypeComponent;
 
-public class ExtraMonCard extends MonCard implements ExtraCard {
+public class ExtraMonCard extends MonCard implements CardInterfaces.ExtraCard {
 	final String SUMMON_REQ;
 
 	public ExtraMonCard() {

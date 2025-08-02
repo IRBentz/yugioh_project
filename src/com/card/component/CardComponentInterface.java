@@ -29,4 +29,18 @@ public interface CardComponentInterface {
 		new RuntimeException("Unmatched name: " + name + " could not be matched to a cardComponent.");
 		return null;
 	}
+	
+	public interface SubInterface extends CardComponentInterface {
+		@Override
+		String getComponentName();
+		
+		default String getName() {
+			try {
+				return String.class.cast(Enum.class.getMethod("name").invoke(this));
+			} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+	}
 }

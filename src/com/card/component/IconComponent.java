@@ -1,11 +1,9 @@
 package com.card.component;
 
-import static com.card.component.CardComponent.Icon;
-
-public enum IconComponent implements CardSubcomponentInterface {
+public enum IconComponent implements CardComponentInterface.SubInterface {
 	Continuous, Counter, Equip, Field, None, QuickPlay, Ritual;
 	
-	private final CardComponent cardComponent = Icon;
+	private final CardComponent cardComponent = CardComponent.Icon;
 	
 	@Override
 	public String getComponentName() {
