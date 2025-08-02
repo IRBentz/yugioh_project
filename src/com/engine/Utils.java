@@ -1,6 +1,6 @@
 package com.engine;
 
-import static com.engine.ClassPathEnum.EffectDB;
+import static com.engine.PathAndNameEnums.ClassPathEnum.EffectDB;
 import static com.engine.Global.card_db;
 import static com.io.ConsolePrintHandling.print;
 import static com.io.ConsolePrintHandling.println;
@@ -58,12 +58,11 @@ public abstract class Utils {
 
 	public static void execute_card_effect(Card targetCard, int effect_num) {
 		try {
-			Class.forName(EffectDB.path + targetCard.getName().replaceAll(" ", "_"))
-					.getMethod("execute_effect", int.class)
-					.invoke(Class.forName(EffectDB.path + targetCard.getName().replaceAll(" ", "_")), effect_num);
-			println("Successfully executed " + targetCard.getName() + "'s effect #" + effect_num);
+			targetCard.getBoundClass().getMethod("execute_effect", int.class)
+					.invoke(Class.forName(EffectDB.path + targetCard.getName().replaceAll(" ", "_")).getConstructor()
+							.newInstance(), effect_num);
 		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException
-				| ClassNotFoundException | IllegalArgumentException e) {
+				| ClassNotFoundException | IllegalArgumentException | InstantiationException e) {
 			e.printStackTrace();
 		}
 	}
