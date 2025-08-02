@@ -2,6 +2,8 @@ package com.engine;
 
 import static com.engine.ClassPathEnum.EffectDB;
 import static com.engine.Global.card_db;
+import static com.io.ConsolePrintHandling.print;
+import static com.io.ConsolePrintHandling.println;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -17,22 +19,22 @@ public abstract class Utils {
 	private static Scanner kb = new Scanner(System.in);
 
 	public static String askUser(String text) {
-		System.out.println(text);
+		println(text);
+		print("User: ");
 		String input = kb.next();
 		kb.nextLine();
 		return input;
 	}
 
 	public static Card askUserSelection(Card[] selectionList) {
-		String inputText = "";
 		int i = 0;
 		for (Card card : selectionList)
-			inputText += "\t" + Integer.toString(++i) + " \"" + card.getName() + "\"\n";
+			println(Integer.toString(++i) + " \"" + card.getName() + "\"");
 		String slotNumber = "";
 		boolean flag;
 		do {
 			flag = false;
-			slotNumber = askUser("Select 1 of the following cards:\n" + inputText);
+			slotNumber = askUser("Select 1 of the above cards.");
 			for (char character : slotNumber.replaceAll("\\s", "").toCharArray()) {
 				if (!Character.isDigit(character))
 					flag = true;
@@ -72,15 +74,6 @@ public abstract class Utils {
 				return card;
 		new RuntimeException("Could not find card matching: " + card_index).printStackTrace();
 		return null;
-	}
-
-	@SuppressWarnings("unused")
-	private static void println() {
-		println("");
-	}
-
-	private static void println(String stringToPrint) {
-		System.out.printf("Utils:\t\t%s", stringToPrint + "\n");
 	}
 
 	public static Card searchByArchitype(Deck deck, ArchitypeComponent filter) {

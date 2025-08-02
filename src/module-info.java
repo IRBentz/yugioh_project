@@ -5,6 +5,7 @@ module yugioh {
 	exports com.card.component;
 	exports com.db.effect_db;
 	exports com.engine;
+	exports com.io;
 	exports com.player;
 	exports com.testing;
 	exports com.ui;
