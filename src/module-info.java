@@ -16,4 +16,5 @@ module yugioh {
 	
 	requires transitive org.json;
 	requires transitive java.desktop;
+	requires java.logging;
 }

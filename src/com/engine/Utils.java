@@ -1,11 +1,11 @@
 package com.engine;
 
 import static com.engine.PathAndNameEnums.ClassPathEnum.EffectDB;
-import static com.engine.Global.card_db;
 import static com.io.ConsolePrintHandling.print;
 import static com.io.ConsolePrintHandling.println;
 
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +17,9 @@ import com.player.Deck;
 
 public abstract class Utils {
 	private static Scanner kb = new Scanner(System.in);
-
+	
+	private Utils() {}
+	
 	public static String askUser(String text) {
 		println(text);
 		print("User: ");
@@ -50,28 +52,28 @@ public abstract class Utils {
 	}
 
 	public static String concatStringArray(List<String> list) {
-		String string = "";
+		StringBuilder string = new StringBuilder();
 		for (String s : list)
-			string += s;
-		return string;
+			string.append(s);
+		return string.toString();
 	}
 
-	public static void execute_card_effect(Card targetCard, int effect_num) {
+	public static void executeCardEffect(Card targetCard, int effectNum) {
 		try {
 			targetCard.getBoundClass().getMethod("execute_effect", int.class)
-					.invoke(Class.forName(EffectDB.path + targetCard.getName().replaceAll(" ", "_")).getConstructor()
-							.newInstance(), effect_num);
+					.invoke(Class.forName(EffectDB.path + targetCard.getName().replace(" ", "0")).getConstructor()
+							.newInstance(), effectNum);
 		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException
 				| ClassNotFoundException | IllegalArgumentException | InstantiationException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static Card findCard(int card_index) {
-		for (Card card : card_db)
-			if (card.getIndex() == card_index)
+	public static Card findCard(int cardIndex) {
+		for (Card card : Global.getCardDb())
+			if (card.getIndex() == cardIndex)
 				return card;
-		new RuntimeException("Could not find card matching: " + card_index).printStackTrace();
+		new RuntimeException("Could not find card matching: " + cardIndex).printStackTrace();
 		return null;
 	}
 
@@ -95,8 +97,8 @@ public abstract class Utils {
 
 		return askUserSelection(matchedCards.toArray(Card[]::new));
 	}
-
-	public Card getRandomCardFromList(ArrayList<Card> list) {
-		return list.get((int) (Math.random() * list.size()));
+	
+	public static String configurePathToClassName(Path pathToConfigure) {
+		return pathToConfigure.toString().replace(".java", "");
 	}
 }

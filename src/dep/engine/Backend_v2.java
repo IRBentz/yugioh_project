@@ -18,7 +18,7 @@ import com.engine.Global;
 @Deprecated
 public class Backend_v2 {
 	public static void buildDB(ArrayList<Scanner> fileScanners) {
-		
+		// TODO document why this method is empty
 	}
 	
 	public static void buildDB(String pointerFileName) {
@@ -66,7 +66,7 @@ public class Backend_v2 {
 		// * Monster
 		while (input.hasNext()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			Global.card_db.add(new MonCard());
+			Global.getCardDb().add(new MonCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -80,7 +80,7 @@ public class Backend_v2 {
 		input = fileScanners.get(1);
 		while (input.hasNext()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			Global.card_db.add(new PenMonCard());
+			Global.getCardDb().add(new PenMonCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -95,7 +95,7 @@ public class Backend_v2 {
 			input = fileScanners.get(i);
 			while (input.hasNextLine()) {
 				baseStats = Utils.pullMonBaseStats(input);
-				Global.card_db.add(new ExtraMonCard());
+				Global.getCardDb().add(new ExtraMonCard());
 				input.nextLine();
 				baseStats = null;
 				cur_count++;
@@ -110,7 +110,7 @@ public class Backend_v2 {
 		input = fileScanners.get(4);
 		while (input.hasNext()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			Global.card_db.add(new XyzMonCard());
+			Global.getCardDb().add(new XyzMonCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -124,7 +124,7 @@ public class Backend_v2 {
 		input = fileScanners.get(5);
 		while (input.hasNextLine()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			Global.card_db.add(new LinkMonCard());
+			Global.getCardDb().add(new LinkMonCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -138,7 +138,7 @@ public class Backend_v2 {
 		input = fileScanners.get(6);
 		while (input.hasNextLine()) {
 			baseStats = Utils.pullSTBaseStats(input);
-			Global.card_db.add(new SpellCard());
+			Global.getCardDb().add(new SpellCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -152,7 +152,7 @@ public class Backend_v2 {
 		input = fileScanners.get(7);
 		while (input.hasNextLine()) {
 			baseStats = Utils.pullSTBaseStats(input);
-			Global.card_db.add(new TrapCard());
+			Global.getCardDb().add(new TrapCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -175,7 +175,7 @@ public class Backend_v2 {
 		println("Successfully found file \"" + filePath.getFileName() + "\" at the following file path: \""
 				+ filePath + "\"");
 		while (input_file.hasNext()) {
-			Global.fal_list.add(new int[] { input_file.nextInt(), input_file.nextInt() });
+			Global.getFalList().add(new int[] { input_file.nextInt(), input_file.nextInt() });
 		}
 		input_file.close();
 	}

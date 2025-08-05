@@ -101,17 +101,17 @@ public enum Architype {
 	MIMIGHOUL(0x1b5), RYZEAL(0x1b6), SCHOOLWORK(0x1b7), RYU_GE(0x1b8), MALISS(0x1b9), ARGOSTARS(0x1ba), AQUA_JET(0x1bb),
 	DRAGON_RULER(0x1bc), MITSURUGI(0x1bd), DOMINUS(0x1bf), APOPHIS(0x1c2), SERKET(0x1c3);
 
-	private final int HEX_CODE;
+	private final int hexCode;
 
 	Architype() {
-		HEX_CODE = 0x0;
+		hexCode = 0x0;
 	}
 
 	Architype(int hex) {
-		this.HEX_CODE = hex;
+		this.hexCode = hex;
 	}
 
 	public String getHexCode() {
-		return Integer.toHexString(HEX_CODE);
+		return Integer.toHexString(hexCode);
 	}
 }

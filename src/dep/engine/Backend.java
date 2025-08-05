@@ -21,8 +21,8 @@ public abstract class Backend {
 	@Deprecated
 	private static void assignFaL() {
 		int num_assigned = 0;
-		for (Card card : Global.card_db)
-			for (int[] pair : Global.fal_list)
+		for (Card card : Global.getCardDb())
+			for (int[] pair : Global.getFalList())
 				if (card.getIndex() == pair[0]) {
 					card.setAllowedCopies(pair[1]);
 					num_assigned++;
@@ -64,35 +64,35 @@ public abstract class Backend {
 		while (currScanner.hasNext()) {
 			Object[] returnedList = Utils.pullMonBaseStats(currScanner, ";");
 
-			Global.card_db.add(new MonCard());
+			Global.getCardDb().add(new MonCard());
 		}
 
 		currScanner = fileScanners.get(1);
 		while (currScanner.hasNext()) {
 			Object[] returnedList = Utils.pullMonBaseStats(currScanner, ";");
 
-			Global.card_db.add(new PenMonCard());
+			Global.getCardDb().add(new PenMonCard());
 		}
 
 		currScanner = fileScanners.get(2);
 		while (currScanner.hasNext()) {
 			Object[] returnedList = Utils.pullMonBaseStats(currScanner, ";");
 
-			Global.card_db.add(new ExtraMonCard());
+			Global.getCardDb().add(new ExtraMonCard());
 		}
 
 		currScanner = fileScanners.get(3);
 		while (currScanner.hasNext()) {
 			Object[] returnedList = Utils.pullMonBaseStats(currScanner, ";");
 
-			Global.card_db.add(new ExtraMonCard());
+			Global.getCardDb().add(new ExtraMonCard());
 		}
 
 		currScanner = fileScanners.get(4);
 		while (currScanner.hasNext()) {
 			Object[] returnedList = Utils.pullMonBaseStats(currScanner, ";");
 
-			Global.card_db.add(
+			Global.getCardDb().add(
 					new XyzMonCard());
 		}
 
@@ -100,14 +100,14 @@ public abstract class Backend {
 		while (currScanner.hasNext()) {
 			Object[] returnedList = Utils.pullMonBaseStats(currScanner, ";");
 
-			Global.card_db.add(new LinkMonCard());
+			Global.getCardDb().add(new LinkMonCard());
 		}
 
 		currScanner = fileScanners.get(6);
 		while (currScanner.hasNext()) {
 			Object[] returnedList = Utils.pullSTBaseStats(currScanner, ";");
 
-			Global.card_db.add(
+			Global.getCardDb().add(
 					new SpellCard());
 		}
 
@@ -115,7 +115,7 @@ public abstract class Backend {
 		while (currScanner.hasNext()) {
 			Object[] returnedList = Utils.pullSTBaseStats(currScanner, ";");
 
-			Global.card_db.add(
+			Global.getCardDb().add(
 					new TrapCard());
 		}
 
@@ -138,14 +138,14 @@ public abstract class Backend {
 		}
 		println("Successfully found file at: " + new File(fileName).getPath());
 		while (input_file.hasNext()) {
-			Global.fal_list.add(new int[] { input_file.nextInt(), input_file.nextInt() });
+			Global.getFalList().add(new int[] { input_file.nextInt(), input_file.nextInt() });
 		}
 		input_file.close();
 	}
 	
 	@Deprecated
 	private static void debugCheck() {
-		Global.card_db.sort(Comparator.comparing(Card::getAllowedCopies));
+		Global.getCardDb().sort(Comparator.comparing(Card::getAllowedCopies));
 		// Arrays.stream(card_db.toArray(Card[]::new)).forEach(card ->
 		// println(card));
 
@@ -198,7 +198,7 @@ public abstract class Backend {
 		// * Monster
 		while (input.hasNext()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			Global.card_db.add(new MonCard());
+			Global.getCardDb().add(new MonCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -212,7 +212,7 @@ public abstract class Backend {
 		input = fileScanners.get(1);
 		while (input.hasNext()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			Global.card_db.add(new PenMonCard());
+			Global.getCardDb().add(new PenMonCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -227,7 +227,7 @@ public abstract class Backend {
 			input = fileScanners.get(i);
 			while (input.hasNextLine()) {
 				baseStats = Utils.pullMonBaseStats(input);
-				Global.card_db.add(new ExtraMonCard());
+				Global.getCardDb().add(new ExtraMonCard());
 				input.nextLine();
 				baseStats = null;
 				cur_count++;
@@ -242,7 +242,7 @@ public abstract class Backend {
 		input = fileScanners.get(4);
 		while (input.hasNext()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			Global.card_db.add(new XyzMonCard());
+			Global.getCardDb().add(new XyzMonCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -256,7 +256,7 @@ public abstract class Backend {
 		input = fileScanners.get(5);
 		while (input.hasNextLine()) {
 			baseStats = Utils.pullMonBaseStats(input);
-			Global.card_db.add(new LinkMonCard());
+			Global.getCardDb().add(new LinkMonCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -270,7 +270,7 @@ public abstract class Backend {
 		input = fileScanners.get(6);
 		while (input.hasNextLine()) {
 			baseStats = Utils.pullSTBaseStats(input);
-			Global.card_db.add(new SpellCard());
+			Global.getCardDb().add(new SpellCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
@@ -284,7 +284,7 @@ public abstract class Backend {
 		input = fileScanners.get(7);
 		while (input.hasNextLine()) {
 			baseStats = Utils.pullSTBaseStats(input);
-			Global.card_db.add(new TrapCard());
+			Global.getCardDb().add(new TrapCard());
 			input.nextLine();
 			baseStats = null;
 			cur_count++;
