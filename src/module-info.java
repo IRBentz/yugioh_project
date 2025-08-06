@@ -10,10 +10,6 @@ module yugioh {
 	exports com.testing;
 	exports com.ui;
 	
-	exports dep.card.enums;
-	exports dep.engine;
-	exports dep.testing;
-	
 	requires transitive org.json;
 	requires transitive java.desktop;
 	requires java.logging;
