@@ -1,18 +1,18 @@
 package com.testing;
 
-import static com.engine.Global.player;
-import static com.card.component.ArchitypeComponent.RedEyes_A;
-import static com.engine.Utils.findCard;
-import static com.engine.Utils.execute_card_effect;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.card.component.ArchitypeComponent;
+import com.engine.Backendv4;
+import com.engine.Global;
+import com.engine.Utils;
+
 public abstract class EffectTester {
-	public static void main(String args[]) {
-		com.engine.Backend_v4.buildDB();
-		findCard(88264978).setArchitype(new ArrayList<>(Arrays.asList(RedEyes_A)));
-		player.getDeck().getMainDeckList().addAll(Arrays.asList(findCard(88264978), findCard(88264978)));
-		execute_card_effect(findCard(93969023), 2);
+	public static void main(String[] args) {
+		Backendv4.buildDB();
+		Utils.findCard(88264978).setArchitype(new ArrayList<>(Arrays.asList(ArchitypeComponent.RED_EYES_A)));
+		Global.getPlayer().getDeck().getMainDeckList().addAll(Arrays.asList(Utils.findCard(88264978), Utils.findCard(88264978)));
+		Utils.executeCardEffect(Utils.findCard(93969023), 2);
 	}
 }

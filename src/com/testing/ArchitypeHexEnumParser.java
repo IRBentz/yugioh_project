@@ -1,5 +1,8 @@
 package com.testing;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.card.component.ArchitypeComponent;
 
 public abstract class ArchitypeHexEnumParser {
@@ -13,7 +16,7 @@ public abstract class ArchitypeHexEnumParser {
 	
 	public static void main(String[] args) {
 		for(ArchitypeComponent a : ArchitypeComponent.class.getEnumConstants())
-			System.out.println(archtypeHexParseString(a.getHexCode()));
+			Logger.getLogger(ArchitypeHexEnumParser.class.getName()).log(Level.INFO, archtypeHexParseString(a.getHexCode()));
 	}
 
 }

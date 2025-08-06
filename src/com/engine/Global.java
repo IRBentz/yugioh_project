@@ -19,7 +19,9 @@ public abstract class Global {
 	private static List<int[]> falList = new ArrayList<>();
 	private static Player opponent = new Player();
 	private static Player player = new Player();
-
+	
+	private Global() {}
+	
 	/**
 	 * @return the card_db
 	 */

@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -31,37 +32,38 @@ import com.engine.PathAndNameEnums.ClassPathEnum;
 import com.engine.PathAndNameEnums.FileNameEnum;
 import com.engine.PathAndNameEnums.FilePathEnum;
 
+import java.util.logging.Level;
+
 public abstract class Backendv4 {
 	private static JSONObject jCardObject;
-	
 
 	private static FileNameEnum cardJson = FileNameEnum.Card_json;
 
 	private static FilePathEnum comPath = FilePathEnum.ComPath;
-	private static FilePathEnum  jsonPath = FilePathEnum.JsonPath;
-	private static FilePathEnum  effectDBPath = FilePathEnum.EffectDBPath;
+	private static FilePathEnum jsonPath = FilePathEnum.JsonPath;
+	private static FilePathEnum effectDBPath = FilePathEnum.EffectDBPath;
 
 	private static ClassPathEnum componentCPE = ClassPathEnum.Component;
-	private static ClassPathEnum  effectDBCPE = ClassPathEnum.EffectDB;
+	private static ClassPathEnum effectDBCPE = ClassPathEnum.EffectDB;
 
 	private static JsonKeyValues attack = JsonKeyValues.JKV_attack;
-	private static JsonKeyValues  cardType = JsonKeyValues.JKV_card_type;
-	private static JsonKeyValues  cards = JsonKeyValues.JKV_cards;
-	private static JsonKeyValues  defense = JsonKeyValues.JKV_defense;
-	private static JsonKeyValues  icon = JsonKeyValues.JKV_icon;
-	private static JsonKeyValues  index = JsonKeyValues.JKV_index;
-	private static JsonKeyValues  level = JsonKeyValues.JKV_level;
-	private static JsonKeyValues  linkArrow = JsonKeyValues.JKV_linkArrow;
-	private static JsonKeyValues  linkRating = JsonKeyValues.JKV_linkRating;
-	private static JsonKeyValues  lore = JsonKeyValues.JKV_lore;
-	private static JsonKeyValues  monsterAttribute = JsonKeyValues.JKV_monsterAttribute;
-	private static JsonKeyValues  monsterType = JsonKeyValues.JKV_monsterType;
-	private static JsonKeyValues  name = JsonKeyValues.JKV_name;
-	private static JsonKeyValues  pendulumLevel = JsonKeyValues.JKV_pendulumLevel;
-	private static JsonKeyValues  pendulumLore = JsonKeyValues.JKV_pendulumLore;
-	private static JsonKeyValues  rank = JsonKeyValues.JKV_rank;
-	private static JsonKeyValues  summonRequirement = JsonKeyValues.JKV_summonRequirement;
-	private static JsonKeyValues  type = JsonKeyValues.JKV_type;
+	private static JsonKeyValues cardType = JsonKeyValues.JKV_card_type;
+	private static JsonKeyValues cards = JsonKeyValues.JKV_cards;
+	private static JsonKeyValues defense = JsonKeyValues.JKV_defense;
+	private static JsonKeyValues icon = JsonKeyValues.JKV_icon;
+	private static JsonKeyValues index = JsonKeyValues.JKV_index;
+	private static JsonKeyValues level = JsonKeyValues.JKV_level;
+	private static JsonKeyValues linkArrow = JsonKeyValues.JKV_linkArrow;
+	private static JsonKeyValues linkRating = JsonKeyValues.JKV_linkRating;
+	private static JsonKeyValues lore = JsonKeyValues.JKV_lore;
+	private static JsonKeyValues monsterAttribute = JsonKeyValues.JKV_monsterAttribute;
+	private static JsonKeyValues monsterType = JsonKeyValues.JKV_monsterType;
+	private static JsonKeyValues name = JsonKeyValues.JKV_name;
+	private static JsonKeyValues pendulumLevel = JsonKeyValues.JKV_pendulumLevel;
+	private static JsonKeyValues pendulumLore = JsonKeyValues.JKV_pendulumLore;
+	private static JsonKeyValues rank = JsonKeyValues.JKV_rank;
+	private static JsonKeyValues summonRequirement = JsonKeyValues.JKV_summonRequirement;
+	private static JsonKeyValues type = JsonKeyValues.JKV_type;
 	
 	private Backendv4() {}
 
@@ -244,9 +246,8 @@ public abstract class Backendv4 {
 					if (subcomponent.match(inputString) != null)
 						return subcomponent.match(inputString);
 		} catch (SecurityException | ClassNotFoundException e) {
-			e.printStackTrace();
+			Logger.getLogger(Backendv4.class.getName()).log(Level.SEVERE, "An exception occured", e);
 		}
-		System.exit(1);
-		return null;
+		return CardComponentInterface.DEFAULT;
 	}
 }

@@ -42,7 +42,7 @@ public class Black0Metal0Dragon implements Effect_Interface {
 		StringBuilder outputString = new StringBuilder("Effect ");
 		outputString.append(num);
 		outputString.append(" Executed.");
-		LOGGER.log(Level.INFO, outputString.toString());
+		LOGGER.log(Level.INFO, outputString::toString);
 	}
 
 	@Override

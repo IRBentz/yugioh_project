@@ -3,6 +3,8 @@ package com.card.component;
 import java.lang.reflect.InvocationTargetException;
 
 public interface CardComponentInterface {
+	CardComponentInterface DEFAULT = null;
+
 	default <T> T castTo(Class<T> t) {
 		if (t.isInstance(this))
 			return t.cast(this);
@@ -24,9 +26,8 @@ public interface CardComponentInterface {
 				if (Enum.class.getMethod("name").invoke(component).equals(name))
 					return component;
 			} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
-				e.printStackTrace();
+		 		e.printStackTrace();
 			}
-		new RuntimeException("Unmatched name: " + name + " could not be matched to a cardComponent.");
 		return null;
 	}
 	

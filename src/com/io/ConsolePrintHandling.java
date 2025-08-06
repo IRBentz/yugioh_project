@@ -1,6 +1,5 @@
 package com.io;
 
-
 import java.util.Arrays;
 
 import com.engine.Global;
@@ -13,12 +12,12 @@ public abstract class ConsolePrintHandling {
 	
 	public static void println(Object... stringToPrint) {
 		callIndex++;
-		printfa("%-" + Global.padding + "s%s%n", stringToPrint);
+		printfa("%-" + Global.PADDING + "s%s%n", stringToPrint);
 	}
 
 	public static void print(Object... stringToPrint) {
 		callIndex++;
-		printfa("%-" + Global.padding + "s%s", stringToPrint);
+		printfa("%-" + Global.PADDING + "s%s", stringToPrint);
 	}
 
 	public static void printfa(String format, Object... stringToPrint) {
