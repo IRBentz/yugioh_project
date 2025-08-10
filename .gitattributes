@@ -1,3 +1,4 @@
-.zip filter=lfs diff=lfs merge=lfs -text linguist-language=text
+*.zip filter=lfs diff=lfs merge=lfs -text linguist-language=text
 /src/ygo_eng/db/_jpg.zip filter=lfs diff=lfs merge=lfs -text linguist-language=text
 /src/ygo_eng/db/_png.zip filter=lfs diff=lfs merge=lfs -text linguist-language=text
+*.zip filter=lfs diff=lfs merge=lfs -text
