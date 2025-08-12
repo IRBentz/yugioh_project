@@ -2,33 +2,30 @@ package com.engine;
 
 public enum PathAndNameEnums {
 	;
-	public enum FileNameEnum {
-		Monster_info("monster.info"), Pendulum_info("pendulum_monster.info"), Fusion_info("fusion_monster.info"),
-		Synchro_info("synchro_monster.info"), Xyz_info("xyz_monster.info"), Link_info("link_monster.info"),
-		Spell_info("spell.info"), Trap_info("trap.info"), FaL_info("forbidden_and_limited.info"),
-		Card_json("card.json");
+	public enum FileName {
+		CARD_JSON("card.json");
 
-		public final String name;
+		public final String nameWithExtension;
 
-		private FileNameEnum(String name) {
-			this.name = name;
+		private FileName(String name) {
+			this.nameWithExtension = name;
 		}
 	}
 
-	public enum FilePathEnum {
-		ComPath("src//com//"), DepPath("src//dep//"), InfoPath("db//_info//"), JsonPath("db//_json//"), EffectDBPath("db//effect_db//");
+	public enum FolderPath {
+		COM("src//com//"), JSON("db//_json//"), EFFECT_DB("db//effect_db//");
 
 		public final String path;
 
-		private FilePathEnum(String path) {
+		private FolderPath(String path) {
 			this.path = path;
 		}
 	}
 	
-	public enum ClassPathEnum {
-		EffectDB("com.db.effect_db."),  Component("com.card.component.");
+	public enum ClassPath {
+		EFFECT_DB("com.db.effect_db."), COMPONENT("com.card.component.");
 		public final String path;
-		private ClassPathEnum(String path) {
+		private ClassPath(String path) {
 			this.path = path;
 		}
 	}
