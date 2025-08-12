@@ -1,34 +1,23 @@
 package com.card;
 
-import java.util.ArrayList;
-
-import com.card.component.MonsterAttributeComponent;
-import com.card.component.MonsterTypeComponent;
-import com.card.component.TypeComponent;
-
 public class XyzMonCard extends ExtraMonCard implements CardInterfaces.ExtraCard {
-	private ArrayList<Card> xyzMaterials = new ArrayList<>();
-
-	public XyzMonCard() {
-		super();
+	private final int rank;
+	public XyzMonCard(String name, int index, MonComBlock mCB, String summonReq, String lore, int[] rankAtkDef) {
+		super(name, index, mCB, summonReq, lore, rankAtkDef);
+		this.rank = rankAtkDef[0];
 	}
-
-	public XyzMonCard(String name, int index, MonsterAttributeComponent mon_attri, MonsterTypeComponent mon_type, TypeComponent[] types, String summon_req,
-			String lore, int rank, int attack, int defense) {
-		super(name, index, mon_attri, mon_type, types, summon_req, lore, rank, attack, defense);
+	
+	@Override
+	public int getLevel() throws UnsupportedOperationException{
+		return 0;
 	}
-
-	public ArrayList<Card> getXyzMats() {
-		return xyzMaterials;
+	
+	public int getRank() {
+		return rank;
 	}
 
 	@Override
 	public String toString() {
-		String xyzMats = "";
-		for (Card mat : xyzMaterials)
-			xyzMats += mat.toString() + " ";
-		if (xyzMats.length() > 0)
-			xyzMats = xyzMats.substring(0, xyzMats.length() - 1);
-		return super.toString() + " | " + xyzMats;
+		return super.toString();
 	}
 }

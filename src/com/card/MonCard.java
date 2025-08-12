@@ -6,65 +6,78 @@ import com.card.component.MonsterTypeComponent;
 import com.card.component.TypeComponent;
 
 public class MonCard extends Card {
-	private final int LEVEL_RANK, ATTACK, DEFENSE;
-	private final MonsterAttributeComponent MON_ATTRI;
-	private final MonsterTypeComponent MON_TYPE;
-	private final TypeComponent[] TYPES;
+	private final int level;
+	private final int attack;
+	private final int defense;
+	private MonComBlock monsterComponentBlock;
 
-	public MonCard() {
-		super();
-		this.MON_ATTRI = null;
-		this.MON_TYPE = null;
-		this.TYPES = null;
-		this.LEVEL_RANK = 0;
-		this.ATTACK = 0;
-		this.DEFENSE = 0;
-	}
-
-	public MonCard(String name, int index, MonsterAttributeComponent mon_attri, MonsterTypeComponent mon_type, TypeComponent[] types, String lore,
-			int level_rank, int attack, int defense) {
+	public MonCard(String name, int index, MonComBlock mCB, String lore, int level, int attack, int defense) {
 		super(name, index, CardTypeComponent.Monster, lore);
-		this.MON_ATTRI = mon_attri;
-		this.MON_TYPE = mon_type;
-		this.TYPES = types;
-		this.LEVEL_RANK = level_rank;
-		this.ATTACK = attack;
-		this.DEFENSE = defense;
+		this.monsterComponentBlock = mCB;
+		this.level = level;
+		this.attack = attack;
+		this.defense = defense;
 	}
 
 	public int getAttack() {
-		return ATTACK;
+		return attack;
 	}
 
 	public MonsterAttributeComponent getAttribute() {
-		return MON_ATTRI;
+		return monsterComponentBlock.mAttribute;
 	}
 
 	public int getDefense() {
-		return DEFENSE;
+		return defense;
 	}
 
-	public int getLevelOrRank() {
-		return LEVEL_RANK;
+	public int getLevel() {
+		return level;
 	}
 
 	public MonsterTypeComponent getMonType() {
-		return MON_TYPE;
+		return monsterComponentBlock.mType;
 	}
 
 	public TypeComponent[] getTypes() {
-		return TYPES;
+		return monsterComponentBlock.types;
 	}
 
 	@Override
 	public String toString() {
-		String types = "";
-		for (TypeComponent type : TYPES) {
-			types += type.toString() + " ";
+		StringBuilder sb = new StringBuilder();
+		for (TypeComponent type : getTypes()) {
+			sb.append(type.toString()).append(' ');
 		}
-		types = types.substring(0, types.length() - 1);
 
-		return super.toString() + " | " + MON_ATTRI + " | " + MON_TYPE + " | " + types + " | " + LEVEL_RANK + " | "
-				+ ATTACK + " | " + DEFENSE;
+		return super.toString() + " | " + getAttribute() + " | " + getType() + " | " + sb.toString().strip() + " | " + level + " | "
+				+ attack + " | " + defense;
+	}
+	
+	public class MonComBlock {
+		public final MonsterAttributeComponent mAttribute;
+		public final MonsterTypeComponent mType;
+		public final TypeComponent[] types;
+		
+		public MonComBlock(MonsterAttributeComponent mA, MonsterTypeComponent mT, TypeComponent[] types) {
+			this.mAttribute = mA;
+			this.mType = mT;
+			this.types = types;
+		}
+	}
+	
+	public class PendAttributes {
+		public final int pendLevel;
+		public final String pendLore;
+		
+		public PendAttributes(String pendLore, int pendLevel) {
+			this.pendLevel = pendLevel;
+			this.pendLore = pendLore;
+		}
+		
+		@Override
+		public String toString() {
+			return " | " + pendLevel + " | " + pendLore;
+		}
 	}
 }

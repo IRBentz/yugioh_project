@@ -4,24 +4,19 @@ import com.card.component.CardTypeComponent;
 import com.card.component.IconComponent;
 
 public abstract class StCard extends Card {
-	private final IconComponent ICON;
+	private final IconComponent icon;
 
-	public StCard() {
-		super();
-		this.ICON = null;
-	}
-
-	public StCard(String name, int index, CardTypeComponent cardType, String lore, IconComponent st_icon) {
+	protected StCard(String name, int index, CardTypeComponent cardType, String lore, IconComponent stIcon) {
 		super(name, index, cardType, lore);
-		this.ICON = st_icon;
+		this.icon = stIcon;
 	}
 
 	public IconComponent returnIcon() {
-		return ICON;
+		return icon;
 	}
 
 	@Override
 	public String toString() {
-		return super.toString() + " | " + ICON;
+		return super.toString() + " | " + icon;
 	}
 }

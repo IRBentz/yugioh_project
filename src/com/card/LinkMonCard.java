@@ -1,35 +1,31 @@
 package com.card;
 
 import com.card.component.LinkArrowComponent;
-import com.card.component.MonsterAttributeComponent;
-import com.card.component.MonsterTypeComponent;
-import com.card.component.TypeComponent;
 
 public class LinkMonCard extends ExtraMonCard implements CardInterfaces.ExtraCard {
-	final LinkArrowComponent[] LINK_ARROWS;
+	private final LinkArrowComponent[] linkArrows;
+	private final int linkRating;
 
-	public LinkMonCard() {
-		super();
-		this.LINK_ARROWS = null;
-	}
-
-	public LinkMonCard(String name, int index, MonsterAttributeComponent mon_attri, MonsterTypeComponent mon_type, TypeComponent[] types,
-			String summon_req, String lore, int link_rating, int attack, LinkArrowComponent[] link_arrows) {
-		super(name, index, mon_attri, mon_type, types, summon_req, lore, link_rating, attack, link_rating);
-		this.LINK_ARROWS = link_arrows;
+	public LinkMonCard(String name, int index, MonComBlock mCB, String[] sumReqLore, int linkRating, int attack, LinkArrowComponent[] linkArrows) {
+		super(name, index, mCB, sumReqLore[0], sumReqLore[1], new int[] {0, attack, 0});
+		this.linkArrows = linkArrows;
+		this.linkRating = linkRating;
 	}
 
 	public LinkArrowComponent[] getLinkArrows() {
-		return LINK_ARROWS;
+		return linkArrows;
+	}
+
+	public int getLinkRating() {
+		return linkRating;
 	}
 
 	@Override
 	public String toString() {
-		String link_arrows = "";
-		for (LinkArrowComponent link_arrow : LINK_ARROWS) {
-			link_arrows += link_arrow.toString() + " ";
+		StringBuilder sb = new StringBuilder();
+		for (LinkArrowComponent linkArrow : linkArrows) {
+			sb.append(linkArrow.toString()).append(" ");
 		}
-		link_arrows = link_arrows.substring(0, link_arrows.length() - 1);
-		return super.toString() + " | " + link_arrows;
+		return super.toString() + " | " + " | " + sb.toString().strip();
 	}
 }
