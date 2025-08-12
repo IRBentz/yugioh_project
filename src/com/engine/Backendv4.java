@@ -1,13 +1,12 @@
 package com.engine;
 
-import static com.io.ConsolePrintHandling.println;
-
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.json.JSONArray;
@@ -28,83 +27,48 @@ import com.card.component.LinkArrowComponent;
 import com.card.component.MonsterAttributeComponent;
 import com.card.component.MonsterTypeComponent;
 import com.card.component.TypeComponent;
-import com.engine.PathAndNameEnums.ClassPathEnum;
-import com.engine.PathAndNameEnums.FileNameEnum;
-import com.engine.PathAndNameEnums.FilePathEnum;
-
-import java.util.logging.Level;
+import com.engine.PathAndNameEnums.ClassPath;
+import com.engine.PathAndNameEnums.FileName;
+import com.engine.PathAndNameEnums.FolderPath;
 
 public abstract class Backendv4 {
 	private static JSONObject jCardObject;
+	private static Logger logger = Logger.getLogger(Backendv4.class.toString());
 
-	private static FileNameEnum cardJson = FileNameEnum.Card_json;
-
-	private static FilePathEnum comPath = FilePathEnum.ComPath;
-	private static FilePathEnum jsonPath = FilePathEnum.JsonPath;
-	private static FilePathEnum effectDBPath = FilePathEnum.EffectDBPath;
-
-	private static ClassPathEnum componentCPE = ClassPathEnum.Component;
-	private static ClassPathEnum effectDBCPE = ClassPathEnum.EffectDB;
-
-	private static JsonKeyValues attack = JsonKeyValues.JKV_attack;
-	private static JsonKeyValues cardType = JsonKeyValues.JKV_card_type;
-	private static JsonKeyValues cards = JsonKeyValues.JKV_cards;
-	private static JsonKeyValues defense = JsonKeyValues.JKV_defense;
-	private static JsonKeyValues icon = JsonKeyValues.JKV_icon;
-	private static JsonKeyValues index = JsonKeyValues.JKV_index;
-	private static JsonKeyValues level = JsonKeyValues.JKV_level;
-	private static JsonKeyValues linkArrow = JsonKeyValues.JKV_linkArrow;
-	private static JsonKeyValues linkRating = JsonKeyValues.JKV_linkRating;
-	private static JsonKeyValues lore = JsonKeyValues.JKV_lore;
-	private static JsonKeyValues monsterAttribute = JsonKeyValues.JKV_monsterAttribute;
-	private static JsonKeyValues monsterType = JsonKeyValues.JKV_monsterType;
-	private static JsonKeyValues name = JsonKeyValues.JKV_name;
-	private static JsonKeyValues pendulumLevel = JsonKeyValues.JKV_pendulumLevel;
-	private static JsonKeyValues pendulumLore = JsonKeyValues.JKV_pendulumLore;
-	private static JsonKeyValues rank = JsonKeyValues.JKV_rank;
-	private static JsonKeyValues summonRequirement = JsonKeyValues.JKV_summonRequirement;
-	private static JsonKeyValues type = JsonKeyValues.JKV_type;
-	
-	private Backendv4() {}
-
-	@SuppressWarnings("unused")
-	private static void assignFaL() {
-		Global.getCardDb().forEach(card -> Global.getFalList().forEach(pair -> {
-			if (card.getIndex() == pair[0]) {
-				card.setAllowedCopies(pair[1]);
-			}
-		}));
-	}
-	
 	private static void bindCardEffects() {
 		try {
-			for(Card card : Global.getCardDb()) {
-				for(Path path : (Iterable<Path>) Files.list(FileSystems.getDefault().getPath(comPath.path + effectDBPath.path))::iterator) {
-					if(path.getFileName().toString().replace(".java", "").replace("0", " ").equals(card.getName())) {
-						card.setBoundClass(Class.forName(effectDBCPE.path + Utils.configurePathToClassName(path.getFileName())));
+			for (Card card : Global.getCardDb()) {
+				for (Path path : (Iterable<Path>) Files.list(
+						FileSystems.getDefault().getPath(FolderPath.COM.path + FolderPath.EFFECT_DB.path))::iterator) {
+					if (path.getFileName().toString().replace(".java", "").replace("0", " ").equals(card.getName())) {
+						card.setBoundClass(Class.forName(
+								FolderPath.EFFECT_DB.path + configurePathToClassName(path.getFileName())));
 					}
 				}
 			}
-		} catch (IOException | ClassNotFoundException e ) {
+		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public static void buildDB() {
-  JSONArray jsonArray;
-		Path filePath = FileSystems.getDefault().getPath(comPath.path + jsonPath.path);
-		println("Successfully found designated file path: \"" + filePath + "\"");
+		JSONArray jsonArray;
+		Path filePath = FileSystems.getDefault().getPath(FolderPath.COM.path + FolderPath.JSON.path);
+		logger.log(Level.INFO, () -> "Successfully found designated file path: \"" + filePath + "\"");
 		try {
-			jsonArray = new JSONArray(Utils.concatStringArray(Files.readAllLines(filePath.resolve(cardJson.name))));
-			println("Successfully found file \"" + filePath.resolve(cardJson.name).getFileName()
-					+ "\" at the following file path: \"" + filePath.resolve(cardJson.name) + "\"");
+			jsonArray = new JSONArray(concatStringArray(Files.readAllLines(filePath.resolve(FileName.CARD_JSON.nameWithExtension))));
+			logger.log(Level.INFO,
+					() -> "Successfully found file \""
+							+ filePath.resolve(FileName.CARD_JSON.nameWithExtension).getFileName()
+							+ "\" at the following file path: \""
+							+ filePath.resolve(FileName.CARD_JSON.nameWithExtension) + "\"");
 		} catch (IOException e) {
 			e.printStackTrace();
 			jsonArray = new JSONArray();
 		}
 		for (Object cardGroup : jsonArray) {
 			JSONObject jCardGroupObject = (JSONObject) cardGroup;
-			switch (jCardGroupObject.getString(cardType.JKVname)) {
+			switch (jCardGroupObject.getString(Json.CARD_TYPE.jkvName)) {
 			case "monster":
 				buildMonster(jCardGroupObject);
 				break;
@@ -127,7 +91,7 @@ public abstract class Backendv4 {
 				buildTrap(jCardGroupObject);
 				break;
 			default:
-				println("Skipped: " + jCardGroupObject.getString(cardType.JKVname));
+				logger.log(Level.INFO, () -> "Skipped: " + jCardGroupObject.getString(Json.CARD_TYPE.jkvName));
 				break;
 			}
 		}
@@ -135,119 +99,143 @@ public abstract class Backendv4 {
 	}
 
 	private static void buildFusionOrSynchroMonster(JSONObject jCardGroupObject) {
-		for (Object card : jCardGroupObject.getJSONArray(cards.JKVname)) {
+		for (Object card : jCardGroupObject.getJSONArray(Json.CARDS.jkvName)) {
 			jCardObject = (JSONObject) card;
-			Global.getCardDb().add(new ExtraMonCard(jCardObject.getString(name.JKVname), jCardObject.getInt(index.JKVname),
-					strintToCardComponentInterface(jCardObject.getString(monsterAttribute.JKVname))
+			Global.getCardDb().add(new ExtraMonCard(jCardObject.getString(Json.NAME.jkvName),
+					jCardObject.getInt(Json.INDEX.jkvName),
+					stringToCardComponentInterface(jCardObject.getString(Json.MONSTER_ATTRIBUTE.jkvName))
 							.castTo(MonsterAttributeComponent.class),
-					strintToCardComponentInterface(jCardObject.getString(monsterType.JKVname))
+					stringToCardComponentInterface(jCardObject.getString(Json.MONSTER_TYPE.jkvName))
 							.castTo(MonsterTypeComponent.class),
-					stringToCardComponentInterfaceArrayList(jCardObject.getJSONArray(type.JKVname))
+					stringToCardComponentInterfaceArrayList(jCardObject.getJSONArray(Json.TYPE.jkvName))
 							.toArray(TypeComponent[]::new),
-					jCardObject.getString(summonRequirement.JKVname), jCardObject.getString(lore.JKVname),
-					jCardObject.getInt(level.JKVname), jCardObject.getInt(attack.JKVname),
-					jCardObject.getInt(defense.JKVname)));
+					jCardObject.getString(Json.SUMMON_REQUIREMENT.jkvName), jCardObject.getString(Json.LORE.jkvName),
+					jCardObject.getInt(Json.LEVEL.jkvName), jCardObject.getInt(Json.ATTACK.jkvName),
+					jCardObject.getInt(Json.DEFENSE.jkvName)));
 		}
 	}
 
 	private static void buildLinkMonster(JSONObject jCardGroupObject) {
-		for (Object card : jCardGroupObject.getJSONArray(cards.JKVname)) {
+		for (Object card : jCardGroupObject.getJSONArray(Json.CARDS.jkvName)) {
 			jCardObject = (JSONObject) card;
-			Global.getCardDb().add(new LinkMonCard(jCardObject.getString(name.JKVname), jCardObject.getInt(index.JKVname),
-					strintToCardComponentInterface(jCardObject.getString(monsterAttribute.JKVname))
+			Global.getCardDb().add(new LinkMonCard(jCardObject.getString(Json.NAME.jkvName),
+					jCardObject.getInt(Json.INDEX.jkvName),
+					stringToCardComponentInterface(jCardObject.getString(Json.MONSTER_ATTRIBUTE.jkvName))
 							.castTo(MonsterAttributeComponent.class),
-					strintToCardComponentInterface(jCardObject.getString(monsterType.JKVname))
+					stringToCardComponentInterface(jCardObject.getString(Json.MONSTER_TYPE.jkvName))
 							.castTo(MonsterTypeComponent.class),
-					stringToCardComponentInterfaceArrayList(jCardObject.getJSONArray(type.JKVname))
+					stringToCardComponentInterfaceArrayList(jCardObject.getJSONArray(Json.TYPE.jkvName))
 							.toArray(TypeComponent[]::new),
-					jCardObject.getString(summonRequirement.JKVname), jCardObject.getString(lore.JKVname),
-					jCardObject.getInt(linkRating.JKVname), jCardObject.getInt(attack.JKVname),
-					stringToCardComponentInterfaceArrayList(jCardObject.getJSONArray(linkArrow.JKVname))
+					jCardObject.getString(Json.SUMMON_REQUIREMENT.jkvName), jCardObject.getString(Json.LORE.jkvName),
+					jCardObject.getInt(Json.LINK_RATING.jkvName), jCardObject.getInt(Json.ATTACK.jkvName),
+					stringToCardComponentInterfaceArrayList(jCardObject.getJSONArray(Json.LINK_ARROW.jkvName))
 							.toArray(LinkArrowComponent[]::new)));
 		}
 	}
 
 	private static void buildMonster(JSONObject jCardGroupObject) {
-		for (Object card : jCardGroupObject.getJSONArray(cards.JKVname)) {
+		for (Object card : jCardGroupObject.getJSONArray(Json.CARDS.jkvName)) {
 			jCardObject = (JSONObject) card;
-			Global.getCardDb().add(new MonCard(jCardObject.getString(name.JKVname), jCardObject.getInt(index.JKVname),
-					strintToCardComponentInterface(jCardObject.getString(monsterAttribute.JKVname))
-							.castTo(MonsterAttributeComponent.class),
-					strintToCardComponentInterface(jCardObject.getString(monsterType.JKVname))
-							.castTo(MonsterTypeComponent.class),
-					stringToCardComponentInterfaceArrayList(jCardObject.getJSONArray(type.JKVname))
-							.toArray(TypeComponent[]::new),
-					jCardObject.getString(lore.JKVname), jCardObject.getInt(level.JKVname),
-					jCardObject.getInt(attack.JKVname), jCardObject.getInt(defense.JKVname)));
+			Global.getCardDb()
+					.add(new MonCard(jCardObject.getString(Json.NAME.jkvName), jCardObject.getInt(Json.INDEX.jkvName),
+							stringToCardComponentInterface(jCardObject.getString(Json.MONSTER_ATTRIBUTE.jkvName))
+									.castTo(MonsterAttributeComponent.class),
+							stringToCardComponentInterface(jCardObject.getString(Json.MONSTER_TYPE.jkvName))
+									.castTo(MonsterTypeComponent.class),
+							stringToCardComponentInterfaceArrayList(jCardObject.getJSONArray(Json.TYPE.jkvName))
+									.toArray(TypeComponent[]::new),
+							jCardObject.getString(Json.LORE.jkvName), jCardObject.getInt(Json.LEVEL.jkvName),
+							jCardObject.getInt(Json.ATTACK.jkvName), jCardObject.getInt(Json.DEFENSE.jkvName)));
 		}
 	}
 
 	private static void buildPendulumMonster(JSONObject jCardGroupObject) {
-		for (Object card : jCardGroupObject.getJSONArray(cards.JKVname)) {
+		for (Object card : jCardGroupObject.getJSONArray(Json.CARDS.jkvName)) {
 			jCardObject = (JSONObject) card;
-			Global.getCardDb().add(new PenMonCard(jCardObject.getString(name.JKVname), jCardObject.getInt(index.JKVname),
-					strintToCardComponentInterface(jCardObject.getString(monsterAttribute.JKVname))
-							.castTo(MonsterAttributeComponent.class),
-					strintToCardComponentInterface(jCardObject.getString(monsterType.JKVname))
-							.castTo(MonsterTypeComponent.class),
-					stringToCardComponentInterfaceArrayList(jCardObject.getJSONArray(type.JKVname))
-							.toArray(TypeComponent[]::new),
-					jCardObject.getString(pendulumLore.JKVname), jCardObject.getString(lore.JKVname),
-					jCardObject.getInt(level.JKVname), jCardObject.getInt(pendulumLevel.JKVname),
-					jCardObject.getInt(attack.JKVname), jCardObject.getInt(defense.JKVname)));
+			Global.getCardDb()
+					.add(new PenMonCard(jCardObject.getString(Json.NAME.jkvName),
+							jCardObject.getInt(Json.INDEX.jkvName),
+							stringToCardComponentInterface(jCardObject.getString(Json.MONSTER_ATTRIBUTE.jkvName))
+									.castTo(MonsterAttributeComponent.class),
+							stringToCardComponentInterface(jCardObject.getString(Json.MONSTER_TYPE.jkvName))
+									.castTo(MonsterTypeComponent.class),
+							stringToCardComponentInterfaceArrayList(jCardObject.getJSONArray(Json.TYPE.jkvName))
+									.toArray(TypeComponent[]::new),
+							jCardObject.getString(Json.PENDULUM_LORE.jkvName), jCardObject.getString(Json.LORE.jkvName),
+							jCardObject.getInt(Json.LEVEL.jkvName), jCardObject.getInt(Json.PENDULUM_LEVEL.jkvName),
+							jCardObject.getInt(Json.ATTACK.jkvName), jCardObject.getInt(Json.DEFENSE.jkvName)));
 		}
 	}
 
 	private static void buildSpell(JSONObject jCardGroupObject) {
-		for (Object card : jCardGroupObject.getJSONArray(cards.JKVname)) {
+		for (Object card : jCardGroupObject.getJSONArray(Json.CARDS.jkvName)) {
 			jCardObject = (JSONObject) card;
-			Global.getCardDb().add(new SpellCard(jCardObject.getString(name.JKVname), jCardObject.getInt(index.JKVname),
-					jCardObject.getString(lore.JKVname),
-					strintToCardComponentInterface(jCardObject.getString(icon.JKVname)).castTo(IconComponent.class)));
+			Global.getCardDb()
+					.add(new SpellCard(jCardObject.getString(Json.NAME.jkvName), jCardObject.getInt(Json.INDEX.jkvName),
+							jCardObject.getString(Json.LORE.jkvName),
+							stringToCardComponentInterface(jCardObject.getString(Json.ICON.jkvName))
+									.castTo(IconComponent.class)));
 		}
 	}
 
 	private static void buildTrap(JSONObject jCardGroupObject) {
-		for (Object card : jCardGroupObject.getJSONArray(cards.JKVname)) {
+		for (Object card : jCardGroupObject.getJSONArray(Json.CARDS.jkvName)) {
 			jCardObject = (JSONObject) card;
-			Global.getCardDb().add(new TrapCard(jCardObject.getString(name.JKVname), jCardObject.getInt(index.JKVname),
-					jCardObject.getString(lore.JKVname),
-					strintToCardComponentInterface(jCardObject.getString(icon.JKVname)).castTo(IconComponent.class)));
+			Global.getCardDb()
+					.add(new TrapCard(jCardObject.getString(Json.NAME.jkvName), jCardObject.getInt(Json.INDEX.jkvName),
+							jCardObject.getString(Json.LORE.jkvName),
+							stringToCardComponentInterface(jCardObject.getString(Json.ICON.jkvName))
+									.castTo(IconComponent.class)));
 		}
 	}
 
 	private static void buildXyzMonster(JSONObject jCardGroupObject) {
-		for (Object card : jCardGroupObject.getJSONArray(cards.JKVname)) {
+		for (Object card : jCardGroupObject.getJSONArray(Json.CARDS.jkvName)) {
 			jCardObject = (JSONObject) card;
-			Global.getCardDb().add(new XyzMonCard(jCardObject.getString(name.JKVname), jCardObject.getInt(index.JKVname),
-					strintToCardComponentInterface(jCardObject.getString(monsterAttribute.JKVname))
+			Global.getCardDb().add(new XyzMonCard(jCardObject.getString(Json.NAME.jkvName),
+					jCardObject.getInt(Json.INDEX.jkvName),
+					stringToCardComponentInterface(jCardObject.getString(Json.MONSTER_ATTRIBUTE.jkvName))
 							.castTo((MonsterAttributeComponent.class)),
-					strintToCardComponentInterface(jCardObject.getString(monsterType.JKVname))
+					stringToCardComponentInterface(jCardObject.getString(Json.MONSTER_TYPE.jkvName))
 							.castTo(MonsterTypeComponent.class),
-					stringToCardComponentInterfaceArrayList(jCardObject.getJSONArray(type.JKVname))
+					stringToCardComponentInterfaceArrayList(jCardObject.getJSONArray(Json.TYPE.jkvName))
 							.toArray(TypeComponent[]::new),
-					jCardObject.getString(summonRequirement.JKVname), jCardObject.getString(lore.JKVname),
-					jCardObject.getInt(rank.JKVname), jCardObject.getInt(attack.JKVname),
-					jCardObject.getInt(defense.JKVname)));
+					jCardObject.getString(Json.SUMMON_REQUIREMENT.jkvName), jCardObject.getString(Json.LORE.jkvName),
+					jCardObject.getInt(Json.RANK.jkvName), jCardObject.getInt(Json.ATTACK.jkvName),
+					jCardObject.getInt(Json.DEFENSE.jkvName)));
 		}
 	}
 
-	public static List<CardComponentInterface> stringToCardComponentInterfaceArrayList(JSONArray jsonArray) {
-		ArrayList<CardComponentInterface> componentList = new ArrayList<>();
-		jsonArray.forEach(json -> componentList.add(strintToCardComponentInterface(String.class.cast(json))));
-		return componentList;
+	public static String concatStringArray(List<String> list) {
+		StringBuilder string = new StringBuilder();
+		for (String s : list)
+			string.append(s);
+		return string.toString();
 	}
 
-	public static CardComponentInterface strintToCardComponentInterface(String inputString) {
+	public static String configurePathToClassName(Path pathToConfigure) {
+		return pathToConfigure.toString().replace(".java", "");
+	}
+
+	public static CardComponentInterface stringToCardComponentInterface(String inputString) {
 		try {
 			for (CardComponent component : CardComponent.values())
 				for (CardComponentInterface.SubInterface subcomponent : (CardComponentInterface.SubInterface[]) Class
-						.forName(componentCPE.path + component.name() + "Component").getEnumConstants())
+						.forName(ClassPath.COMPONENT.path + component.name() + "Component").getEnumConstants())
 					if (subcomponent.match(inputString) != null)
 						return subcomponent.match(inputString);
 		} catch (SecurityException | ClassNotFoundException e) {
 			Logger.getLogger(Backendv4.class.getName()).log(Level.SEVERE, "An exception occured", e);
 		}
 		return CardComponentInterface.DEFAULT;
+	}
+
+	public static List<CardComponentInterface> stringToCardComponentInterfaceArrayList(JSONArray jsonArray) {
+		ArrayList<CardComponentInterface> componentList = new ArrayList<>();
+		jsonArray.forEach(json -> componentList.add(stringToCardComponentInterface(String.class.cast(json))));
+		return componentList;
+	}
+
+	private Backendv4() {
 	}
 }
