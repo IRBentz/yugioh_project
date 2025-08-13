@@ -1,6 +1,6 @@
 package com.card.component;
 
-public enum ArchitypeComponent implements CardComponentInterface.SubInterface {
+public enum ArchetypeComponent implements CardComponentInterface.SubInterface {
 	ALLY_OF_JUSTICE_A(HexCode.HEX_1), GENEX_A(HexCode.HEX_2), RGENEX_A(HexCode.HEX_100_2), GENEX_ALLY_A(HexCode.HEX_200_2), HORUS_A(HexCode.HEX_3),
 	HORUS_BLACK_FLAME_DRAGON_A(HexCode.HEX_100_3), AMAZONESS_A(HexCode.HEX_4), ARCANA_FORCE_A(HexCode.HEX_5), DARK_WORLD_A(HexCode.HEX_6), ANCIENT_GEAR_A(HexCode.HEX_7),
 	HERO_A(HexCode.HEX_8), ELEMENTAL_HERO_A(HexCode.HEX_300_8), VISION_HERO_A(HexCode.HEX_500_8), EVIL_HERO_A(HexCode.HEX_600_8), MASKED_HERO_A(HexCode.HEX_A00_8),
@@ -169,10 +169,10 @@ public enum ArchitypeComponent implements CardComponentInterface.SubInterface {
 		}
 	}
 
-	private final CardComponent cardComponent = CardComponent.Architype;
+	private final CardComponent cardComponent = CardComponent.ARCHETYPE;
 	private final HexCode hexCode;
 
-	private ArchitypeComponent(HexCode hexCode) {
+	private ArchetypeComponent(HexCode hexCode) {
 		this.hexCode = hexCode;
 	}
 
