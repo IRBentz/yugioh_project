@@ -3,10 +3,10 @@ package com.card;
 import com.card.component.CardTypeComponent;
 import com.card.component.IconComponent;
 
-public abstract class StCard extends Card {
+public class SpellTrapCard extends Card {
 	private final IconComponent icon;
 
-	protected StCard(String name, int index, CardTypeComponent cardType, String lore, IconComponent stIcon) {
+	public SpellTrapCard(String name, int index, CardTypeComponent cardType, String lore, IconComponent stIcon) {
 		super(name, index, cardType, lore);
 		this.icon = stIcon;
 	}
