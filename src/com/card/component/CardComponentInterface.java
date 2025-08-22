@@ -9,21 +9,6 @@ public interface CardComponentInterface {
 	Logger logger = Logger.getLogger(CardComponentInterface.class.getName());
 	
 	/**
-	 * @deprecated 
-	 * @since 0.0.1
-	 * @param <T>
-	 * @param Class to cast to
-	 * @return Object this is called on cast to class T or null
-	 */
-	@Deprecated(since="0.0.1", forRemoval=true)
-	default <T> T castTo(Class<T> t) {
-		if (t.isInstance(this))
-			return t.cast(this);
-		new RuntimeException("Invalid cast from " + this.getClass().toString() + " to " + t.toString()).printStackTrace();
-		return null;
-	}
-	
-	/**
 	 * 
 	 * @return Object name this is called on in camel case
 	 */
