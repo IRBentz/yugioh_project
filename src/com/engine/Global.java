@@ -6,21 +6,13 @@ import java.util.List;
 import com.card.Card;
 import com.player.Player;
 
-public abstract class Global {
-	/**
-	 * @deprecated
-	 * @since 0.0.0
-	 */
-	@Deprecated(since = "0.0.1", forRemoval = true)
-	public static int back_ver;
-
-	public static final int PADDING = 15;
+public class Global {
 	private static List<Card> cardDb = new ArrayList<>();
 	private static List<int[]> falList = new ArrayList<>();
 	private static Player opponent = new Player();
 	private static Player player = new Player();
 	
-	private Global() {}
+	protected Global() throws UnsupportedOperationException {}
 	
 	/**
 	 * @return the card_db
