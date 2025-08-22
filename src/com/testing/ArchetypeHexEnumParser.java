@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 import com.card.component.ArchetypeComponent;
 
-public abstract class ArchetypeHexEnumParser {
+public class ArchetypeHexEnumParser {
 	public static int archetypeHexParseInt(ArchetypeComponent.HexCode hexCode) {
 		return Integer.parseInt(archetypeHexParseString(hexCode), 16);
 	}
@@ -18,5 +18,7 @@ public abstract class ArchetypeHexEnumParser {
 		for(ArchetypeComponent a : ArchetypeComponent.class.getEnumConstants())
 			Logger.getLogger(ArchetypeHexEnumParser.class.getName()).log(Level.INFO, () -> archetypeHexParseString(a.getHexCode()));
 	}
-
+	
+	protected ArchetypeHexEnumParser() {
+	}
 }

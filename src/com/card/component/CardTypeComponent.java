@@ -1,9 +1,9 @@
 package com.card.component;
 
 public enum CardTypeComponent implements CardComponentInterface.SubInterface {
-	Monster, Spell, Token, Trap;
+	MONSTER, SPELL, TOKEN, TRAP;
 
-	private final CardComponent cardComponent = CardComponent.CardType;
+	private final CardComponent cardComponent = CardComponent.CARD_TYPE;
 	
 	@Override
 	public String getComponentName() {

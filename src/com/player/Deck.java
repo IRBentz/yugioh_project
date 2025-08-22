@@ -1,47 +1,48 @@
 package com.player;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.card.Card;
 
 public class Deck {
-	private ArrayList<Card> extra_deck_list;
-	private ArrayList<Card> main_deck_list;
-	private ArrayList<Card> side_deck_list;
+	private ArrayList<Card> extraDeckList;
+	private ArrayList<Card> mainDeckList;
+	private ArrayList<Card> sideDeckList;
 	public Deck() {
-		this.main_deck_list = new ArrayList<>();
-		this.extra_deck_list = new ArrayList<>();
-		this.side_deck_list = new ArrayList<>();
+		this.mainDeckList = new ArrayList<>();
+		this.extraDeckList = new ArrayList<>();
+		this.sideDeckList = new ArrayList<>();
 	}
 	
-	public Deck(ArrayList<Card> main_deck_list) {
-		this.main_deck_list = main_deck_list;
-		this.extra_deck_list = new ArrayList<>();
-		this.side_deck_list = new ArrayList<>();
+	public Deck(List<Card> mainDeckList) {
+		this.mainDeckList = (ArrayList<Card>) mainDeckList;
+		this.extraDeckList = new ArrayList<>();
+		this.sideDeckList = new ArrayList<>();
 	}
 	
-	public Deck(ArrayList<Card> main, ArrayList<Card> extra) {	
-		this.main_deck_list = main;
-		this.extra_deck_list = extra;
-		this.side_deck_list = new ArrayList<>();
+	public Deck(List<Card> main, List<Card> extra) {	
+		this.mainDeckList = (ArrayList<Card>) main;
+		this.extraDeckList = (ArrayList<Card>) extra;
+		this.sideDeckList = new ArrayList<>();
 	}
 	
-	public Deck(ArrayList<Card> main, ArrayList<Card> extra, ArrayList<Card> side) {
-		this.main_deck_list = main;
-		this.extra_deck_list = extra;
-		this.side_deck_list = side;
+	public Deck(List<Card> main, List<Card> extra, List<Card> side) {
+		this.mainDeckList = (ArrayList<Card>) main;
+		this.extraDeckList = (ArrayList<Card>) extra;
+		this.sideDeckList = (ArrayList<Card>) side;
 	}
 	
-	public ArrayList<Card> getExtraDeckList() {
-		return this.extra_deck_list;
+	public List<Card> getExtraDeckList() {
+		return this.extraDeckList;
 	}
 	
-	public ArrayList<Card> getMainDeckList() {
-		return this.main_deck_list;
+	public List<Card> getMainDeckList() {
+		return this.mainDeckList;
 	}
 
-	public ArrayList<Card> getSideDeckList() {
-		return this.side_deck_list;
+	public List<Card> getSideDeckList() {
+		return this.sideDeckList;
 	}
 
 }

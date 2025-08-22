@@ -4,7 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.engine.Global;
-import com.engine.Utils;
+import com.io.Utils;
 
 /*
  * Black Metal Dragon
@@ -13,23 +13,23 @@ import com.engine.Utils;
  * If this card is sent from the field to the GY: You can add 1 "Red-Eyes" card from your Deck to your hand.
  * DARK DRAGON EFFECT ; 1 600 600
  */
-public class Black0Metal0Dragon implements Effect_Interface {
+public class Black0Metal0Dragon implements EffectInterface {
 	private static final Logger LOGGER = Logger.getLogger(Black0Metal0Dragon.class.getName());
 	@Override
-	public boolean[] check_conditions() {
+	public boolean[] checkConditions() {
 		return new boolean[] {};
 	}
 
-	private void effect1() {
+	private static void effect1() {
 		// Yet to be implemented.
 	}
 
-	private void effect2() {
+	private static void effect2() {
 		Global.getPlayer().getHand().addCard(Utils.searchByName(Global.getPlayer().getDeck(), "Red-Eyes"));
 	}
 
 	@Override
-	public void execute_effect(int num) {
+	public void executeEffect(int num) {
 		switch (num) {
 		case 1:
 			effect1();
@@ -46,7 +46,7 @@ public class Black0Metal0Dragon implements Effect_Interface {
 	}
 
 	@Override
-	public int get_num_effect() {
+	public int getNumEffect() {
 		return Black0Metal0Dragon.class.getMethods().length
 				- Black0Metal0Dragon.class.getSuperclass().getMethods().length - 1;
 	}

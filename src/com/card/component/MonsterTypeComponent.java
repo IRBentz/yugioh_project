@@ -1,11 +1,11 @@
 package com.card.component;
 
 public enum MonsterTypeComponent implements CardComponentInterface.SubInterface {
-	Aqua, Beast, Beast_Warrior, Creator_God, Cyberse, Dinosaur, Divine_Beast, Dragon, Fairy, Fiend, Fish, Illusion,
-	Insect, Machine, Plant, Psychic, Pyro, Reptile, Rock, Sea_Serpent, Spellcaster, Thunder, Warrior, Winged_Beast,
-	Wyrm, Zombie;
+	AQUA, BEAST, BEAST_WARRIOR, CREATOR_GOD, CYBERSE, DINOSAUR, DIVINE_BEAST, DRAGON, FAIRY, FIEND, FISH, ILLUSION,
+	INSECT, MACHINE, PLANT, PSYCHIC, PYRO, REPTILE, ROCK, SEA_SERPENT, SPELLCASTER, THUNDER, WARRIOR, WINGED_BEAST,
+	WYRM, ZOMBIE;
 
-	private final CardComponent cardComponent = CardComponent.MonsterType;
+	private final CardComponent cardComponent = CardComponent.MONSTER_TYPE;
 
 	@Override
 	public String getComponentName() {

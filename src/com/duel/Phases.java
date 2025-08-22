@@ -1,9 +1,9 @@
 package com.duel;
 
 public enum Phases {
-	Draw, Stand_by, Main, Battle, Main_2, End;
+	DRAW, STAND_BY, MAIN, BATTLE, MAIN_2, END;
 
-	public enum BattleSteps {
-		Start, Battle, Damage, End;
+	public enum Steps {
+		START, BATTLE, DAMAGE, END;
 	}
 }

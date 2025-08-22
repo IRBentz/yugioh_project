@@ -1,9 +1,9 @@
 package com.card.component;
 
 public enum TypeComponent implements CardComponentInterface.SubInterface {
-	Effect, Flip, Fusion, Gemini, Link, Normal, Pendulum, Ritual, Spirit, Synchro, Toon, Tuner, Union, Xyz;
+	EFFECT, FLIP, FUSION, GEMINI, LINK, NORMAL, PENDULUM, RITUAL, SPIRIT, SYNCHRO, TOON, TUNER, UNION, XYZ;
 	
-	private final CardComponent cardComponent = CardComponent.Type;
+	private final CardComponent cardComponent = CardComponent.TYPE;
 	
 	@Override
 	public String getComponentName() {

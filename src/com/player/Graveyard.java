@@ -1,6 +1,7 @@
 package com.player;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.card.Card;
 
@@ -11,15 +12,15 @@ public class Graveyard {
 		this.gy = new ArrayList<>();
 	}
 	
-	public Graveyard(ArrayList<Card> gy) {
-		this.gy = gy;
+	public Graveyard(List<Card> gy) {
+		this.gy = (ArrayList<Card>) gy;
 	}
 	
 	public void addCard(Card cardToAdd) {
 		this.gy.add(cardToAdd);
 	}
 	
-	public ArrayList<Card> getGy() {
+	public List<Card> getGy() {
 		return gy;
 	}
 }

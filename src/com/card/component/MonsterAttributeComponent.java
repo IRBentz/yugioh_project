@@ -1,9 +1,9 @@
 package com.card.component;
 
 public enum MonsterAttributeComponent implements CardComponentInterface.SubInterface {
-	Dark, Divine, Earth, Fire, Light, Water, Wind;
+	DARK, DIVINE, EARTH, FIRE, LIGHT, WATER, WIND;
 
-	private final CardComponent cardComponent = CardComponent.MonsterAttribute;
+	private final CardComponent cardComponent = CardComponent.MONSTER_ATTRIBUTE;
 	
 	@Override
 	public String getComponentName() {

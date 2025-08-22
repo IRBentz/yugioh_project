@@ -172,7 +172,7 @@ public enum ArchetypeComponent implements CardComponentInterface.SubInterface {
 	private final CardComponent cardComponent = CardComponent.ARCHETYPE;
 	private final HexCode hexCode;
 
-	private ArchetypeComponent(HexCode hexCode) {
+	ArchetypeComponent(HexCode hexCode) {
 		this.hexCode = hexCode;
 	}
 

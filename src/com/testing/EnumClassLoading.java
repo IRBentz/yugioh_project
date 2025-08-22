@@ -1,19 +1,20 @@
 package com.testing;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.card.component.CardComponent;
 
 public class EnumClassLoading {
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		CardComponent component = CardComponent.TYPE;
+		Logger logger = Logger.getLogger(EnumClassLoading.class.getName());
 		try {
-			Arrays.asList(Class.forName("com.card.component." + component.name() + "Component").getEnumConstants()).forEach(System.out::println);
-			Arrays.asList(Class.forName("com.card.component." + component.name() + "Component").getClass().getMethod("getEnumConstants").invoke(Object.class)).forEach(enums -> System.out.println(enums));
-		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException
-				| ClassNotFoundException e) {
-			e.printStackTrace();
+			Class<?> clazz = Class.forName("com.card.component." + component.getName() + "Component");
+			Arrays.asList(clazz.getEnumConstants()).forEach(componentEnum -> logger.log(Level.INFO, componentEnum.toString()));
+		} catch (SecurityException | ClassNotFoundException e) {
+			logger.log(Level.SEVERE, "An error occured", e);
 		}
 	}
 }

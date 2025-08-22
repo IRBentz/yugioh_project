@@ -8,7 +8,7 @@ public enum Json {
 
 	public final String jkvName;
 
-	private Json(String name) {
+	Json(String name) {
 		this.jkvName = name;
 	}
 }

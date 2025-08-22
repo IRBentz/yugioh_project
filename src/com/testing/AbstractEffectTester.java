@@ -6,7 +6,7 @@ import java.util.Arrays;
 import com.card.component.ArchetypeComponent;
 import com.engine.Backendv4;
 import com.engine.Global;
-import com.engine.Utils;
+import com.io.Utils;
 
 public abstract class AbstractEffectTester {
 	public static void main(String[] args) {

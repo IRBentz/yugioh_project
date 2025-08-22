@@ -7,7 +7,7 @@ public enum PathAndNameEnums {
 
 		public final String nameWithExtension;
 
-		private FileName(String name) {
+		FileName(String name) {
 			this.nameWithExtension = name;
 		}
 	}
@@ -17,7 +17,7 @@ public enum PathAndNameEnums {
 
 		public final String path;
 
-		private FolderPath(String path) {
+		FolderPath(String path) {
 			this.path = path;
 		}
 	}
@@ -25,7 +25,7 @@ public enum PathAndNameEnums {
 	public enum ClassPath {
 		EFFECT_DB("com.db.effect_db."), COMPONENT("com.card.component.");
 		public final String path;
-		private ClassPath(String path) {
+		ClassPath(String path) {
 			this.path = path;
 		}
 	}

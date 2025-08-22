@@ -1,25 +1,27 @@
 package com.player;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import com.card.Card;
 
 
 public class Hand {
-	private ArrayList<Card> hand;
+	private ArrayList<Card> cardsInZone;
 	
 	public Hand() {
-		this.hand = new ArrayList<>();
+		this.cardsInZone = new ArrayList<>();
 	}
 	
-	public Hand(ArrayList<Card> hand) {
-		this.hand = hand;
+	public Hand(List<Card> cardsInZone) {
+		this.cardsInZone = (ArrayList<Card>) cardsInZone;
 	}
 	
 	public void addCard(Card cardToAdd) {
-		this.hand.add(cardToAdd);
+		this.cardsInZone.add(cardToAdd);
 	}
 	
-	public ArrayList<Card> getHand() {
-		return hand;
+	public List<Card> getHand() {
+		return cardsInZone;
 	}
 }

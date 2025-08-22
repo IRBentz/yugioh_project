@@ -1,11 +1,9 @@
 package com.card.component;
 
-import static com.card.component.CardComponent.LinkArrow;
-
 public enum LinkArrowComponent implements CardComponentInterface.SubInterface {
-	Down, DownLeft, DownRight, Left, Right, Up, UpLeft, UpRight;
+	DOWN, DOWN_LEFT, DOWN_RIGHT, LEFT, RIGHT, UP, UP_LEFT, UP_RIGHT;
 
-	private final CardComponent cardComponent = LinkArrow;
+	private final CardComponent cardComponent = CardComponent.LINK_ARROW;
 
 	@Override
 	public String getComponentName() {

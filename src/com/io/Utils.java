@@ -1,19 +1,23 @@
-package com.engine;
+package com.io;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.card.Card;
-import com.card.component.ArchitypeComponent;
+import com.card.component.ArchetypeComponent;
+import com.engine.Global;
 import com.engine.PathAndNameEnums.ClassPath;
 import com.player.Deck;
 
-public abstract class Utils {
+public class Utils {
 	private static Scanner kb = new Scanner(System.in);
+	private static Logger logger = Logger.getLogger(Utils.class.getName());
 	
-	private Utils() {}
+	protected Utils() {}
 	
 	public static String askUser(String text) {
 		System.out.println(text);
@@ -53,7 +57,7 @@ public abstract class Utils {
 							.newInstance(), effectNum);
 		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException
 				| ClassNotFoundException | IllegalArgumentException | InstantiationException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, "An exception occured.", e);
 		}
 	}
 
@@ -65,11 +69,11 @@ public abstract class Utils {
 		return null;
 	}
 
-	public static Card searchByArchitype(Deck deck, ArchitypeComponent filter) {
+	public static Card searchByArchetype(Deck deck, ArchetypeComponent filter) {
 		ArrayList<Card> matchedCards = new ArrayList<>();
 		deck.getMainDeckList()
 				.forEach(potentialCard -> Arrays.asList(potentialCard.getArchitype()).forEach(architype -> {
-					if (architype.equals(filter))
+					if (architype == filter)
 						matchedCards.add(potentialCard);
 				}));
 
