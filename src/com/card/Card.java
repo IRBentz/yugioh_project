@@ -2,11 +2,11 @@ package com.card;
 
 import java.util.List;
 
-import com.card.component.ArchitypeComponent;
+import com.card.component.ArchetypeComponent;
 import com.card.component.CardTypeComponent;
 
-public abstract class Card {
-	private ArchitypeComponent[] architype;
+public class Card {
+	private ArchetypeComponent[] archetype;
 	private final int cardIndex;
 	private final String name;
 	private final String lore;
@@ -20,8 +20,8 @@ public abstract class Card {
 		this.lore = lore;
 	}
 	
-	public ArchitypeComponent[] getArchitype() {
-		return architype;
+	public ArchetypeComponent[] getArchitype() {
+		return archetype;
 	}
 	
 	public Class<?> getBoundClass() {
@@ -44,8 +44,8 @@ public abstract class Card {
 		return type;
 	}
 
-	public void setArchitype(List<ArchitypeComponent> architype) {
-		this.architype = architype.toArray(ArchitypeComponent[]::new);
+	public void setArchitype(List<ArchetypeComponent> archetype) {
+		this.archetype = archetype.toArray(ArchetypeComponent[]::new);
 	}
 	
 	public void setBoundClass(Class<?> clazz) {
