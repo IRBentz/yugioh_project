@@ -9,17 +9,29 @@ import com.card.component.TypeComponent;
 public class MonsterCard extends Card {
 	public class ExtraAttributes {
 		public class LinkAttributes {
-			public final LinkArrowComponent[] linkArrows;
-			public final int linkRating;
+			private final LinkArrowComponent[] linkArrows;
+			private final int linkRating;
 
+			/**
+			 *
+			 * @param linkArrows
+			 */
 			public LinkAttributes(LinkArrowComponent[] linkArrows) {
 				this.linkArrows = linkArrows;
-				this.linkRating = linkArrows.length;
+				linkRating = linkArrows.length;
+			}
+
+			public LinkArrowComponent[] getLinkArrows() {
+				return linkArrows;
+			}
+
+			public int getLinkRating() {
+				return linkRating;
 			}
 
 			@Override
 			public String toString() {
-				StringBuilder sb = new StringBuilder();
+				var sb = new StringBuilder();
 				for (LinkArrowComponent linkArrow : linkArrows) {
 					sb.append(linkArrow.toString()).append(" ");
 				}
@@ -28,10 +40,18 @@ public class MonsterCard extends Card {
 		}
 
 		public class XyzAttributes {
-			public final int rank;
+			private final int rank;
 
+			/**
+			 *
+			 * @param rank
+			 */
 			public XyzAttributes(int rank) {
 				this.rank = rank;
+			}
+
+			public int getRank() {
+				return rank;
 			}
 
 			@Override
@@ -40,10 +60,18 @@ public class MonsterCard extends Card {
 			}
 		}
 
-		public final String summonReq;
+		private final String summonReq;
 
+		/**
+		 *
+		 * @param summonReq
+		 */
 		public ExtraAttributes(String summonReq) {
 			this.summonReq = summonReq;
+		}
+
+		public String getSummonReq() {
+			return summonReq;
 		}
 
 		@Override
@@ -57,15 +85,21 @@ public class MonsterCard extends Card {
 		public final MonsterTypeComponent mType;
 		public final TypeComponent[] types;
 
-		public MonComBlock(MonsterAttributeComponent mA, MonsterTypeComponent mT, TypeComponent[] types) {
-			this.mAttribute = mA;
-			this.mType = mT;
+		/**
+		 *
+		 * @param monsterAttribute
+		 * @param monsterType
+		 * @param types
+		 */
+		public MonComBlock(MonsterAttributeComponent monsterAttribute, MonsterTypeComponent monsterType, TypeComponent[] types) {
+			mAttribute = monsterAttribute;
+			mType = monsterType;
 			this.types = types;
 		}
 
 		@Override
 		public String toString() {
-			StringBuilder sb = new StringBuilder();
+			var sb = new StringBuilder();
 			for (TypeComponent type : getTypes()) {
 				sb.append(type.toString()).append(' ');
 			}
@@ -77,6 +111,11 @@ public class MonsterCard extends Card {
 		public final int pendLevel;
 		public final String pendLore;
 
+		/**
+		 *
+		 * @param pendLore
+		 * @param pendLevel
+		 */
 		public PendAttributes(String pendLore, int pendLevel) {
 			this.pendLevel = pendLevel;
 			this.pendLore = pendLore;
@@ -97,6 +136,15 @@ public class MonsterCard extends Card {
 	private ExtraAttributes.XyzAttributes xyzAttributes;
 	private ExtraAttributes.LinkAttributes linkAttributes;
 
+	/**
+	 *
+	 * @param name
+	 * @param index
+	 * @param lore
+	 * @param level
+	 * @param attack
+	 * @param defense
+	 */
 	public MonsterCard(String name, int index, String lore, int level, int attack, int defense) {
 		super(name, index, CardTypeComponent.MONSTER, lore);
 		this.level = level;
@@ -104,82 +152,139 @@ public class MonsterCard extends Card {
 		this.defense = defense;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public int getAttack() {
 		return attack;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public MonsterAttributeComponent getAttribute() {
 		return monComBlock.mAttribute;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public int getDefense() {
 		return defense;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public ExtraAttributes getExtraAttributes() {
-		return this.extraAttributes;
+		return extraAttributes;
 	}
 
+	/**
+	 * @return
+	 */
 	public int getLevel() {
 		return level;
 	}
 
+	/**
+	 * @return
+	 */
 	public ExtraAttributes.LinkAttributes getLinkAttributes() {
-		return this.linkAttributes;
+		return linkAttributes;
 	}
 
+	/**
+	 * @return
+	 */
 	public MonComBlock getMonComBlock() {
-		return this.monComBlock;
+		return monComBlock;
 	}
 
+	/**
+	 * @return
+	 */
 	public MonsterTypeComponent getMonType() {
 		return monComBlock.mType;
 	}
 
+	/**
+	 * @return
+	 */
 	public PendAttributes getPendulumAttributes() {
-		return this.pendulumAttributes;
+		return pendulumAttributes;
 	}
 
+	/**
+	 * @return
+	 */
 	public TypeComponent[] getTypes() {
 		return monComBlock.types;
 	}
 
+	/**
+	 * @return
+	 */
 	public ExtraAttributes.XyzAttributes getXyzAttributes() {
-		return this.xyzAttributes;
+		return xyzAttributes;
 	}
 
+	/**
+	 * @param extraAttributes
+	 */
 	public void setExtraAttributes(ExtraAttributes extraAttributes) {
 		this.extraAttributes = extraAttributes;
 	}
 
+	/**
+	 * @param linkAttributes
+	 */
 	public void setLinkAttributes(ExtraAttributes.LinkAttributes linkAttributes) {
 		this.linkAttributes = linkAttributes;
 	}
 
+	/**
+	 * @param monComBlock
+	 */
 	public void setMonComBlock(MonComBlock monComBlock) {
 		this.monComBlock = monComBlock;
 	}
 
+	/**
+	 * @param pendulumAttributes
+	 */
 	public void setPendAttributes(PendAttributes pendulumAttributes) {
 		this.pendulumAttributes = pendulumAttributes;
 	}
 
+	/**
+	 * @param xyzAttributes
+	 */
 	public void setXyzAttributes(ExtraAttributes.XyzAttributes xyzAttributes) {
 		this.xyzAttributes = xyzAttributes;
 	}
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder(super.toString() + monComBlock.toString() + " | " + level + " | " + attack + " | " + defense);
-		if (pendulumAttributes != null)
+		var sb = new StringBuilder(
+				super.toString() + monComBlock.toString() + " | " + level + " | " + attack + " | " + defense);
+		if (pendulumAttributes != null) {
 			sb.append(pendulumAttributes.toString());
-		if (extraAttributes != null)
+		}
+		if (extraAttributes != null) {
 			sb.append(extraAttributes.toString());
-		if (xyzAttributes != null)
+		}
+		if (xyzAttributes != null) {
 			sb.append(xyzAttributes.toString());
-		if (linkAttributes != null)
+		}
+		if (linkAttributes != null) {
 			sb.append(linkAttributes.toString());
-		
+		}
+
 		return sb.toString();
 	}
 }

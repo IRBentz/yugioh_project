@@ -16,19 +16,19 @@ public class DebugWindow extends JFrame {
 
 	private static final long serialVersionUID = 6720686700487402244L;
 
+	private static final String PRINT_IDEN = "%PLN%";
 	private JPanel mainPanel = new JPanel(new GridLayout());
 	private JScrollPane mainScroll = new JScrollPane(mainPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 			ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 	private String mainText = "";
 	private JTextArea mainTextArea = new JTextArea(1, 1);
-	private static final String PRINT_IDEN = "%PLN%";
 
 	public DebugWindow() {
 		setTitle("Output Window");
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		final int width = 1200;
-		final int height = 800;
-		Dimension windowDim = new Dimension(width, height);
+		final var width = 1200;
+		final var height = 800;
+		var windowDim = new Dimension(width, height);
 		setPreferredSize(windowDim);
 		setMinimumSize(windowDim);
 		setMaximumSize(windowDim);
@@ -52,10 +52,12 @@ public class DebugWindow extends JFrame {
 	}
 
 	public void print(String newText, boolean printToSystem) {
-		if (newText.substring(0, PRINT_IDEN.length()).equals(PRINT_IDEN))
+		if (newText.substring(0, PRINT_IDEN.length()).equals(PRINT_IDEN)) {
 			newText = newText.substring(PRINT_IDEN.length());
-		if (printToSystem)
+		}
+		if (printToSystem) {
 			System.out.print(newText);
+		}
 
 		mainText += newText;
 		mainTextArea.setText(mainText);

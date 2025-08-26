@@ -17,7 +17,7 @@ import com.card.SpellTrapCard;
 import com.engine.PathAndNameEnums.ClassPath;
 import com.engine.PathAndNameEnums.FileName;
 import com.engine.PathAndNameEnums.FolderPath;
-import com.io.JSONCardObject;
+import com.wrapper.JSONCardObject;
 
 public class Backendv4 {
 	private static Logger logger = Logger.getLogger(Backendv4.class.toString());
@@ -27,7 +27,7 @@ public class Backendv4 {
 			for (Card card : Global.getCardDb()) {
 				for (Path path : (Iterable<Path>) Files.list(
 						FileSystems.getDefault().getPath(FolderPath.COM.path + FolderPath.EFFECT_DB.path))::iterator) {
-					if (path.getFileName().toString().replace(".java", "").replace("0", " ").equals(card.getName())) {
+					if (path.getFileName().toString().replace(".java", "").equals(card.getName())) {
 						card.setBoundClass(
 								Class.forName(ClassPath.EFFECT_DB.path + configurePathToClassName(path.getFileName())));
 					}
@@ -40,7 +40,7 @@ public class Backendv4 {
 
 	public static void buildDB() {
 		JSONArray jsonArray;
-		Path filePath = FileSystems.getDefault().getPath(FolderPath.COM.path + FolderPath.JSON.path);
+		var filePath = FileSystems.getDefault().getPath(FolderPath.COM.path + FolderPath.JSON.path);
 		logger.log(Level.FINE, () -> "Successfully found designated file path: \"" + filePath + "\"");
 		try {
 			jsonArray = new JSONArray(
@@ -55,41 +55,14 @@ public class Backendv4 {
 			jsonArray = new JSONArray();
 		}
 		for (Object cardGroup : jsonArray) {
-			JSONObject jCardGroupObject = (JSONObject) cardGroup;
+			var jCardGroupObject = (JSONObject) cardGroup;
 			logger.log(Level.FINE, () -> jCardGroupObject.getString(Json.CARD_TYPE.jkvName));
 			for (Object card : jCardGroupObject.getJSONArray(Json.CARDS.jkvName)) {
-				JSONCardObject jCardObject = new JSONCardObject((JSONObject) card);
-				Card builtCard = null;
-				switch (jCardGroupObject.getString(Json.CARD_TYPE.jkvName)) {
-				case "monster":
-					builtCard = buildMonster(jCardObject);
-					break;
-				case "pendulumMonster":
-					builtCard = buildPendulumMonster(jCardObject);
-					break;
-				case "fusionMonster", "synchroMonster":
-					builtCard = buildExtraMonster(jCardObject);
-					break;
-				case "pendulumFusionMonster", "pendulumSynchroMonster":
-					builtCard = buildPendulumExtraMonster(jCardObject);
-					break;
-				case "xyzMonster":
-					builtCard = buildXyzMonster(jCardObject);
-					break;
-				case "pendulumXyzMonster":
-					builtCard = buildPendulumXyzMonster(jCardObject);
-					break;
-				case "linkMonster":
-					builtCard = buildLinkMonster(jCardObject);
-					break;
-				case "spell", "trap":
-					builtCard = buildSpellTrap(jCardObject);
-					break;
-				default:
-					logger.log(Level.FINE, () -> "Skipped: " + jCardGroupObject.getString(Json.CARD_TYPE.jkvName));
-				}
-				if (builtCard != null)
+				var jCardObject = new JSONCardObject((JSONObject) card);
+				var builtCard = getBuiltCard(jCardGroupObject, jCardObject);
+				if (builtCard != null) {
 					Global.getCardDb().add(builtCard);
+				}
 			}
 		}
 		bindCardEffects();
@@ -99,30 +72,8 @@ public class Backendv4 {
 	 *
 	 * @param jCardObject
 	 */
-	private static MonsterCard buildPendulumXyzMonster(JSONCardObject jCardObject) {
-		MonsterCard monCard = buildXyzMonster(jCardObject);
-		monCard.setPendAttributes(monCard.new PendAttributes(jCardObject.getString(Json.PENDULUM_LORE.jkvName),
-				jCardObject.getInt(Json.PENDULUM_LEVEL.jkvName)));
-		return monCard;
-	}
-
-	/**
-	 *
-	 * @param jCardObject
-	 */
-	private static MonsterCard buildPendulumExtraMonster(JSONCardObject jCardObject) {
-		MonsterCard monCard = buildExtraMonster(jCardObject);
-		monCard.setPendAttributes(monCard.new PendAttributes(jCardObject.getString(Json.PENDULUM_LORE.jkvName),
-				jCardObject.getInt(Json.PENDULUM_LEVEL.jkvName)));
-		return monCard;
-	}
-
-	/**
-	 *
-	 * @param jCardObject
-	 */
 	private static MonsterCard buildExtraMonster(JSONCardObject jCardObject) {
-		MonsterCard monCard = buildMonster(jCardObject);
+		var monCard = buildMonster(jCardObject);
 		monCard.setExtraAttributes(monCard.new ExtraAttributes(jCardObject.getString(Json.SUMMON_REQUIREMENT.jkvName)));
 		return monCard;
 	}
@@ -132,10 +83,9 @@ public class Backendv4 {
 	 * @param jCardObject
 	 */
 	private static MonsterCard buildLinkMonster(JSONCardObject jCardObject) {
-		MonsterCard monCard = buildExtraMonster(jCardObject);
-		monCard.setLinkAttributes(
-				monCard.getExtraAttributes().new LinkAttributes(
-						jCardObject.getLinkArrowArray(Json.LINK_ARROW.jkvName)));
+		var monCard = buildExtraMonster(jCardObject);
+		monCard.setLinkAttributes(monCard.getExtraAttributes().new LinkAttributes(
+				jCardObject.getLinkArrowArray(Json.LINK_ARROW.jkvName)));
 		return monCard;
 	}
 
@@ -144,9 +94,10 @@ public class Backendv4 {
 	 * @param jCardObject
 	 */
 	private static MonsterCard buildMonster(JSONCardObject jCardObject) {
-		MonsterCard monCard = new MonsterCard(jCardObject.getString(Json.NAME.jkvName), jCardObject.getInt(Json.INDEX.jkvName),
-				jCardObject.getString(Json.LORE.jkvName), jCardObject.getInt(Json.LEVEL.jkvName),
-				jCardObject.getInt(Json.ATTACK.jkvName), jCardObject.getInt(Json.DEFENSE.jkvName));
+		var monCard = new MonsterCard(jCardObject.getString(Json.NAME.jkvName),
+				jCardObject.getInt(Json.INDEX.jkvName), jCardObject.getString(Json.LORE.jkvName),
+				jCardObject.getInt(Json.LEVEL.jkvName), jCardObject.getInt(Json.ATTACK.jkvName),
+				jCardObject.getInt(Json.DEFENSE.jkvName));
 		monCard.setMonComBlock(
 				monCard.new MonComBlock(jCardObject.getMonsterAttributeComponent(Json.MONSTER_ATTRIBUTE.jkvName),
 						jCardObject.getMonsterTypeComponent(Json.MONSTER_TYPE.jkvName),
@@ -157,11 +108,40 @@ public class Backendv4 {
 	/**
 	 *
 	 * @param jCardObject
+	 * @param monCard
 	 */
-	private static MonsterCard buildPendulumMonster(JSONCardObject jCardObject) {
-		MonsterCard monCard = buildMonster(jCardObject);
+	private static void buildPendulumAttributes(JSONCardObject jCardObject, MonsterCard monCard) {
 		monCard.setPendAttributes(monCard.new PendAttributes(jCardObject.getString(Json.PENDULUM_LORE.jkvName),
 				jCardObject.getInt(Json.PENDULUM_LEVEL.jkvName)));
+	}
+
+	/**
+	 *
+	 * @param jCardObject
+	 */
+	private static MonsterCard buildPendulumExtraMonster(JSONCardObject jCardObject) {
+		var monCard = buildExtraMonster(jCardObject);
+		buildPendulumAttributes(jCardObject, monCard);
+		return monCard;
+	}
+
+	/**
+	 *
+	 * @param jCardObject
+	 */
+	private static MonsterCard buildPendulumMonster(JSONCardObject jCardObject) {
+		var monCard = buildMonster(jCardObject);
+		buildPendulumAttributes(jCardObject, monCard);
+		return monCard;
+	}
+
+	/**
+	 *
+	 * @param jCardObject
+	 */
+	private static MonsterCard buildPendulumXyzMonster(JSONCardObject jCardObject) {
+		var monCard = buildXyzMonster(jCardObject);
+		buildPendulumAttributes(jCardObject, monCard);
 		return monCard;
 	}
 
@@ -171,7 +151,8 @@ public class Backendv4 {
 	 */
 	private static SpellTrapCard buildSpellTrap(JSONCardObject jCardObject) {
 		return new SpellTrapCard(jCardObject.getString(Json.NAME.jkvName), jCardObject.getInt(Json.INDEX.jkvName),
-				jCardObject.getCardTypeComponent(Json.CARD_TYPE.jkvName), jCardObject.getString(Json.LORE.jkvName), jCardObject.getIconComponent(Json.ICON.jkvName));
+				jCardObject.getCardTypeComponent(Json.CARD_TYPE.jkvName.toUpperCase()),
+				jCardObject.getString(Json.LORE.jkvName), jCardObject.getIconComponent(Json.ICON.jkvName));
 	}
 
 	/**
@@ -179,10 +160,8 @@ public class Backendv4 {
 	 * @param jCardObject
 	 */
 	private static MonsterCard buildXyzMonster(JSONCardObject jCardObject) {
-		MonsterCard monCard = buildExtraMonster(jCardObject);
-		monCard.setXyzAttributes(
-				monCard.getExtraAttributes().new XyzAttributes(
-						jCardObject.getInt(Json.RANK.jkvName)));
+		var monCard = buildExtraMonster(jCardObject);
+		monCard.setXyzAttributes(monCard.getExtraAttributes().new XyzAttributes(jCardObject.getInt(Json.RANK.jkvName)));
 		return monCard;
 	}
 
@@ -192,9 +171,10 @@ public class Backendv4 {
 	 * @return concatenated String representation of list
 	 */
 	public static String concatStringArray(List<String> list) {
-		StringBuilder string = new StringBuilder();
-		for (String s : list)
+		var string = new StringBuilder();
+		for (String s : list) {
 			string.append(s);
+		}
 		return string.toString();
 	}
 
@@ -205,6 +185,26 @@ public class Backendv4 {
 	 */
 	public static String configurePathToClassName(Path pathToConfigure) {
 		return pathToConfigure.toString().replace(".java", "");
+	}
+
+	/**
+	 * 
+	 * @param jCardGroupObject
+	 * @param jCardObject
+	 * @return built <Card>
+	 */
+	private static Card getBuiltCard(JSONObject jCardGroupObject, JSONCardObject jCardObject) {
+		return switch (jCardGroupObject.getString(Json.CARD_TYPE.jkvName)) {
+		case "monster" -> buildMonster(jCardObject);
+		case "pendulumMonster" -> buildPendulumMonster(jCardObject);
+		case "fusionMonster", "synchroMonster" -> buildExtraMonster(jCardObject);
+		case "pendulumFusionMonster", "pendulumSynchroMonster" -> buildPendulumExtraMonster(jCardObject);
+		case "xyzMonster" -> buildXyzMonster(jCardObject);
+		case "pendulumXyzMonster" -> buildPendulumXyzMonster(jCardObject);
+		case "linkMonster" -> buildLinkMonster(jCardObject);
+		case "spell", "trap" -> buildSpellTrap(jCardObject);
+		default -> null;
+		};
 	}
 
 	protected Backendv4() {

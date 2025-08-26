@@ -9,6 +9,7 @@ module yugioh {
 	exports com.player;
 	exports com.testing;
 	exports com.ui;
+	exports com.wrapper;
 	
 	requires transitive org.json;
 	requires transitive java.desktop;

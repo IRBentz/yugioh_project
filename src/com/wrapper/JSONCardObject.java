@@ -1,4 +1,4 @@
-package com.io;
+package com.wrapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +23,10 @@ public class JSONCardObject {
 	private static final String AN_EXCEPTION_OCCURED = "An Exception Occured";
 	static Logger logger = Logger.getLogger(JSONCardObject.class.getName());
 
+	/**
+	 * @param inputString
+	 * @return
+	 */
 	static CardComponentInterface stringToCardComponentInterface(String inputString) {
 		try {
 			for (CardComponent component : CardComponent.values())
@@ -31,12 +35,16 @@ public class JSONCardObject {
 					if (subcomponent.match(inputString) != null)
 						return subcomponent.match(inputString);
 		} catch (SecurityException | ClassNotFoundException e) {
-			logger.log(Level.SEVERE, "An exception occured", e);
+			logger.log(Level.SEVERE, AN_EXCEPTION_OCCURED, e);
 		}
 		logger.log(Level.SEVERE, () -> "Unmatched string: " + inputString);
 		return null;
 	}
 
+	/**
+	 * @param jsonArray
+	 * @return
+	 */
 	static List<CardComponentInterface> stringToCardComponentInterfaceArrayList(JSONArray jsonArray) {
 		ArrayList<CardComponentInterface> componentList = new ArrayList<>();
 		jsonArray.forEach(json -> componentList.add(stringToCardComponentInterface((String) json)));
@@ -45,10 +53,17 @@ public class JSONCardObject {
 
 	JSONObject jsonObject;
 
+	/**
+	 * @param jsonObject
+	 */
 	public JSONCardObject(JSONObject jsonObject) {
 		this.jsonObject = jsonObject;
 	}
 
+	/**
+	 * @param input
+	 * @return
+	 */
 	public CardTypeComponent getCardTypeComponent(String input) {
 		try {
 			return (CardTypeComponent) stringToCardComponentInterface(jsonObject.getString(input));
