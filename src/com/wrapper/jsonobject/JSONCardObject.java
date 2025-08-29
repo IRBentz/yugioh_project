@@ -1,4 +1,4 @@
-package com.wrapper;
+package com.wrapper.jsonobject;
 
 import java.util.ArrayList;
 import java.util.List;

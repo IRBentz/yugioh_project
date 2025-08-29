@@ -17,7 +17,7 @@ import com.card.SpellTrapCard;
 import com.engine.PathAndNameEnums.ClassPath;
 import com.engine.PathAndNameEnums.FileName;
 import com.engine.PathAndNameEnums.FolderPath;
-import com.wrapper.JSONCardObject;
+import com.wrapper.jsonobject.JSONCardObject;
 
 public class Backendv4 {
 	private static Logger logger = Logger.getLogger(Backendv4.class.toString());

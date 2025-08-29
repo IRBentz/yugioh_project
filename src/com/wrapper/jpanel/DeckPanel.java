@@ -1,4 +1,4 @@
-package com.wrapper;
+package com.wrapper.jpanel;
 
 import javax.swing.JPanel;
 
