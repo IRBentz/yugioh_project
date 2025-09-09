@@ -46,18 +46,3 @@ Lore
 Attack and Defense
 	Self Explanatory
 	
-Method inputs:	
-monCard
-String name, int index, cardType cardType, monAttribute mon_attri, monType mon_type, Type[] types, String lore, int level_rank, int attack, int defense
-
-penMonCard
-String name, int index, cardType cardType, monAttribute mon_attri, monType mon_type, Type[] types, String pend_lore, String lore, int level_rank, int pend_level, int attack, int defense
-
-linkMonCard
-String name, int index, cardType cardType, monAttribute mon_attri, monType mon_type, Type[] types, String lore, int link_rating, int attack, int defense, link_arrow[] link_arrows
-
-spellCard
-String name, int index, cardType cardType, String lore, Icon st_icon
-
-trapCrad
-String name, int index, cardType cardType, String lore, Icon st_icon
