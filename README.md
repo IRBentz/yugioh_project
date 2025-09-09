@@ -1,2 +1,2 @@
 # Yu-Gi-Oh Project
-New Repository to clear out issues with the previous Repository. (Note to self: do NOT File Manager Rename the local Git Repository, it breaks.)
+Repo containing work-in-progress code for a basic Yu-Gi-Oh Trading Card Game Simulator built on the Java Programming lanugauge.
