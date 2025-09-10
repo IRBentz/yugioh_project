@@ -12,5 +12,7 @@ public class YgoRunner {
 		Logging.setupLogging();
 		Backendv4.buildDB();
 		Logger.getGlobal().log(Level.FINE, Global.getCardDb()::toString);
+		
+		System.out.println("Done");
 	}
 }
