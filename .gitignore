@@ -34,3 +34,4 @@ target/
 
 # Log Files #
 *.log
+*Log*.json
