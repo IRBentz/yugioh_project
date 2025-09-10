@@ -13,7 +13,6 @@ public class Card {
 	private final CardTypeComponent type;
 	private Class<?> boundEffectClass;
 
-	
 	/**
 	 * @param name
 	 * @param index
@@ -22,18 +21,18 @@ public class Card {
 	 */
 	protected Card(String name, int index, CardTypeComponent type, String lore) {
 		this.name = name;
-		this.cardIndex = index;
+		cardIndex = index;
 		this.type = type;
 		this.lore = lore;
 	}
-	
+
 	/**
 	 * @return
 	 */
 	public ArchetypeComponent[] getArchitype() {
 		return archetype;
 	}
-	
+
 	/**
 	 * @return
 	 */
@@ -75,17 +74,16 @@ public class Card {
 	public void setArchitype(List<ArchetypeComponent> archetype) {
 		this.archetype = archetype.toArray(ArchetypeComponent[]::new);
 	}
-	
+
 	/**
 	 * @param clazz
 	 */
 	public void setBoundClass(Class<?> clazz) {
-		this.boundEffectClass = clazz;
+		boundEffectClass = clazz;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("%08d", cardIndex) + " | " + name + " | " + type + " | "
-				+ lore;
+		return String.format("%08d", cardIndex) + " | " + name + " | " + type + " | " + lore;
 	}
 }

@@ -8,7 +8,7 @@ public class SpellTrapCard extends Card {
 
 	public SpellTrapCard(String name, int index, CardTypeComponent cardType, String lore, IconComponent stIcon) {
 		super(name, index, cardType, lore);
-		this.icon = stIcon;
+		icon = stIcon;
 	}
 
 	public IconComponent returnIcon() {

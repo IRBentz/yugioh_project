@@ -68,7 +68,7 @@ public class MainWindow {
 		gridBagConstExtraMonsterZoneRight.gridy = 7;
 		fieldPanel.add(extraMonsterZoneRight, gridBagConstExtraMonsterZoneRight);
 	}
-	
+
 	/**
 	 * Initialize the contents of the mainFrame.
 	 */

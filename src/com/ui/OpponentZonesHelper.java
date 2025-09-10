@@ -47,38 +47,7 @@ public class OpponentZonesHelper {
 	GridBagConstraints gridBagConstOpponentSpellZoneLeftMiddle = new GridBagConstraints();
 	GridBagConstraints gridBagConstOpponentSpellZoneMiddle = new GridBagConstraints();
 	GridBagConstraints gridBagConstOpponentSpellZoneMiddleRight = new GridBagConstraints();
-	
-	void initOpponentZones(MainWindow mainWindow) {
-		opponentHandPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-		opponentHandPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		gridBagConstOpponentHandPane.gridwidth = 7;
-		gridBagConstOpponentHandPane.insets = new Insets(0, 0, 5, 5);
-		gridBagConstOpponentHandPane.fill = GridBagConstraints.BOTH;
-		gridBagConstOpponentHandPane.gridx = 1;
-		gridBagConstOpponentHandPane.gridy = 0;
-		mainWindow.fieldPanel.add(opponentHandPane, gridBagConstOpponentHandPane);
 
-		initOpponentSpellZones(mainWindow);
-
-		initOpponentDecks(mainWindow);
-
-		gridBagConstOpponentGraveyard.fill = GridBagConstraints.BOTH;
-		gridBagConstOpponentGraveyard.insets = new Insets(0, 0, 5, 5);
-		gridBagConstOpponentGraveyard.gridheight = 2;
-		gridBagConstOpponentGraveyard.gridx = 1;
-		gridBagConstOpponentGraveyard.gridy = 4;
-		mainWindow.fieldPanel.add(opponentGraveyard, gridBagConstOpponentGraveyard);
-
-		initOpponetMainMonsterZone(mainWindow);
-
-		gridBagConstOpponentBanishment.fill = GridBagConstraints.BOTH;
-		gridBagConstOpponentBanishment.insets = new Insets(0, 0, 5, 5);
-		gridBagConstOpponentBanishment.gridheight = 2;
-		gridBagConstOpponentBanishment.gridx = 1;
-		gridBagConstOpponentBanishment.gridy = 6;
-		mainWindow.fieldPanel.add(opponentBanishment, gridBagConstOpponentBanishment);
-	}
-	
 	void initOpponentDecks(MainWindow mainWindow) {
 		gridBagConstOpponentDeck.gridheight = 2;
 		gridBagConstOpponentDeck.fill = GridBagConstraints.BOTH;
@@ -137,6 +106,37 @@ public class OpponentZonesHelper {
 		gridBagConstOpponentFieldSpellZone.gridx = 7;
 		gridBagConstOpponentFieldSpellZone.gridy = 4;
 		mainWindow.fieldPanel.add(opponentFieldSpellZone, gridBagConstOpponentFieldSpellZone);
+	}
+
+	void initOpponentZones(MainWindow mainWindow) {
+		opponentHandPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+		opponentHandPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		gridBagConstOpponentHandPane.gridwidth = 7;
+		gridBagConstOpponentHandPane.insets = new Insets(0, 0, 5, 5);
+		gridBagConstOpponentHandPane.fill = GridBagConstraints.BOTH;
+		gridBagConstOpponentHandPane.gridx = 1;
+		gridBagConstOpponentHandPane.gridy = 0;
+		mainWindow.fieldPanel.add(opponentHandPane, gridBagConstOpponentHandPane);
+
+		initOpponentSpellZones(mainWindow);
+
+		initOpponentDecks(mainWindow);
+
+		gridBagConstOpponentGraveyard.fill = GridBagConstraints.BOTH;
+		gridBagConstOpponentGraveyard.insets = new Insets(0, 0, 5, 5);
+		gridBagConstOpponentGraveyard.gridheight = 2;
+		gridBagConstOpponentGraveyard.gridx = 1;
+		gridBagConstOpponentGraveyard.gridy = 4;
+		mainWindow.fieldPanel.add(opponentGraveyard, gridBagConstOpponentGraveyard);
+
+		initOpponetMainMonsterZone(mainWindow);
+
+		gridBagConstOpponentBanishment.fill = GridBagConstraints.BOTH;
+		gridBagConstOpponentBanishment.insets = new Insets(0, 0, 5, 5);
+		gridBagConstOpponentBanishment.gridheight = 2;
+		gridBagConstOpponentBanishment.gridx = 1;
+		gridBagConstOpponentBanishment.gridy = 6;
+		mainWindow.fieldPanel.add(opponentBanishment, gridBagConstOpponentBanishment);
 	}
 
 	void initOpponetMainMonsterZone(MainWindow mainWindow) {

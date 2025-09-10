@@ -29,11 +29,14 @@ public class JSONCardObject {
 	 */
 	static CardComponentInterface stringToCardComponentInterface(String inputString) {
 		try {
-			for (CardComponent component : CardComponent.values())
+			for (CardComponent component : CardComponent.values()) {
 				for (CardComponentInterface.SubInterface subcomponent : (CardComponentInterface.SubInterface[]) Class
-						.forName(ClassPath.COMPONENT.path + component.getName() + "Component").getEnumConstants())
-					if (subcomponent.match(inputString) != null)
+						.forName(ClassPath.COMPONENT.path + component.getName() + "Component").getEnumConstants()) {
+					if (subcomponent.match(inputString) != null) {
 						return subcomponent.match(inputString);
+					}
+				}
+			}
 		} catch (SecurityException | ClassNotFoundException e) {
 			logger.log(Level.SEVERE, AN_EXCEPTION_OCCURED, e);
 		}
@@ -46,7 +49,7 @@ public class JSONCardObject {
 	 * @return
 	 */
 	static List<CardComponentInterface> stringToCardComponentInterfaceArrayList(JSONArray jsonArray) {
-		ArrayList<CardComponentInterface> componentList = new ArrayList<>();
+		var componentList = new ArrayList<CardComponentInterface>();
 		jsonArray.forEach(json -> componentList.add(stringToCardComponentInterface((String) json)));
 		return componentList;
 	}
@@ -86,7 +89,7 @@ public class JSONCardObject {
 		try {
 			return jsonObject.getInt(jkvName);
 		} catch (JSONException e) {
-			logger.log(Level.FINE, AN_EXCEPTION_OCCURED, e);
+			logger.log(Level.FINE, String.format("Unable to find int for %s", jkvName), e);
 			return 0;
 		}
 	}
@@ -123,7 +126,7 @@ public class JSONCardObject {
 		try {
 			return jsonObject.getString(jkvName);
 		} catch (JSONException e) {
-			logger.log(Level.FINE, AN_EXCEPTION_OCCURED, e);
+			logger.log(Level.FINE, String.format("Unable to find String for %s", jkvName), e);
 			return null;
 		}
 	}

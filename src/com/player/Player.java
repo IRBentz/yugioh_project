@@ -5,27 +5,27 @@ public class Player {
 	private Deck deck;
 	private Graveyard gy;
 	private Hand hand;
-	
+
 	public Player() {
-		this.hand = new Hand();
-		this.deck = new Deck();
-		this.gy = new Graveyard();
-		this.banished = new Banishment();
+		hand = new Hand();
+		deck = new Deck();
+		gy = new Graveyard();
+		banished = new Banishment();
 	}
 
 	public Banishment getBanished() {
-		return this.banished;
+		return banished;
 	}
 
 	public Deck getDeck() {
-		return this.deck;
+		return deck;
 	}
-	
+
 	public Graveyard getGY() {
-		return this.gy;
+		return gy;
 	}
-	
+
 	public Hand getHand() {
-		return this.hand;
+		return hand;
 	}
 }

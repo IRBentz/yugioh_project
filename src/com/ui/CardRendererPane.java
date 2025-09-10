@@ -37,49 +37,29 @@ public class CardRendererPane extends JPanel {
 		initComponents();
 	}
 
-	private void initComponents() {
-		setBackground(Color.DARK_GRAY);
-		setSize(new Dimension(590, 860));
-		setPreferredSize(new Dimension(591, 860));
-		var gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 20, 0, 20, 0 };
-		gridBagLayout.rowHeights = new int[] { 20, 0, 20, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		setLayout(gridBagLayout);
+	private void initCardImagePanel() {
+		cardImagePanel = new JPanel();
+		var gbc_cardImagePanel = new GridBagConstraints();
+		gbc_cardImagePanel.insets = new Insets(0, 0, 5, 5);
+		gbc_cardImagePanel.fill = GridBagConstraints.BOTH;
+		gbc_cardImagePanel.gridx = 1;
+		gbc_cardImagePanel.gridy = 3;
+		monsterPanel.add(cardImagePanel, gbc_cardImagePanel);
+		var gbl_cardImagePanel = new GridBagLayout();
+		gbl_cardImagePanel.columnWidths = new int[] { 0, 0, 0, 0 };
+		gbl_cardImagePanel.rowHeights = new int[] { 0, 0 };
+		gbl_cardImagePanel.columnWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_cardImagePanel.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
+		cardImagePanel.setLayout(gbl_cardImagePanel);
 
-		initMonsterPanel();
-	}
-
-	private void initMonsterPanel() {
-		monsterPanel = new JPanel();
-		monsterPanel.setBackground(Color.ORANGE);
-		var gbc_monsterPanel = new GridBagConstraints();
-		gbc_monsterPanel.insets = new Insets(0, 0, 5, 5);
-		gbc_monsterPanel.fill = GridBagConstraints.BOTH;
-		gbc_monsterPanel.gridx = 1;
-		gbc_monsterPanel.gridy = 1;
-		add(monsterPanel, gbc_monsterPanel);
-		var gbl_monsterPanel = new GridBagLayout();
-		gbl_monsterPanel.columnWidths = new int[] { 0, 510, 0, 0 };
-		gbl_monsterPanel.rowHeights = new int[] { 20, 50, 50, 420, 0, 0, 0 };
-		gbl_monsterPanel.columnWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_monsterPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		monsterPanel.setLayout(gbl_monsterPanel);
-
-		initNameIconPanel();
-
-		starPanel = new JPanel();
-		var gbc_starPanel = new GridBagConstraints();
-		gbc_starPanel.insets = new Insets(0, 0, 5, 5);
-		gbc_starPanel.fill = GridBagConstraints.BOTH;
-		gbc_starPanel.gridx = 1;
-		gbc_starPanel.gridy = 2;
-		monsterPanel.add(starPanel, gbc_starPanel);
-
-		initCardImagePanel();
-
-		initCardTextBoxPanel();
+		cardImageLabel = new JLabel("Card Image Here");
+		cardImageLabel.setOpaque(true);
+		cardImageLabel.setBackground(new Color(245, 255, 250));
+		var gbc_cardImageLabel = new GridBagConstraints();
+		gbc_cardImageLabel.insets = new Insets(0, 0, 0, 5);
+		gbc_cardImageLabel.gridx = 1;
+		gbc_cardImageLabel.gridy = 0;
+		cardImagePanel.add(cardImageLabel, gbc_cardImageLabel);
 	}
 
 	private void initCardTextBoxPanel() {
@@ -138,29 +118,49 @@ public class CardRendererPane extends JPanel {
 		cardTextBoxPanel.add(defLabel, gbc_defLabel);
 	}
 
-	private void initCardImagePanel() {
-		cardImagePanel = new JPanel();
-		var gbc_cardImagePanel = new GridBagConstraints();
-		gbc_cardImagePanel.insets = new Insets(0, 0, 5, 5);
-		gbc_cardImagePanel.fill = GridBagConstraints.BOTH;
-		gbc_cardImagePanel.gridx = 1;
-		gbc_cardImagePanel.gridy = 3;
-		monsterPanel.add(cardImagePanel, gbc_cardImagePanel);
-		var gbl_cardImagePanel = new GridBagLayout();
-		gbl_cardImagePanel.columnWidths = new int[] { 0, 0, 0, 0 };
-		gbl_cardImagePanel.rowHeights = new int[] { 0, 0 };
-		gbl_cardImagePanel.columnWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_cardImagePanel.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
-		cardImagePanel.setLayout(gbl_cardImagePanel);
+	private void initComponents() {
+		setBackground(Color.DARK_GRAY);
+		setSize(new Dimension(590, 860));
+		setPreferredSize(new Dimension(591, 860));
+		var gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[] { 20, 0, 20, 0 };
+		gridBagLayout.rowHeights = new int[] { 20, 0, 20, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		setLayout(gridBagLayout);
 
-		cardImageLabel = new JLabel("Card Image Here");
-		cardImageLabel.setOpaque(true);
-		cardImageLabel.setBackground(new Color(245, 255, 250));
-		var gbc_cardImageLabel = new GridBagConstraints();
-		gbc_cardImageLabel.insets = new Insets(0, 0, 0, 5);
-		gbc_cardImageLabel.gridx = 1;
-		gbc_cardImageLabel.gridy = 0;
-		cardImagePanel.add(cardImageLabel, gbc_cardImageLabel);
+		initMonsterPanel();
+	}
+
+	private void initMonsterPanel() {
+		monsterPanel = new JPanel();
+		monsterPanel.setBackground(Color.ORANGE);
+		var gbc_monsterPanel = new GridBagConstraints();
+		gbc_monsterPanel.insets = new Insets(0, 0, 5, 5);
+		gbc_monsterPanel.fill = GridBagConstraints.BOTH;
+		gbc_monsterPanel.gridx = 1;
+		gbc_monsterPanel.gridy = 1;
+		add(monsterPanel, gbc_monsterPanel);
+		var gbl_monsterPanel = new GridBagLayout();
+		gbl_monsterPanel.columnWidths = new int[] { 0, 510, 0, 0 };
+		gbl_monsterPanel.rowHeights = new int[] { 20, 50, 50, 420, 0, 0, 0 };
+		gbl_monsterPanel.columnWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_monsterPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		monsterPanel.setLayout(gbl_monsterPanel);
+
+		initNameIconPanel();
+
+		starPanel = new JPanel();
+		var gbc_starPanel = new GridBagConstraints();
+		gbc_starPanel.insets = new Insets(0, 0, 5, 5);
+		gbc_starPanel.fill = GridBagConstraints.BOTH;
+		gbc_starPanel.gridx = 1;
+		gbc_starPanel.gridy = 2;
+		monsterPanel.add(starPanel, gbc_starPanel);
+
+		initCardImagePanel();
+
+		initCardTextBoxPanel();
 	}
 
 	private void initNameIconPanel() {

@@ -9,40 +9,41 @@ public class Deck {
 	private ArrayList<Card> extraDeckList;
 	private ArrayList<Card> mainDeckList;
 	private ArrayList<Card> sideDeckList;
+
 	public Deck() {
-		this.mainDeckList = new ArrayList<>();
-		this.extraDeckList = new ArrayList<>();
-		this.sideDeckList = new ArrayList<>();
+		mainDeckList = new ArrayList<>();
+		extraDeckList = new ArrayList<>();
+		sideDeckList = new ArrayList<>();
 	}
-	
+
 	public Deck(List<Card> mainDeckList) {
 		this.mainDeckList = (ArrayList<Card>) mainDeckList;
-		this.extraDeckList = new ArrayList<>();
-		this.sideDeckList = new ArrayList<>();
+		extraDeckList = new ArrayList<>();
+		sideDeckList = new ArrayList<>();
 	}
-	
-	public Deck(List<Card> main, List<Card> extra) {	
-		this.mainDeckList = (ArrayList<Card>) main;
-		this.extraDeckList = (ArrayList<Card>) extra;
-		this.sideDeckList = new ArrayList<>();
+
+	public Deck(List<Card> main, List<Card> extra) {
+		mainDeckList = (ArrayList<Card>) main;
+		extraDeckList = (ArrayList<Card>) extra;
+		sideDeckList = new ArrayList<>();
 	}
-	
+
 	public Deck(List<Card> main, List<Card> extra, List<Card> side) {
-		this.mainDeckList = (ArrayList<Card>) main;
-		this.extraDeckList = (ArrayList<Card>) extra;
-		this.sideDeckList = (ArrayList<Card>) side;
+		mainDeckList = (ArrayList<Card>) main;
+		extraDeckList = (ArrayList<Card>) extra;
+		sideDeckList = (ArrayList<Card>) side;
 	}
-	
+
 	public List<Card> getExtraDeckList() {
-		return this.extraDeckList;
+		return extraDeckList;
 	}
-	
+
 	public List<Card> getMainDeckList() {
-		return this.mainDeckList;
+		return mainDeckList;
 	}
 
 	public List<Card> getSideDeckList() {
-		return this.sideDeckList;
+		return sideDeckList;
 	}
 
 }

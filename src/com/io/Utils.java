@@ -16,34 +16,36 @@ import com.player.Deck;
 public class Utils {
 	private static Scanner kb = new Scanner(System.in);
 	private static Logger logger = Logger.getLogger(Utils.class.getName());
-	
-	protected Utils() {}
-	
+
 	public static String askUser(String text) {
 		System.out.println(text);
 		System.out.print("User: ");
-		String input = kb.next();
+		var input = kb.next();
 		kb.nextLine();
 		return input;
 	}
 
 	public static Card askUserSelection(Card[] selectionList) {
-		int i = 0;
-		for (Card card : selectionList)
+		var i = 0;
+		for (Card card : selectionList) {
 			System.out.println(Integer.toString(++i) + " \"" + card.getName() + "\"");
-		String slotNumber = "";
+		}
+		var slotNumber = "";
 		boolean flag;
 		do {
 			flag = false;
 			slotNumber = askUser("Select 1 of the above cards.");
 			for (char character : slotNumber.replaceAll("\\s", "").toCharArray()) {
-				if (!Character.isDigit(character))
+				if (!Character.isDigit(character)) {
 					flag = true;
+				}
 			}
-			if (!flag && !(Integer.parseInt(slotNumber) <= i && Integer.parseInt(slotNumber) > 0))
+			if (!flag && ((Integer.parseInt(slotNumber) > i) || (Integer.parseInt(slotNumber) <= 0))) {
 				flag = true;
-			if (flag)
+			}
+			if (flag) {
 				System.out.println("Please selected a vailid option.");
+			}
 		} while (flag);
 		System.out.println("Card selected: " + Integer.parseInt(slotNumber) + " \""
 				+ selectionList[Integer.parseInt(slotNumber) - 1].getName() + "\"");
@@ -53,8 +55,8 @@ public class Utils {
 	public static void executeCardEffect(Card targetCard, int effectNum) {
 		try {
 			targetCard.getBoundClass().getMethod("execute_effect", int.class)
-					.invoke(Class.forName(ClassPath.EFFECT_DB.path + targetCard.getName().replace(" ", "0")).getConstructor()
-							.newInstance(), effectNum);
+					.invoke(Class.forName(ClassPath.EFFECT_DB.path + targetCard.getName().replace(" ", "0"))
+							.getConstructor().newInstance(), effectNum);
 		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException
 				| ClassNotFoundException | IllegalArgumentException | InstantiationException e) {
 			logger.log(Level.SEVERE, "An exception occured.", e);
@@ -62,31 +64,38 @@ public class Utils {
 	}
 
 	public static Card findCard(int cardIndex) {
-		for (Card card : Global.getCardDb())
-			if (card.getIndex() == cardIndex)
+		for (Card card : Global.getCardDb()) {
+			if (card.getIndex() == cardIndex) {
 				return card;
+			}
+		}
 		new RuntimeException("Could not find card matching: " + cardIndex).printStackTrace();
 		return null;
 	}
 
 	public static Card searchByArchetype(Deck deck, ArchetypeComponent filter) {
-		ArrayList<Card> matchedCards = new ArrayList<>();
+		var matchedCards = new ArrayList<Card>();
 		deck.getMainDeckList()
 				.forEach(potentialCard -> Arrays.asList(potentialCard.getArchitype()).forEach(architype -> {
-					if (architype == filter)
+					if (architype == filter) {
 						matchedCards.add(potentialCard);
+					}
 				}));
 
 		return askUserSelection(matchedCards.toArray(Card[]::new));
 	}
 
 	public static Card searchByName(Deck deck, String filter) {
-		ArrayList<Card> matchedCards = new ArrayList<>();
+		var matchedCards = new ArrayList<Card>();
 		deck.getMainDeckList().forEach(potentialCard -> Arrays.asList(potentialCard.getName()).forEach(name -> {
-			if (name.contains(filter))
+			if (name.contains(filter)) {
 				matchedCards.add(potentialCard);
+			}
 		}));
 
 		return askUserSelection(matchedCards.toArray(Card[]::new));
+	}
+
+	protected Utils() {
 	}
 }

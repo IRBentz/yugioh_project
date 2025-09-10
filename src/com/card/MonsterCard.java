@@ -91,7 +91,8 @@ public class MonsterCard extends Card {
 		 * @param monsterType
 		 * @param types
 		 */
-		public MonComBlock(MonsterAttributeComponent monsterAttribute, MonsterTypeComponent monsterType, TypeComponent[] types) {
+		public MonComBlock(MonsterAttributeComponent monsterAttribute, MonsterTypeComponent monsterType,
+				TypeComponent[] types) {
 			mAttribute = monsterAttribute;
 			mType = monsterType;
 			this.types = types;

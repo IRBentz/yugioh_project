@@ -56,7 +56,8 @@ public class Backendv4 {
 		}
 		for (Object cardGroup : jsonArray) {
 			var jCardGroupObject = (JSONObject) cardGroup;
-			logger.log(Level.FINE, () -> jCardGroupObject.getString(Json.CARD_TYPE.jkvName));
+			logger.log(Level.FINE, () -> "Found Card Type {" + jCardGroupObject.getString(Json.CARD_TYPE.jkvName)
+					+ "}");
 			for (Object card : jCardGroupObject.getJSONArray(Json.CARDS.jkvName)) {
 				var jCardObject = new JSONCardObject((JSONObject) card);
 				var builtCard = getBuiltCard(jCardGroupObject, jCardObject);
@@ -94,10 +95,9 @@ public class Backendv4 {
 	 * @param jCardObject
 	 */
 	private static MonsterCard buildMonster(JSONCardObject jCardObject) {
-		var monCard = new MonsterCard(jCardObject.getString(Json.NAME.jkvName),
-				jCardObject.getInt(Json.INDEX.jkvName), jCardObject.getString(Json.LORE.jkvName),
-				jCardObject.getInt(Json.LEVEL.jkvName), jCardObject.getInt(Json.ATTACK.jkvName),
-				jCardObject.getInt(Json.DEFENSE.jkvName));
+		var monCard = new MonsterCard(jCardObject.getString(Json.NAME.jkvName), jCardObject.getInt(Json.INDEX.jkvName),
+				jCardObject.getString(Json.LORE.jkvName), jCardObject.getInt(Json.LEVEL.jkvName),
+				jCardObject.getInt(Json.ATTACK.jkvName), jCardObject.getInt(Json.DEFENSE.jkvName));
 		monCard.setMonComBlock(
 				monCard.new MonComBlock(jCardObject.getMonsterAttributeComponent(Json.MONSTER_ATTRIBUTE.jkvName),
 						jCardObject.getMonsterTypeComponent(Json.MONSTER_TYPE.jkvName),
@@ -188,7 +188,7 @@ public class Backendv4 {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param jCardGroupObject
 	 * @param jCardObject
 	 * @return built <Card>
