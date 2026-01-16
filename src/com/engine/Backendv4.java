@@ -19,10 +19,10 @@ import com.engine.PathAndNameEnums.FileName;
 import com.engine.PathAndNameEnums.FolderPath;
 import com.wrapper.jsonobject.JSONCardObject;
 
-public class Backendv4 {
+public class Backendv4 implements DBBuilder {
 	private static Logger logger = Logger.getLogger(Backendv4.class.toString());
 
-	private static void bindCardEffects() {
+	private void bindCardEffects() {
 		try {
 			for (Card card : Global.getCardDb()) {
 				for (Path path : (Iterable<Path>) Files.list(
@@ -38,7 +38,7 @@ public class Backendv4 {
 		}
 	}
 
-	public static void buildDB() {
+	public void buildDB() {
 		JSONArray jsonArray;
 		var filePath = FileSystems.getDefault().getPath(FolderPath.COM.path + FolderPath.JSON.path);
 		logger.log(Level.FINE, () -> "Successfully found designated file path: \"" + filePath + "\"");
@@ -56,8 +56,8 @@ public class Backendv4 {
 		}
 		for (Object cardGroup : jsonArray) {
 			var jCardGroupObject = (JSONObject) cardGroup;
-			logger.log(Level.FINE, () -> "Found Card Type {" + jCardGroupObject.getString(Json.CARD_TYPE.jkvName)
-					+ "}");
+			logger.log(Level.FINE,
+					() -> "Found Card Type {" + jCardGroupObject.getString(Json.CARD_TYPE.jkvName) + "}");
 			for (Object card : jCardGroupObject.getJSONArray(Json.CARDS.jkvName)) {
 				var jCardObject = new JSONCardObject((JSONObject) card);
 				var builtCard = getBuiltCard(jCardGroupObject, jCardObject);
@@ -170,7 +170,7 @@ public class Backendv4 {
 	 * @param list
 	 * @return concatenated String representation of list
 	 */
-	public static String concatStringArray(List<String> list) {
+	public String concatStringArray(List<String> list) {
 		var string = new StringBuilder();
 		for (String s : list) {
 			string.append(s);
@@ -183,7 +183,7 @@ public class Backendv4 {
 	 * @param pathToConfigure
 	 * @return String formated for class name syntax.
 	 */
-	public static String configurePathToClassName(Path pathToConfigure) {
+	public String configurePathToClassName(Path pathToConfigure) {
 		return pathToConfigure.toString().replace(".java", "");
 	}
 
@@ -208,5 +208,11 @@ public class Backendv4 {
 	}
 
 	protected Backendv4() {
+	}
+	
+	public Backendv4(int flag) {
+		if(flag != 0) {
+			System.exit(flag);
+		}
 	}
 }

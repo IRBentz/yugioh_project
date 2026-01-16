@@ -1,41 +1,65 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>yugioh</groupId>
-  <artifactId>yugioh</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-  </properties>
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-    <resources>
-      <resource>
-        <directory>src</directory>
-        <excludes>
-          <exclude>**/*.java</exclude>
-          <exclude>**/*.jpg</exclude>
-          <exclude>**/*.png</exclude>
-          <exclude>**/*.7z</exclude>
-        </excludes>
-      </resource>
-    </resources>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.14.0</version>
-        <configuration>
-          <release>24</release>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-  <dependencies>   
-  		<!-- https://mvnrepository.com/artifact/org.json/json -->
-		<dependency>
-    		<groupId>org.json</groupId>
-    		<artifactId>json</artifactId>
-    		<version>20250517</version>
-		</dependency>
-	</dependencies>
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+        <modelVersion>4.0.0</modelVersion>
+        <groupId>yugioh</groupId>
+        <artifactId>yugioh</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+                <maven.compiler.source>25</maven.compiler.source>
+                <maven.compiler.target>25</maven.compiler.target>
+        </properties>
+        <build>
+                <sourceDirectory>src</sourceDirectory>
+                <resources>
+                        <resource>
+                                <directory>src</directory>
+                                <excludes>
+                                        <exclude>**/*.java</exclude>
+                                        <exclude>**/*.jpg</exclude>
+                                        <exclude>**/*.png</exclude>
+                                        <exclude>**/*.7z</exclude>
+                                </excludes>
+                        </resource>
+                </resources>
+                <plugins>
+                        <plugin>
+                                <artifactId>maven-compiler-plugin</artifactId>
+                                <version>3.14.0</version>
+                                <configuration>
+                                        <release>24</release>
+                                </configuration>
+                        </plugin>
+                </plugins>
+        </build>
+        <dependencies>
+                <!-- https://mvnrepository.com/artifact/org.json/json -->
+                <dependency>
+                        <groupId>org.json</groupId>
+                        <artifactId>json</artifactId>
+                        <version>20250517</version>
+                </dependency>
+                <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
+                <dependency>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-core</artifactId>
+                        <version>1.5.21</version>
+                </dependency>
+                <!-- https://mvnrepository.com/artifact/net.logstash.logback/logstash-logback-encoder -->
+                <dependency>
+                        <groupId>net.logstash.logback</groupId>
+                        <artifactId>logstash-logback-encoder</artifactId>
+                        <version>9.0</version>
+                </dependency>
+                <!-- Source: https://mvnrepository.com/artifact/com.nebula2d/jnlua -->
+                <dependency>
+                        <groupId>com.nebula2d</groupId>
+                        <artifactId>jnlua</artifactId>
+                        <version>1.0.4</version>
+                        <scope>compile</scope>
+                </dependency>
+        </dependencies>
 </project>
