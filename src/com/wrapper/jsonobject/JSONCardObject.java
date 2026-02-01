@@ -130,6 +130,15 @@ public class JSONCardObject {
 			return null;
 		}
 	}
+	
+	public String[] getStrings(String jkvName) {
+		try {
+			return new String[] {jsonObject.getString(jkvName)};
+		} catch (JSONException e) {
+			logger.log(Level.FINE, String.format("Unable to find String for %s", jkvName), e);
+			return new String[] {};
+		}
+	}
 
 	public TypeComponent[] getTypeComponentArray(String input) {
 		try {

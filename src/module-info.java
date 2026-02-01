@@ -15,5 +15,5 @@ module yugioh {
 	requires transitive org.json;
 	requires transitive java.desktop;
 	requires transitive java.logging;
-	requires org.xerial.sqlitejdbc;
+	requires transitive java.sql;
 }

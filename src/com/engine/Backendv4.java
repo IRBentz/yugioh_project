@@ -96,7 +96,7 @@ public class Backendv4 implements DBBuilder {
 	 */
 	private static MonsterCard buildMonster(JSONCardObject jCardObject) {
 		var monCard = new MonsterCard(jCardObject.getString(Json.NAME.jkvName), jCardObject.getInt(Json.INDEX.jkvName),
-				jCardObject.getString(Json.LORE.jkvName), jCardObject.getInt(Json.LEVEL.jkvName),
+				jCardObject.getStrings(Json.LORE.jkvName), jCardObject.getInt(Json.LEVEL.jkvName),
 				jCardObject.getInt(Json.ATTACK.jkvName), jCardObject.getInt(Json.DEFENSE.jkvName));
 		monCard.setMonComBlock(
 				monCard.new MonComBlock(jCardObject.getMonsterAttributeComponent(Json.MONSTER_ATTRIBUTE.jkvName),
@@ -152,7 +152,7 @@ public class Backendv4 implements DBBuilder {
 	private static SpellTrapCard buildSpellTrap(JSONCardObject jCardObject) {
 		return new SpellTrapCard(jCardObject.getString(Json.NAME.jkvName), jCardObject.getInt(Json.INDEX.jkvName),
 				jCardObject.getCardTypeComponent(Json.CARD_TYPE.jkvName.toUpperCase()),
-				jCardObject.getString(Json.LORE.jkvName), jCardObject.getIconComponent(Json.ICON.jkvName));
+				jCardObject.getStrings(Json.LORE.jkvName), jCardObject.getIconComponent(Json.ICON.jkvName));
 	}
 
 	/**
