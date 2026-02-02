@@ -1,0 +1,20 @@
+    <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="logback.xsd">
+        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>logs/application.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!-- Daily rollover -->
+                <fileNamePattern>logs/application.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <!-- Keep 30 days' worth of history -->
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+                <!-- Optional: Customize fields in the JSON output -->
+                <customFields>{"application":"yugioh_j"}</customFields>
+            </encoder>
+        </appender>
+
+        <root level="info">
+            <appender-ref ref="FILE" />
+        </root>
+    </configuration>

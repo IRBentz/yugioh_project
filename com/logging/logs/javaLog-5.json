@@ -1,0 +1,248 @@
+[
+{
+  "level": "FINE",
+  "message": "Successfully found designated file path: \"src\\com\\db\\_json\"",
+  "timestamp": 1765040029756
+},
+{
+  "level": "FINE",
+  "message": "Successfully found file \"card.json\" at the following file path: \"src\\com\\db\\_json\\card.json\"",
+  "timestamp": 1765040029777
+},
+{
+  "level": "FINE",
+  "message": "Found Card Type {monster}",
+  "timestamp": 1765040029778
+},
+{
+  "level": "FINE",
+  "message": "Found Card Type {pendulumMonster}",
+  "timestamp": 1765040029825
+},
+{
+  "level": "FINE",
+  "message": "Found Card Type {fusionMonster}",
+  "timestamp": 1765040029827
+},
+{
+  "level": "FINE",
+  "message": "Found Card Type {synchroMonster}",
+  "timestamp": 1765040029830
+},
+{
+  "level": "FINE",
+  "message": "Found Card Type {xyzMonster}",
+  "timestamp": 1765040029832
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"level\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:99) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildXyzMonster(Backendv4.java:163) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:202) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for level",
+  "timestamp": 1765040029832
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"level\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:99) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildXyzMonster(Backendv4.java:163) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:202) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for level",
+  "timestamp": 1765040029837
+},
+{
+  "level": "FINE",
+  "message": "Found Card Type {linkMonster}",
+  "timestamp": 1765040029837
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"level\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:99) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for level",
+  "timestamp": 1765040029837
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"defense\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:100) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for defense",
+  "timestamp": 1765040029837
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"level\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:99) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for level",
+  "timestamp": 1765040029840
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"defense\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:100) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for defense",
+  "timestamp": 1765040029840
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"level\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:99) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for level",
+  "timestamp": 1765040029842
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"defense\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:100) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for defense",
+  "timestamp": 1765040029842
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"level\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:99) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for level",
+  "timestamp": 1765040029843
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"defense\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:100) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for defense",
+  "timestamp": 1765040029843
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"level\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:99) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for level",
+  "timestamp": 1765040029844
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"defense\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:100) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for defense",
+  "timestamp": 1765040029845
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"level\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:99) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for level",
+  "timestamp": 1765040029846
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"defense\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:100) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for defense",
+  "timestamp": 1765040029846
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"level\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:99) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for level",
+  "timestamp": 1765040029847
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"defense\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:100) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for defense",
+  "timestamp": 1765040029847
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"level\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:99) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for level",
+  "timestamp": 1765040029848
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"defense\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getInt(JSONObject.java:807) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getInt(JSONCardObject.java:90) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildMonster(Backendv4.java:100) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildExtraMonster(Backendv4.java:77) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildLinkMonster(Backendv4.java:87) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:204) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "Unable to find int for defense",
+  "timestamp": 1765040029848
+},
+{
+  "level": "FINE",
+  "message": "Found Card Type {spell}",
+  "timestamp": 1765040029849
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"CARD_TYPE\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getString(JSONObject.java:922) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getCardTypeComponent(JSONCardObject.java:72) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildSpellTrap(Backendv4.java:154) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:205) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "An Exception Occured",
+  "timestamp": 1765040029849
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"CARD_TYPE\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getString(JSONObject.java:922) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getCardTypeComponent(JSONCardObject.java:72) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildSpellTrap(Backendv4.java:154) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:205) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "An Exception Occured",
+  "timestamp": 1765040029849
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"CARD_TYPE\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getString(JSONObject.java:922) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getCardTypeComponent(JSONCardObject.java:72) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildSpellTrap(Backendv4.java:154) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:205) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "An Exception Occured",
+  "timestamp": 1765040029850
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"CARD_TYPE\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getString(JSONObject.java:922) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getCardTypeComponent(JSONCardObject.java:72) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildSpellTrap(Backendv4.java:154) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:205) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "An Exception Occured",
+  "timestamp": 1765040029850
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"CARD_TYPE\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getString(JSONObject.java:922) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getCardTypeComponent(JSONCardObject.java:72) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildSpellTrap(Backendv4.java:154) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:205) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "An Exception Occured",
+  "timestamp": 1765040029850
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"CARD_TYPE\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getString(JSONObject.java:922) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getCardTypeComponent(JSONCardObject.java:72) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildSpellTrap(Backendv4.java:154) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:205) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "An Exception Occured",
+  "timestamp": 1765040029850
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"CARD_TYPE\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getString(JSONObject.java:922) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getCardTypeComponent(JSONCardObject.java:72) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildSpellTrap(Backendv4.java:154) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:205) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "An Exception Occured",
+  "timestamp": 1765040029850
+},
+{
+  "level": "FINE",
+  "message": "Found Card Type {trap}",
+  "timestamp": 1765040029850
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"CARD_TYPE\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getString(JSONObject.java:922) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getCardTypeComponent(JSONCardObject.java:72) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildSpellTrap(Backendv4.java:154) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:205) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "An Exception Occured",
+  "timestamp": 1765040029850
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"CARD_TYPE\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getString(JSONObject.java:922) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getCardTypeComponent(JSONCardObject.java:72) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildSpellTrap(Backendv4.java:154) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:205) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "An Exception Occured",
+  "timestamp": 1765040029851
+},
+{
+  "stacktrace": "org.json.JSONException: JSONObject[\"CARD_TYPE\"] not found. | \tat org.json@20250517/org.json.JSONObject.get(JSONObject.java:635) | \tat org.json@20250517/org.json.JSONObject.getString(JSONObject.java:922) | \tat yugioh@0.0.1-SNAPSHOT/com.wrapper.jsonobject.JSONCardObject.getCardTypeComponent(JSONCardObject.java:72) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildSpellTrap(Backendv4.java:154) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.getBuiltCard(Backendv4.java:205) | \tat yugioh@0.0.1-SNAPSHOT/com.engine.Backendv4.buildDB(Backendv4.java:63) | \tat yugioh@0.0.1-SNAPSHOT/com.YgoRunner.main(YgoRunner.java:10) | ",
+  "level": "FINE",
+  "exception_type": "org.json.JSONException",
+  "message": "An Exception Occured",
+  "timestamp": 1765040029851
+}
+]

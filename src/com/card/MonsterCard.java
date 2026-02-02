@@ -1,5 +1,7 @@
 package com.card;
 
+import java.util.Arrays;
+
 import com.card.component.CardTypeComponent;
 import com.card.component.LinkArrowComponent;
 import com.card.component.MonsterAttributeComponent;
@@ -146,8 +148,8 @@ public class MonsterCard extends Card {
 	 * @param attack
 	 * @param defense
 	 */
-	public MonsterCard(String name, int index, String lore, int level, int attack, int defense) {
-		super(name, index, CardTypeComponent.MONSTER, lore);
+	public MonsterCard(String name, int index, String[] lore, int level, int attack, int defense) {
+		super(name, index, CardTypeComponent.MONSTER, Arrays.asList(lore));
 		this.level = level;
 		this.attack = attack;
 		this.defense = defense;

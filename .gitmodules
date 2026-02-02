@@ -1,0 +1,3 @@
+[submodule "BabelCDB"]
+	path = BabelCDB
+	url = git@github.com:IRBentz/BabelCDB.git

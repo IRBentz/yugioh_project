@@ -1,5 +1,6 @@
 package com.card;
 
+import java.util.Arrays;
 import java.util.List;
 
 import com.card.component.ArchetypeComponent;
@@ -9,7 +10,7 @@ public class Card {
 	private ArchetypeComponent[] archetype;
 	private final int cardIndex;
 	private final String name;
-	private final String lore;
+	private final String[] lore;
 	private final CardTypeComponent type;
 	private Class<?> boundEffectClass;
 
@@ -19,11 +20,11 @@ public class Card {
 	 * @param type
 	 * @param lore
 	 */
-	protected Card(String name, int index, CardTypeComponent type, String lore) {
+	protected Card(String name, int index, CardTypeComponent type, List<String> lore) {
 		this.name = name;
 		cardIndex = index;
 		this.type = type;
-		this.lore = lore;
+		this.lore = lore.toArray(String[]::new);
 	}
 
 	/**
@@ -51,7 +52,7 @@ public class Card {
 	 * @return
 	 */
 	public String getLore() {
-		return lore;
+		return Arrays.toString(lore);
 	}
 
 	/**
