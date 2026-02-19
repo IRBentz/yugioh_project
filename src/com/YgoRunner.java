@@ -1,10 +1,14 @@
 package com;
 
+import com.engine.Backendv4;
+import com.engine.DBBuilder;
+import com.logging.builtin.Logging;
+
 public class YgoRunner {
 	public static void main(String[] args) {
-		com.logging.builtin.Logging.setupLogging();
+		Logging.setupLogging();
 		
-		com.engine.DBBuilder builder = new com.engine.Backendv4(0);
+		DBBuilder builder = new Backendv4(0);
 		builder.buildDB();
 	}
 }

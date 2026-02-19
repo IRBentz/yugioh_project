@@ -1,3 +1,6 @@
 [submodule "BabelCDB"]
 	path = BabelCDB
 	url = git@github.com:IRBentz/BabelCDB.git
+[submodule "CardScripts"]
+	path = CardScripts
+	url = https://github.com/IRBentz/CardScripts.git

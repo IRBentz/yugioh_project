@@ -2,11 +2,21 @@ package com.testing;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Logger;
 
+import com.card.component.CardTypeComponent;
+import com.card.component.IconComponent;
+import com.card.component.LinkArrowComponent;
+import com.card.component.MonsterAttributeComponent;
+import com.card.component.MonsterTypeComponent;
+import com.card.component.TypeComponent;
+import com.engine.Global;
+import com.io.ImportCardInterface;
 import com.io.sqlTypes;
 
 public class SqlDatabaseLoading {
@@ -91,6 +101,9 @@ public class SqlDatabaseLoading {
 					}
 				}
 				System.out.println(pairedItems);
+				var cardDb = Global.getCardDb();
+				
+				
 			}
 		}
 	}
@@ -130,4 +143,59 @@ class TableSchema {
 	public String toString() {
 		return pairedItems.toString();
 	}
+}
+
+class SqlCardObject implements ImportCardInterface {
+	static Logger logger = Logger.getLogger(SqlCardObject.class.getName());
+	
+	ResultSet resultSet;
+	public SqlCardObject(ResultSet resultSet) {
+		this.resultSet = resultSet;
+	}
+	
+	@Override
+	public CardTypeComponent getCardTypeComponent(String input) {
+		return null;
+	}
+
+	@Override
+	public IconComponent getIconComponent(String input) {
+		return null;
+	}
+
+	@Override
+	public int getInt(String input) {
+		return 0;
+	}
+
+	@Override
+	public LinkArrowComponent[] getLinkArrowArray(String input) {
+		return null;
+	}
+
+	@Override
+	public MonsterAttributeComponent getMonsterAttributeComponent(String input) {
+		return null;
+	}
+
+	@Override
+	public MonsterTypeComponent getMonsterTypeComponent(String input) {
+		return null;
+	}
+
+	@Override
+	public String getString(String input) {
+		return null;
+	}
+
+	@Override
+	public String[] getStringArray(String input) {
+		return null;
+	}
+
+	@Override
+	public TypeComponent[] getTypeComponentArray(String input) {
+		return null;
+	}
+	
 }

@@ -17,6 +17,7 @@ import com.card.SpellTrapCard;
 import com.engine.PathAndNameEnums.ClassPath;
 import com.engine.PathAndNameEnums.FileName;
 import com.engine.PathAndNameEnums.FolderPath;
+import com.io.ImportCardInterface;
 import com.wrapper.jsonobject.JSONCardObject;
 
 public class Backendv4 implements DBBuilder {
@@ -71,97 +72,97 @@ public class Backendv4 implements DBBuilder {
 
 	/**
 	 *
-	 * @param jCardObject
+	 * @param importCardObject
 	 */
-	private static MonsterCard buildExtraMonster(JSONCardObject jCardObject) {
-		var monCard = buildMonster(jCardObject);
-		monCard.setExtraAttributes(monCard.new ExtraAttributes(jCardObject.getString(Json.SUMMON_REQUIREMENT.jkvName)));
+	private static MonsterCard buildExtraMonster(ImportCardInterface importCardObject) {
+		var monCard = buildMonster(importCardObject);
+		monCard.setExtraAttributes(monCard.new ExtraAttributes(importCardObject.getString(Json.SUMMON_REQUIREMENT.jkvName)));
 		return monCard;
 	}
 
 	/**
 	 *
-	 * @param jCardObject
+	 * @param importCardObject
 	 */
-	private static MonsterCard buildLinkMonster(JSONCardObject jCardObject) {
-		var monCard = buildExtraMonster(jCardObject);
+	private static MonsterCard buildLinkMonster(ImportCardInterface importCardObject) {
+		var monCard = buildExtraMonster(importCardObject);
 		monCard.setLinkAttributes(monCard.getExtraAttributes().new LinkAttributes(
-				jCardObject.getLinkArrowArray(Json.LINK_ARROW.jkvName)));
+				importCardObject.getLinkArrowArray(Json.LINK_ARROW.jkvName)));
 		return monCard;
 	}
 
 	/**
 	 *
-	 * @param jCardObject
+	 * @param importCardObject
 	 */
-	private static MonsterCard buildMonster(JSONCardObject jCardObject) {
-		var monCard = new MonsterCard(jCardObject.getString(Json.NAME.jkvName), jCardObject.getInt(Json.INDEX.jkvName),
-				jCardObject.getStrings(Json.LORE.jkvName), jCardObject.getInt(Json.LEVEL.jkvName),
-				jCardObject.getInt(Json.ATTACK.jkvName), jCardObject.getInt(Json.DEFENSE.jkvName));
+	private static MonsterCard buildMonster(ImportCardInterface importCardObject) {
+		var monCard = new MonsterCard(importCardObject.getString(Json.NAME.jkvName), importCardObject.getInt(Json.INDEX.jkvName),
+				importCardObject.getStringArray(Json.LORE.jkvName), importCardObject.getInt(Json.LEVEL.jkvName),
+				importCardObject.getInt(Json.ATTACK.jkvName), importCardObject.getInt(Json.DEFENSE.jkvName));
 		monCard.setMonComBlock(
-				monCard.new MonComBlock(jCardObject.getMonsterAttributeComponent(Json.MONSTER_ATTRIBUTE.jkvName),
-						jCardObject.getMonsterTypeComponent(Json.MONSTER_TYPE.jkvName),
-						jCardObject.getTypeComponentArray(Json.TYPE.jkvName)));
+				monCard.new MonComBlock(importCardObject.getMonsterAttributeComponent(Json.MONSTER_ATTRIBUTE.jkvName),
+						importCardObject.getMonsterTypeComponent(Json.MONSTER_TYPE.jkvName),
+						importCardObject.getTypeComponentArray(Json.TYPE.jkvName)));
 		return monCard;
 	}
 
 	/**
 	 *
-	 * @param jCardObject
+	 * @param importCardObject
 	 * @param monCard
 	 */
-	private static void buildPendulumAttributes(JSONCardObject jCardObject, MonsterCard monCard) {
-		monCard.setPendAttributes(monCard.new PendAttributes(jCardObject.getString(Json.PENDULUM_LORE.jkvName),
-				jCardObject.getInt(Json.PENDULUM_LEVEL.jkvName)));
+	private static void buildPendulumAttributes(ImportCardInterface importCardObject, MonsterCard monCard) {
+		monCard.setPendAttributes(monCard.new PendAttributes(importCardObject.getString(Json.PENDULUM_LORE.jkvName),
+				importCardObject.getInt(Json.PENDULUM_LEVEL.jkvName)));
 	}
 
 	/**
 	 *
-	 * @param jCardObject
+	 * @param importCardObject
 	 */
-	private static MonsterCard buildPendulumExtraMonster(JSONCardObject jCardObject) {
-		var monCard = buildExtraMonster(jCardObject);
-		buildPendulumAttributes(jCardObject, monCard);
+	private static MonsterCard buildPendulumExtraMonster(ImportCardInterface importCardObject) {
+		var monCard = buildExtraMonster(importCardObject);
+		buildPendulumAttributes(importCardObject, monCard);
 		return monCard;
 	}
 
 	/**
 	 *
-	 * @param jCardObject
+	 * @param importCardObject
 	 */
-	private static MonsterCard buildPendulumMonster(JSONCardObject jCardObject) {
-		var monCard = buildMonster(jCardObject);
-		buildPendulumAttributes(jCardObject, monCard);
+	private static MonsterCard buildPendulumMonster(ImportCardInterface importCardObject) {
+		var monCard = buildMonster(importCardObject);
+		buildPendulumAttributes(importCardObject, monCard);
 		return monCard;
 	}
 
 	/**
 	 *
-	 * @param jCardObject
+	 * @param importCardObject
 	 */
-	private static MonsterCard buildPendulumXyzMonster(JSONCardObject jCardObject) {
-		var monCard = buildXyzMonster(jCardObject);
-		buildPendulumAttributes(jCardObject, monCard);
+	private static MonsterCard buildPendulumXyzMonster(ImportCardInterface importCardObject) {
+		var monCard = buildXyzMonster(importCardObject);
+		buildPendulumAttributes(importCardObject, monCard);
 		return monCard;
 	}
 
 	/**
 	 *
-	 * @param jCardObject
+	 * @param importCardObject
 	 */
-	private static SpellTrapCard buildSpellTrap(JSONCardObject jCardObject) {
-		return new SpellTrapCard(jCardObject.getString(Json.NAME.jkvName), jCardObject.getInt(Json.INDEX.jkvName),
-				jCardObject.getCardTypeComponent(Json.CARD_TYPE.jkvName.toUpperCase()),
-				jCardObject.getStrings(Json.LORE.jkvName), jCardObject.getIconComponent(Json.ICON.jkvName));
+	private static SpellTrapCard buildSpellTrap(ImportCardInterface importCardObject) {
+		return new SpellTrapCard(importCardObject.getString(Json.NAME.jkvName), importCardObject.getInt(Json.INDEX.jkvName),
+				importCardObject.getCardTypeComponent(Json.CARD_TYPE.jkvName.toUpperCase()),
+				importCardObject.getStringArray(Json.LORE.jkvName), importCardObject.getIconComponent(Json.ICON.jkvName));
 	}
 
 	/**
 	 *
-	 * @param jCardObject
+	 * @param importCardObject
 	 */
-	private static MonsterCard buildXyzMonster(JSONCardObject jCardObject) {
-		var monCard = buildExtraMonster(jCardObject);
-		monCard.setXyzAttributes(monCard.getExtraAttributes().new XyzAttributes(jCardObject.getInt(Json.RANK.jkvName)));
+	private static MonsterCard buildXyzMonster(ImportCardInterface importCardObject) {
+		var monCard = buildExtraMonster(importCardObject);
+		monCard.setXyzAttributes(monCard.getExtraAttributes().new XyzAttributes(importCardObject.getInt(Json.RANK.jkvName)));
 		return monCard;
 	}
 

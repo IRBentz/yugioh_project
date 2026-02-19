@@ -18,8 +18,9 @@ import com.card.component.MonsterAttributeComponent;
 import com.card.component.MonsterTypeComponent;
 import com.card.component.TypeComponent;
 import com.engine.PathAndNameEnums.ClassPath;
+import com.io.ImportCardInterface;
 
-public class JSONCardObject {
+public class JSONCardObject implements ImportCardInterface{
 	private static final String AN_EXCEPTION_OCCURED = "An Exception Occured";
 	static Logger logger = Logger.getLogger(JSONCardObject.class.getName());
 
@@ -85,11 +86,11 @@ public class JSONCardObject {
 		}
 	}
 
-	public int getInt(String jkvName) {
+	public int getInt(String input) {
 		try {
-			return jsonObject.getInt(jkvName);
+			return jsonObject.getInt(input);
 		} catch (JSONException e) {
-			logger.log(Level.FINE, String.format("Unable to find int for %s", jkvName), e);
+			logger.log(Level.FINE, String.format("Unable to find int for %s", input), e);
 			return 0;
 		}
 	}
@@ -122,20 +123,20 @@ public class JSONCardObject {
 		}
 	}
 
-	public String getString(String jkvName) {
+	public String getString(String input) {
 		try {
-			return jsonObject.getString(jkvName);
+			return jsonObject.getString(input);
 		} catch (JSONException e) {
-			logger.log(Level.FINE, String.format("Unable to find String for %s", jkvName), e);
+			logger.log(Level.FINE, String.format("Unable to find String for %s", input), e);
 			return null;
 		}
 	}
 	
-	public String[] getStrings(String jkvName) {
+	public String[] getStringArray(String input) {
 		try {
-			return new String[] {jsonObject.getString(jkvName)};
+			return new String[] {jsonObject.getString(input)};
 		} catch (JSONException e) {
-			logger.log(Level.FINE, String.format("Unable to find String for %s", jkvName), e);
+			logger.log(Level.FINE, String.format("Unable to find String for %s",input), e);
 			return new String[] {};
 		}
 	}
