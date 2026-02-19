@@ -36,3 +36,7 @@ target/
 *.log
 *Log*.json\
 .log_index
+
+# Misc Specific files #
+WAILA.*
+Notes.txt
