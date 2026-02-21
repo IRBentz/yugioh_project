@@ -1,0 +1,90 @@
+package yugioh.card;
+
+import java.util.Arrays;
+import java.util.List;
+
+import yugioh.card.component.ArchetypeComponent;
+import yugioh.card.component.CardTypeComponent;
+
+public class Card {
+	private ArchetypeComponent[] archetype;
+	private final int cardIndex;
+	private final String name;
+	private final String[] lore;
+	private final CardTypeComponent type;
+	private Class<?> boundEffectClass;
+
+	/**
+	 * @param name
+	 * @param index
+	 * @param type
+	 * @param lore
+	 */
+	protected Card(String name, int index, CardTypeComponent type, List<String> lore) {
+		this.name = name;
+		cardIndex = index;
+		this.type = type;
+		this.lore = lore.toArray(String[]::new);
+	}
+
+	/**
+	 * @return
+	 */
+	public ArchetypeComponent[] getArchitype() {
+		return archetype;
+	}
+
+	/**
+	 * @return
+	 */
+	public Class<?> getBoundClass() {
+		return boundEffectClass;
+	}
+
+	/**
+	 * @return
+	 */
+	public int getIndex() {
+		return cardIndex;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getLore() {
+		return Arrays.toString(lore);
+	}
+
+	/**
+	 * @return
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @return
+	 */
+	public CardTypeComponent getType() {
+		return type;
+	}
+
+	/**
+	 * @param archetype
+	 */
+	public void setArchitype(List<ArchetypeComponent> archetype) {
+		this.archetype = archetype.toArray(ArchetypeComponent[]::new);
+	}
+
+	/**
+	 * @param clazz
+	 */
+	public void setBoundClass(Class<?> clazz) {
+		boundEffectClass = clazz;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("%08d", cardIndex) + " | " + name + " | " + type + " | " + lore;
+	}
+}
