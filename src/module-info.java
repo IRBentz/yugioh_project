@@ -3,7 +3,6 @@ module yugioh {
 	exports yugioh.board;
 	exports yugioh.card;
 	exports yugioh.card.component;
-	exports yugioh.db.effect_db;
 	exports yugioh.engine;
 	exports yugioh.io;
 	exports yugioh.io.zip;
