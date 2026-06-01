@@ -76,7 +76,14 @@ public class JsonStreamFileHandler extends Handler {
 			JSONObject json = JsonFormatter.formatRecord(recordToLog);
 			if (!firstEntry)
 				writer.write(",\n");
-			writer.write(json.toString(2));
+			String prepass = json.toString();
+			String postpass = prepass;
+			while (prepass.contains("\\\\") || prepass.contains("/")) {
+				prepass = prepass.replace("\\\\", "\\");
+				prepass = prepass.replace("/", "\\");
+				postpass = prepass;
+			}
+			writer.write(postpass);
 			firstEntry = false;
 		} catch (IOException e) {
 			reportError("Failed to write log entry", e, ErrorManager.WRITE_FAILURE);

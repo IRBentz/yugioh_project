@@ -15,16 +15,13 @@ public class JsonFormatter extends Formatter {
 	public static JSONObject formatRecord(LogRecord logRecord) {
 		JSONObject jsonObject = new JSONObject();
         
-        // Add standard log record fields
         jsonObject.put("timestamp", logRecord.getMillis());
         jsonObject.put("level", logRecord.getLevel().getName());
         jsonObject.put("message", logRecord.getMessage());
-
-        // Handle the exception (Throwable)
+        
         Throwable thrown = logRecord.getThrown();
         if (thrown != null) {
             String stacktrace = getStackTraceAsString(thrown);
-            // Add the full stack trace as a single string value to the JSON object
             jsonObject.put("stacktrace", stacktrace); 
             jsonObject.put("exception_type", thrown.getClass().getName());
         }
