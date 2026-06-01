@@ -34,7 +34,7 @@ target/
 
 # Log Files #
 *.log
-*Log*.json\
+*Log*.json
 .log_index
 
 # Misc Specific files #
