@@ -147,7 +147,7 @@ public class Backendv4 implements DBBuilder {
 		try {
 			for (Card card : Global.getCardDb()) {
 				for (Path path : (Iterable<Path>) Files.list(
-						FileSystems.getDefault().getPath(FolderPath.COM.path + FolderPath.EFFECT_DB.path))::iterator) {
+						FileSystems.getDefault().getPath(FolderPath.YUGIOH.path + FolderPath.EFFECT_DB.path))::iterator) {
 					if (path.getFileName().toString().replace(".java", "").equals(card.getName())) {
 						card.setBoundClass(Class
 								.forName(ClassPath.EFFECT_DB.path + this.configurePathToClassName(path.getFileName())));
@@ -162,7 +162,7 @@ public class Backendv4 implements DBBuilder {
 	@Override
 	public void buildDB() {
 		JSONArray jsonArray;
-		var filePath = FileSystems.getDefault().getPath(FolderPath.COM.path + FolderPath.JSON.path);
+		var filePath = FileSystems.getDefault().getPath(FolderPath.YUGIOH.path + FolderPath.JSON.path);
 		Backendv4.logger.log(Level.FINE, () -> "Successfully found designated file path: \"" + filePath + "\"");
 		try {
 			jsonArray = new JSONArray(
