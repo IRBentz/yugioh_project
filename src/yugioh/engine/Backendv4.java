@@ -1,47 +1,43 @@
 package yugioh.engine;
 
-import module java.base;
-import java.util.List;
 import java.util.logging.Logger;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.util.logging.Level;
 
-import module yugioh;
-import yugioh.engine.PathAndNameEnums.ClassPath;
+import yugioh.card.Card;
+import yugioh.card.MonsterCard;
+import yugioh.card.SpellTrapCard;
 import yugioh.engine.PathAndNameEnums.FileName;
 import yugioh.engine.PathAndNameEnums.FolderPath;
+import yugioh.io.ImportCardInterface;
+import yugioh.wrapper.jsonobject.JSONCardObject;
 
-import module org.json;
-
-public class Backendv4 implements DBBuilder {
+public class Backendv4 implements DBBuilderInterface {
 	private static Logger logger = Logger.getLogger(Backendv4.class.toString());
-
-	/**
-	 *
-	 * @param importCardObject
-	 */
-	private static MonsterCard buildExtraMonster(ImportCardInterface importCardObject) {
-		var monCard = Backendv4.buildMonster(importCardObject);
+	private JSONObject jCardGroupObject;
+	private JSONCardObject jCardObject;
+	private ImportCardInterface importCardObject;
+	public MonsterCard buildExtraMonster() {
+		var monCard = buildMonster();
 		monCard.setExtraAttributes(
 				monCard.new ExtraAttributes(importCardObject.getString(Json.SUMMON_REQUIREMENT.jkvName)));
 		return monCard;
 	}
 
-	/**
-	 *
-	 * @param importCardObject
-	 */
-	private static MonsterCard buildLinkMonster(ImportCardInterface importCardObject) {
-		var monCard = Backendv4.buildExtraMonster(importCardObject);
+	public MonsterCard buildLinkMonster() {
+		var monCard = buildExtraMonster();
 		monCard.setLinkAttributes(monCard.getExtraAttributes().new LinkAttributes(
 				importCardObject.getLinkArrowArray(Json.LINK_ARROW.jkvName)));
 		return monCard;
 	}
 
-	/**
-	 *
-	 * @param importCardObject
-	 */
-	private static MonsterCard buildMonster(ImportCardInterface importCardObject) {
+	public MonsterCard buildMonster() {
 		var monCard = new MonsterCard(importCardObject.getString(Json.NAME.jkvName),
 				importCardObject.getInt(Json.INDEX.jkvName), importCardObject.getStringArray(Json.LORE.jkvName),
 				importCardObject.getInt(Json.LEVEL.jkvName), importCardObject.getInt(Json.ATTACK.jkvName),
@@ -53,51 +49,30 @@ public class Backendv4 implements DBBuilder {
 		return monCard;
 	}
 
-	/**
-	 *
-	 * @param importCardObject
-	 * @param monCard
-	 */
-	private static void buildPendulumAttributes(ImportCardInterface importCardObject, MonsterCard monCard) {
+	public void attachPendulumAttributes(MonsterCard monCard) {
 		monCard.setPendAttributes(monCard.new PendAttributes(importCardObject.getString(Json.PENDULUM_LORE.jkvName),
 				importCardObject.getInt(Json.PENDULUM_LEVEL.jkvName)));
 	}
 
-	/**
-	 *
-	 * @param importCardObject
-	 */
-	private static MonsterCard buildPendulumExtraMonster(ImportCardInterface importCardObject) {
-		var monCard = Backendv4.buildExtraMonster(importCardObject);
-		Backendv4.buildPendulumAttributes(importCardObject, monCard);
+	public MonsterCard buildPendulumExtraMonster() {
+		var monCard = buildExtraMonster();
+		attachPendulumAttributes(monCard);
 		return monCard;
 	}
 
-	/**
-	 *
-	 * @param importCardObject
-	 */
-	private static MonsterCard buildPendulumMonster(ImportCardInterface importCardObject) {
-		var monCard = Backendv4.buildMonster(importCardObject);
-		Backendv4.buildPendulumAttributes(importCardObject, monCard);
+	public MonsterCard buildPendulumMonster() {
+		var monCard = buildMonster();
+		attachPendulumAttributes(monCard);
 		return monCard;
 	}
 
-	/**
-	 *
-	 * @param importCardObject
-	 */
-	private static MonsterCard buildPendulumXyzMonster(ImportCardInterface importCardObject) {
-		var monCard = Backendv4.buildXyzMonster(importCardObject);
-		Backendv4.buildPendulumAttributes(importCardObject, monCard);
+	public MonsterCard buildPendulumXyzMonster() {
+		var monCard = buildXyzMonster();
+		attachPendulumAttributes(monCard);
 		return monCard;
 	}
 
-	/**
-	 *
-	 * @param importCardObject
-	 */
-	private static SpellTrapCard buildSpellTrap(ImportCardInterface importCardObject) {
+	public SpellTrapCard buildSpellTrap() {
 		return new SpellTrapCard(importCardObject.getString(Json.NAME.jkvName),
 				importCardObject.getInt(Json.INDEX.jkvName),
 				importCardObject.getCardTypeComponent(Json.CARD_TYPE.jkvName.toUpperCase()),
@@ -105,33 +80,25 @@ public class Backendv4 implements DBBuilder {
 				importCardObject.getIconComponent(Json.ICON.jkvName));
 	}
 
-	/**
-	 *
-	 * @param importCardObject
-	 */
-	private static MonsterCard buildXyzMonster(ImportCardInterface importCardObject) {
-		var monCard = Backendv4.buildExtraMonster(importCardObject);
+
+	public MonsterCard buildXyzMonster() {
+		var monCard = buildExtraMonster();
 		monCard.setXyzAttributes(
 				monCard.getExtraAttributes().new XyzAttributes(importCardObject.getInt(Json.RANK.jkvName)));
 		return monCard;
 	}
 
-	/**
-	 *
-	 * @param jCardGroupObject
-	 * @param jCardObject
-	 * @return built <Card>
-	 */
-	private static Card getBuiltCard(JSONObject jCardGroupObject, JSONCardObject jCardObject) {
+	public Card getBuiltCard() {
+		importCardObject = jCardObject;
 		return switch (jCardGroupObject.getString(Json.CARD_TYPE.jkvName)) {
-		case "monster" -> Backendv4.buildMonster(jCardObject);
-		case "pendulumMonster" -> Backendv4.buildPendulumMonster(jCardObject);
-		case "fusionMonster", "synchroMonster" -> Backendv4.buildExtraMonster(jCardObject);
-		case "pendulumFusionMonster", "pendulumSynchroMonster" -> Backendv4.buildPendulumExtraMonster(jCardObject);
-		case "xyzMonster" -> Backendv4.buildXyzMonster(jCardObject);
-		case "pendulumXyzMonster" -> Backendv4.buildPendulumXyzMonster(jCardObject);
-		case "linkMonster" -> Backendv4.buildLinkMonster(jCardObject);
-		case "spell", "trap" -> Backendv4.buildSpellTrap(jCardObject);
+		case "monster" -> buildMonster();
+		case "pendulumMonster" -> buildPendulumMonster();
+		case "fusionMonster", "synchroMonster" -> buildExtraMonster();
+		case "pendulumFusionMonster", "pendulumSynchroMonster" -> buildPendulumExtraMonster();
+		case "xyzMonster" -> buildXyzMonster();
+		case "pendulumXyzMonster" -> buildPendulumXyzMonster();
+		case "linkMonster" -> buildLinkMonster();
+		case "spell", "trap" -> buildSpellTrap();
 		default -> null;
 		};
 	}
@@ -142,22 +109,6 @@ public class Backendv4 implements DBBuilder {
 	public Backendv4(int flag) {
 		if (flag != 0) {
 			System.exit(flag);
-		}
-	}
-
-	private void bindCardEffects() {
-		try {
-			for (Card card : Global.getCardDb()) {
-				for (Path path : (Iterable<Path>) Files.list(
-						FileSystems.getDefault().getPath(FolderPath.YUGIOH.path + FolderPath.EFFECT_DB.path))::iterator) {
-					if (path.getFileName().toString().replace(".java", "").equals(card.getName())) {
-						card.setBoundClass(Class
-								.forName(ClassPath.EFFECT_DB.path + this.configurePathToClassName(path.getFileName())));
-					}
-				}
-			}
-		} catch (IOException | ClassNotFoundException e) {
-			Backendv4.logger.log(Level.SEVERE, "An error occured", e);
 		}
 	}
 
@@ -179,41 +130,17 @@ public class Backendv4 implements DBBuilder {
 			jsonArray = new JSONArray();
 		}
 		for (Object cardGroup : jsonArray) {
-			var jCardGroupObject = (JSONObject) cardGroup;
+			jCardGroupObject = (JSONObject) cardGroup;
 			Backendv4.logger.log(Level.FINE,
 					() -> "Found Card Type {" + jCardGroupObject.getString(Json.CARD_TYPE.jkvName) + "}");
 			for (Object card : jCardGroupObject.getJSONArray(Json.CARDS.jkvName)) {
-				final var jCardObject = new JSONCardObject((JSONObject) card);
-				final var builtCard = Backendv4.getBuiltCard(jCardGroupObject, jCardObject);
+				jCardObject = new JSONCardObject((JSONObject) card);
+				final var builtCard = getBuiltCard();
 				if (builtCard != null) {
 					Global.getCardDb().add(builtCard);
 				}
 			}
 		}
 		this.bindCardEffects();
-	}
-
-	/**
-	 *
-	 * @param list
-	 * @return concatenated String representation of list
-	 */
-	@Override
-	public String concatStringArray(List<String> list) {
-		var string = new StringBuilder();
-		for (String s : list) {
-			string.append(s);
-		}
-		return string.toString();
-	}
-
-	/**
-	 *
-	 * @param pathToConfigure
-	 * @return String formated for class name syntax.
-	 */
-	@Override
-	public String configurePathToClassName(Path pathToConfigure) {
-		return pathToConfigure.toString().replace(".java", "");
 	}
 }

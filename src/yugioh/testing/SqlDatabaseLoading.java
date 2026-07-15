@@ -8,15 +8,39 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Logger;
 
-import module yugioh;
+import yugioh.card.component.CardTypeComponent;
+import yugioh.card.component.IconComponent;
+import yugioh.card.component.LinkArrowComponent;
+import yugioh.card.component.MonsterAttributeComponent;
+import yugioh.card.component.MonsterTypeComponent;
+import yugioh.card.component.TypeComponent;
+import yugioh.engine.Global;
+import yugioh.io.ImportCardInterface;
+import yugioh.io.SqlTypes;
+
+import java.util.logging.Level;
+
 
 class SqlCardObject implements ImportCardInterface {
 	static Logger logger = Logger.getLogger(SqlCardObject.class.getName());
 
 	ResultSet resultSet;
+	ParsedResultSet parsedResultSet;
+	
+	private record ParsedResultSet(int id, int alias, String name, String desc, int type, int atk, int def, int level, int race, int attribute, int category) {}
 
 	public SqlCardObject(final ResultSet resultSet) {
 		this.resultSet = resultSet;
+		try {
+			parseResultSet();
+		} catch (SQLException e) {
+			logger.log(Level.SEVERE, "An Exception Occured", e);
+		}
+	}
+	
+	private void parseResultSet() throws SQLException {
+		parsedResultSet = new ParsedResultSet(resultSet.getInt("id"), resultSet.getInt("alias"), resultSet.getString("name"), resultSet.getString("desc"), resultSet.getInt("type"), resultSet.getInt("atk"), resultSet.getInt("def"), resultSet.getInt("level"), resultSet.getInt("race"), resultSet.getInt("attribute"), resultSet.getInt("category"));
+
 	}
 
 	@Override
@@ -74,10 +98,11 @@ public class SqlDatabaseLoading {
 				System.out.println("Connection to SQLite has been established.");
 
 				// Example 1: Read data from a specific table
-				// readData(conn, "datas");
+				//readData(conn, "datas");
 				// Example 2: Read database schema (list tables)
-				SqlDatabaseLoading.readSchema(conn);
+				readSchema(conn);
 				System.out.println(conn.getTypeMap());
+				readJoinedTables(conn);
 			}
 		} catch (final SQLException e) {
 			System.err.println("Database error: " + e.getMessage());
@@ -142,8 +167,8 @@ public class SqlDatabaseLoading {
 				for (final String[] s : items3) {
 					if ((s[0] != null) || (s[1] != null)) {
 						switch (s[1]) {
-						case "INTEGER" -> pairedItems.add(new SqlPair(s[0], sqlTypes.INTEGER));
-						case "TEXT" -> pairedItems.add(new SqlPair(s[0], sqlTypes.TEXT));
+						case "INTEGER" -> pairedItems.add(new SqlPair(s[0], SqlTypes.INTEGER));
+						case "TEXT" -> pairedItems.add(new SqlPair(s[0], SqlTypes.TEXT));
 						default -> System.out.println("Unfound case for " + s[1]);
 						}
 					}
@@ -154,13 +179,28 @@ public class SqlDatabaseLoading {
 			}
 		}
 	}
+	
+	public static void readJoinedTables(final Connection conn) throws SQLException {
+		final var query = "SELECT datas.id, alias, name, desc, type, atk, def, level, race, attribute, category, setcode FROM datas INNER JOIN texts ON datas.id = texts.id";
+		try (var stmt = conn.createStatement(); var rs = stmt.executeQuery(query)) {
+			while (rs.next()) {
+				System.out.println(buildRS(rs).toString());
+			}
+		}
+	}
+	
+	private static Rs buildRS(final ResultSet rs) throws SQLException {
+		return new Rs(rs.getInt("id"), rs.getInt("alias"), rs.getString("name"), rs.getString("desc"), rs.getInt("type"), rs.getInt("atk"), rs.getInt("def"), rs.getInt("level"), rs.getInt("race"), rs.getInt("attribute"), rs.getInt("category"));
+	}
+	
+	public record Rs(int id, int alias, String name, String desc, int type, int atk, int def, int level, int race, int attribute, int category) {}
 }
 
 class SqlPair {
 	private final String name;
-	private final sqlTypes sqlType;
+	private final SqlTypes sqlType;
 
-	SqlPair(final String n, final sqlTypes sT) {
+	SqlPair(final String n, final SqlTypes sT) {
 		this.name = n;
 		this.sqlType = sT;
 	}
