@@ -1,11 +1,11 @@
 package yugioh.io;
 
-public enum sqlTypes {
+public enum SqlTypes {
 	INTEGER(Integer.class), TEXT(String.class);
 
 	private Class<?> dataType;
 
-	sqlTypes(Class<?> clazz) {
+	SqlTypes(Class<?> clazz) {
 		dataType = clazz;
 	}
 

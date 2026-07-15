@@ -10,6 +10,8 @@ import yugioh.engine.PathAndNameEnums.ClassPath;
 import yugioh.engine.PathAndNameEnums.FileName;
 import yugioh.engine.PathAndNameEnums.FolderPath;
 
+import module org.json;
+
 public class Backendv4 implements DBBuilder {
 	private static Logger logger = Logger.getLogger(Backendv4.class.toString());
 

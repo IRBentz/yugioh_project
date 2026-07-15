@@ -3,7 +3,7 @@ package yugioh.engine;
 public enum PathAndNameEnums {
 	;
 	public enum ClassPath {
-		EFFECT_DB("yugioh.db.effect_db."), COMPONENT("yugioh.card.component.");
+		YUGIOH("yugioh."), EFFECT_DB(YUGIOH.path + "db.effect_db."), COMPONENT(YUGIOH.path + "card.component.");
 
 		public final String path;
 
@@ -23,7 +23,7 @@ public enum PathAndNameEnums {
 	}
 
 	public enum FolderPath {
-		YUGIOH("src//yugioh//"), JSON("db//_json//"), EFFECT_DB("db//effect_db//");
+		SRC("src//"), DB("db//"), YUGIOH(SRC.path + "yugioh//"), JSON(DB.path + "_json//"), EFFECT_DB(DB.path + "effect_db//");
 
 		public final String path;
 
