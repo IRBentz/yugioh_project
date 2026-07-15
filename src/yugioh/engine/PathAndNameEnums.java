@@ -31,4 +31,14 @@ public enum PathAndNameEnums {
 			this.path = path;
 		}
 	}
+	
+	public enum SQLitePath {
+		JDBCHeader("jdbc:sqlite:"), BabelCDB(JDBCHeader + "BabelCDB/"), Cards(BabelCDB + "cards.cdb");
+		
+		public final String path;
+		
+		SQLitePath(String path) {
+			this.path = path;
+		}
+	}
 }
