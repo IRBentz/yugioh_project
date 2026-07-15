@@ -1,0 +1,6 @@
+[submodule "PI_BabelCDB"]
+	path = BabelCDB
+	url = https://github.com/ProjectIgnis/BabelCDB.git
+[submodule "PI_CardScipts"]
+	path = CardScripts
+	url = https://github.com/ProjectIgnis/CardScripts
