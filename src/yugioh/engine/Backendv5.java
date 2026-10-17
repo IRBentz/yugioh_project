@@ -3,12 +3,13 @@ package yugioh.engine;
 import yugioh.card.Card;
 import yugioh.card.MonsterCard;
 import yugioh.card.SpellTrapCard;
+import yugioh.engine.PathAndNameEnums.SQLitePath;
 
 public class Backendv5 implements DBBuilderInterface {
 
 	@Override
 	public void buildDB() {
-		final String databasePath = "jdbc:sqlite:BabelCDB/cards.cdb";
+		final String databasePath = SQLitePath.Cards.path;
 	}
 
 	@Override

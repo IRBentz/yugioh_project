@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Logger;
 
 import yugioh.card.component.CardTypeComponent;
 import yugioh.card.component.IconComponent;
@@ -18,30 +17,8 @@ import yugioh.engine.Global;
 import yugioh.io.ImportCardInterface;
 import yugioh.io.SqlTypes;
 
-import java.util.logging.Level;
-
 
 class SqlCardObject implements ImportCardInterface {
-	static Logger logger = Logger.getLogger(SqlCardObject.class.getName());
-
-	ResultSet resultSet;
-	ParsedResultSet parsedResultSet;
-	
-	private record ParsedResultSet(int id, int alias, String name, String desc, int type, int atk, int def, int level, int race, int attribute, int category) {}
-
-	public SqlCardObject(final ResultSet resultSet) {
-		this.resultSet = resultSet;
-		try {
-			parseResultSet();
-		} catch (SQLException e) {
-			logger.log(Level.SEVERE, "An Exception Occured", e);
-		}
-	}
-	
-	private void parseResultSet() throws SQLException {
-		parsedResultSet = new ParsedResultSet(resultSet.getInt("id"), resultSet.getInt("alias"), resultSet.getString("name"), resultSet.getString("desc"), resultSet.getInt("type"), resultSet.getInt("atk"), resultSet.getInt("def"), resultSet.getInt("level"), resultSet.getInt("race"), resultSet.getInt("attribute"), resultSet.getInt("category"));
-
-	}
 
 	@Override
 	public CardTypeComponent getCardTypeComponent(final String input) {

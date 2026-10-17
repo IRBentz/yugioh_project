@@ -5,11 +5,12 @@ module yugioh {
 	exports yugioh.card.component;
 	exports yugioh.engine;
 	exports yugioh.io;
+	exports yugioh.io.json;
+	exports yugioh.io.SQLite;
 	exports yugioh.io.zip;
 	exports yugioh.logging.builtin;
 	exports yugioh.player;
 	exports yugioh.testing;
-	exports yugioh.wrapper.jsonobject;
 
 	requires transitive org.json;
 	requires transitive java.desktop;

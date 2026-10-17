@@ -3,11 +3,13 @@ package yugioh.engine;
 import java.util.logging.Logger;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
+import java.sql.SQLException;
 import java.util.logging.Level;
 
 import yugioh.card.Card;
@@ -16,28 +18,28 @@ import yugioh.card.SpellTrapCard;
 import yugioh.engine.PathAndNameEnums.FileName;
 import yugioh.engine.PathAndNameEnums.FolderPath;
 import yugioh.io.ImportCardInterface;
-import yugioh.wrapper.jsonobject.JSONCardObject;
+import yugioh.io.json.JSONCardObject;
 
 public class Backendv4 implements DBBuilderInterface {
 	private static Logger logger = Logger.getLogger(Backendv4.class.toString());
 	private JSONObject jCardGroupObject;
 	private JSONCardObject jCardObject;
 	private ImportCardInterface importCardObject;
-	public MonsterCard buildExtraMonster() {
+	public MonsterCard buildExtraMonster() throws JSONException, SQLException {
 		var monCard = buildMonster();
 		monCard.setExtraAttributes(
 				monCard.new ExtraAttributes(importCardObject.getString(Json.SUMMON_REQUIREMENT.jkvName)));
 		return monCard;
 	}
 
-	public MonsterCard buildLinkMonster() {
+	public MonsterCard buildLinkMonster() throws JSONException, SQLException {
 		var monCard = buildExtraMonster();
 		monCard.setLinkAttributes(monCard.getExtraAttributes().new LinkAttributes(
 				importCardObject.getLinkArrowArray(Json.LINK_ARROW.jkvName)));
 		return monCard;
 	}
 
-	public MonsterCard buildMonster() {
+	public MonsterCard buildMonster() throws JSONException, SQLException {
 		var monCard = new MonsterCard(importCardObject.getString(Json.NAME.jkvName),
 				importCardObject.getInt(Json.INDEX.jkvName), importCardObject.getStringArray(Json.LORE.jkvName),
 				importCardObject.getInt(Json.LEVEL.jkvName), importCardObject.getInt(Json.ATTACK.jkvName),
@@ -49,30 +51,30 @@ public class Backendv4 implements DBBuilderInterface {
 		return monCard;
 	}
 
-	public void attachPendulumAttributes(MonsterCard monCard) {
+	public void attachPendulumAttributes(MonsterCard monCard) throws JSONException, SQLException {
 		monCard.setPendAttributes(monCard.new PendAttributes(importCardObject.getString(Json.PENDULUM_LORE.jkvName),
 				importCardObject.getInt(Json.PENDULUM_LEVEL.jkvName)));
 	}
 
-	public MonsterCard buildPendulumExtraMonster() {
+	public MonsterCard buildPendulumExtraMonster() throws JSONException, SQLException {
 		var monCard = buildExtraMonster();
 		attachPendulumAttributes(monCard);
 		return monCard;
 	}
 
-	public MonsterCard buildPendulumMonster() {
+	public MonsterCard buildPendulumMonster() throws JSONException, SQLException {
 		var monCard = buildMonster();
 		attachPendulumAttributes(monCard);
 		return monCard;
 	}
 
-	public MonsterCard buildPendulumXyzMonster() {
+	public MonsterCard buildPendulumXyzMonster() throws JSONException, SQLException {
 		var monCard = buildXyzMonster();
 		attachPendulumAttributes(monCard);
 		return monCard;
 	}
 
-	public SpellTrapCard buildSpellTrap() {
+	public SpellTrapCard buildSpellTrap() throws JSONException, SQLException {
 		return new SpellTrapCard(importCardObject.getString(Json.NAME.jkvName),
 				importCardObject.getInt(Json.INDEX.jkvName),
 				importCardObject.getCardTypeComponent(Json.CARD_TYPE.jkvName.toUpperCase()),
@@ -81,14 +83,14 @@ public class Backendv4 implements DBBuilderInterface {
 	}
 
 
-	public MonsterCard buildXyzMonster() {
+	public MonsterCard buildXyzMonster() throws JSONException, SQLException {
 		var monCard = buildExtraMonster();
 		monCard.setXyzAttributes(
 				monCard.getExtraAttributes().new XyzAttributes(importCardObject.getInt(Json.RANK.jkvName)));
 		return monCard;
 	}
 
-	public Card getBuiltCard() {
+	public Card getBuiltCard() throws JSONException, SQLException {
 		importCardObject = jCardObject;
 		return switch (jCardGroupObject.getString(Json.CARD_TYPE.jkvName)) {
 		case "monster" -> buildMonster();
@@ -131,13 +133,15 @@ public class Backendv4 implements DBBuilderInterface {
 		}
 		for (Object cardGroup : jsonArray) {
 			jCardGroupObject = (JSONObject) cardGroup;
-			Backendv4.logger.log(Level.FINE,
+			logger.log(Level.FINE,
 					() -> "Found Card Type {" + jCardGroupObject.getString(Json.CARD_TYPE.jkvName) + "}");
 			for (Object card : jCardGroupObject.getJSONArray(Json.CARDS.jkvName)) {
 				jCardObject = new JSONCardObject((JSONObject) card);
-				final var builtCard = getBuiltCard();
-				if (builtCard != null) {
-					Global.getCardDb().add(builtCard);
+				try {
+					 Card builtCard = getBuiltCard();
+					 Global.getCardDb().add(builtCard);
+				} catch (JSONException | SQLException e) {
+					logger.log(Level.SEVERE, "PANIC", e);
 				}
 			}
 		}

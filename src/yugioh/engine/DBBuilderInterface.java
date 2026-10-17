@@ -4,9 +4,12 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.json.JSONException;
 
 import yugioh.card.Card;
 import yugioh.card.MonsterCard;
@@ -19,16 +22,16 @@ public interface DBBuilderInterface {
 	
 	void buildDB();
 	
-	MonsterCard buildExtraMonster();
-	MonsterCard buildLinkMonster();
-	MonsterCard buildMonster();
-	void attachPendulumAttributes(MonsterCard monCard);
-	MonsterCard buildPendulumExtraMonster();
-	MonsterCard buildPendulumMonster();
-	MonsterCard buildPendulumXyzMonster();
-	SpellTrapCard buildSpellTrap();
-	MonsterCard buildXyzMonster();
-	Card getBuiltCard();
+	MonsterCard buildExtraMonster() throws JSONException, SQLException;
+	MonsterCard buildLinkMonster() throws JSONException, SQLException;
+	MonsterCard buildMonster() throws JSONException, SQLException;
+	void attachPendulumAttributes(MonsterCard monCard) throws JSONException, SQLException;
+	MonsterCard buildPendulumExtraMonster() throws JSONException, SQLException;
+	MonsterCard buildPendulumMonster() throws JSONException, SQLException;
+	MonsterCard buildPendulumXyzMonster() throws JSONException, SQLException;
+	SpellTrapCard buildSpellTrap() throws JSONException, SQLException;
+	MonsterCard buildXyzMonster() throws JSONException, SQLException;
+	Card getBuiltCard() throws JSONException, SQLException;
 	
 	
 	default String concatStringArray(List<String> list) {
