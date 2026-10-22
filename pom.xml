@@ -33,6 +33,17 @@
                                         <release>26</release>
                                 </configuration>
                         </plugin>
+                        <plugin>
+                                <groupId>org.codehaus.mojo</groupId>
+                                <artifactId>exec-maven-plugin</artifactId>
+                                <version>3.5.0</version>
+                                <configuration>
+                                        <mainClass>yugioh/yugioh.YgoRunner</mainClass>
+                                        <arguments>
+                                                <argument>--enable-native-access=yugioh.module,ALL-UNNAMED</argument>
+                                        </arguments>
+                                </configuration>
+                        </plugin>
                 </plugins>
         </build>
         <dependencies>
