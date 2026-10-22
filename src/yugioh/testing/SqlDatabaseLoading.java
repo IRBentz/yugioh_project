@@ -1,10 +1,8 @@
 package yugioh.testing;
 
 import module java.base;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 import java.util.List;
 
 import yugioh.card.component.CardTypeComponent;
@@ -161,7 +159,7 @@ public class SqlDatabaseLoading {
 		final var query = "SELECT datas.id, alias, name, desc, type, atk, def, level, race, attribute, category, setcode FROM datas INNER JOIN texts ON datas.id = texts.id";
 		try (var stmt = conn.createStatement(); var rs = stmt.executeQuery(query)) {
 			while (rs.next()) {
-				System.out.println(buildRS(rs).toString());
+				//System.out.println(buildRS(rs).toString());
 			}
 		}
 	}

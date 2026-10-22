@@ -1,18 +1,14 @@
 package yugioh.io.SQLite;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Logger;
 
-import yugioh.card.component.CardTypeComponent;
-import yugioh.card.component.IconComponent;
-import yugioh.card.component.LinkArrowComponent;
-import yugioh.card.component.MonsterAttributeComponent;
-import yugioh.card.component.MonsterTypeComponent;
-import yugioh.card.component.TypeComponent;
+import yugioh.card.component.*;
 import yugioh.io.ImportCardInterface;
 
-public class SqlCardObject implements ImportCardInterface {
-	private static Logger logger = Logger.getLogger(SqlCardObject.class.getName());
+public class SqlResultSetCardObject implements ImportCardInterface {
+	static Logger logger = Logger.getLogger(SqlResultSetCardObject.class.getName());
 	/*
 	 * resultSet.getInt("id"), resultSet.getInt("alias"), resultSet.getString("name"), 
 	 * resultSet.getString("desc"), resultSet.getInt("type"), resultSet.getInt("atk"), 
@@ -22,26 +18,23 @@ public class SqlCardObject implements ImportCardInterface {
 	
 	ResultSet resultSet;
 	
-	public SqlCardObject(final ResultSet resultSet) {
+	public SqlResultSetCardObject(final ResultSet resultSet) {
 		this.resultSet = resultSet;
 	}
 	
 	@Override
-	public CardTypeComponent getCardTypeComponent(String input) {
-		
-		return null;
+	public CardTypeComponent getCardTypeComponent(String input) throws SQLException {
+		return (CardTypeComponent) stringToCardComponentInterface(resultSet.getString(input));
 	}
 
 	@Override
-	public IconComponent getIconComponent(String input) {
-		
-		return null;
+	public IconComponent getIconComponent(String input) throws SQLException{
+		return (IconComponent) stringToCardComponentInterface(resultSet.getString(input));
 	}
 
 	@Override
-	public int getInt(String input) {
-		
-		return 0;
+	public int getInt(String input) throws SQLException {
+		return resultSet.getInt(input);
 	}
 
 	@Override
@@ -80,4 +73,5 @@ public class SqlCardObject implements ImportCardInterface {
 		return null;
 	}
 
+	public record Rs(int id, int alias, String name, String desc, int type, int atk, int def, int level, int race, int attribute, int category) {}
 }

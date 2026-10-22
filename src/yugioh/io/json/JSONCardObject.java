@@ -28,17 +28,10 @@ public class JSONCardObject implements ImportCardInterface{
 
 	JSONObject jsonObject;
 
-	/**
-	 * @param jsonObject
-	 */
 	public JSONCardObject(JSONObject jsonObject) {
 		this.jsonObject = jsonObject;
 	}
 
-	/**
-	 * @param input
-	 * @return
-	 */
 	public CardTypeComponent getCardTypeComponent(String input) throws JSONException {
 		return (CardTypeComponent) stringToCardComponentInterface(jsonObject.getString(input));
 	}
