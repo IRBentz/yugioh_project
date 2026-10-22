@@ -5,8 +5,10 @@ module yugioh {
 	exports yugioh.card.component;
 	exports yugioh.engine;
 	exports yugioh.io;
+	exports yugioh.io.exception;
 	exports yugioh.io.json;
 	exports yugioh.io.SQLite;
+	exports yugioh.io.FilePath;
 	exports yugioh.io.zip;
 	exports yugioh.logging.builtin;
 	exports yugioh.player;

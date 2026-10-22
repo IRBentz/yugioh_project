@@ -15,55 +15,6 @@ import yugioh.engine.Global;
 import yugioh.io.ImportCardInterface;
 import yugioh.io.SqlTypes;
 
-
-class SqlCardObject implements ImportCardInterface {
-
-	@Override
-	public CardTypeComponent getCardTypeComponent(final String input) {
-		return null;
-	}
-
-	@Override
-	public IconComponent getIconComponent(final String input) {
-		return null;
-	}
-
-	@Override
-	public int getInt(final String input) {
-		return 0;
-	}
-
-	@Override
-	public LinkArrowComponent[] getLinkArrowArray(final String input) {
-		return new LinkArrowComponent[] {};
-	}
-
-	@Override
-	public MonsterAttributeComponent getMonsterAttributeComponent(final String input) {
-		return null;
-	}
-
-	@Override
-	public MonsterTypeComponent getMonsterTypeComponent(final String input) {
-		return null;
-	}
-
-	@Override
-	public String getString(final String input) {
-		return null;
-	}
-
-	@Override
-	public String[] getStringArray(final String input) {
-		return new String[] {};
-	}
-
-	@Override
-	public TypeComponent[] getTypeComponentArray(final String input) {
-		return new TypeComponent[] {};
-	}
-}
-
 public class SqlDatabaseLoading {
 
 	public static void main(String[] args) {
@@ -158,8 +109,10 @@ public class SqlDatabaseLoading {
 	public static void readJoinedTables(final Connection conn) throws SQLException {
 		final var query = "SELECT datas.id, alias, name, desc, type, atk, def, level, race, attribute, category, setcode FROM datas INNER JOIN texts ON datas.id = texts.id";
 		try (var stmt = conn.createStatement(); var rs = stmt.executeQuery(query)) {
-			while (rs.next()) {
-				//System.out.println(buildRS(rs).toString());
+            int i = 0;
+            while (rs.next() && i <= 50) {
+				System.out.println(buildRS(rs).toString());
+				i++;
 			}
 		}
 	}

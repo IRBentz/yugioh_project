@@ -15,7 +15,7 @@ public class EnumClassLoading {
 			Arrays.asList(clazz.getEnumConstants())
 					.forEach(componentEnum -> logger.log(Level.INFO, componentEnum.toString()));
 		} catch (SecurityException | ClassNotFoundException e) {
-			logger.log(Level.SEVERE, "An error occured", e);
+			logger.log(Level.SEVERE, "An error occurred", e);
 		}
 	}
 }

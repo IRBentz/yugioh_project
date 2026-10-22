@@ -18,17 +18,15 @@ public class ArchetypeSetcodeParser {
 			importedLua = new ArrayList<>(Files.readAllLines(archtypeSetcodeLuaPath));
 			boolean flag = false;
 			for(String line : importedLua) {
-				if(line.startsWith("--")) {
+				if(line.startsWith("--[[") || line.startsWith("--]]")) {
 					flag = !flag;
 					continue;
 				}
-				if(!flag) {
+				if(!(flag || line.startsWith("--"))) {
 					//System.out.println(line);
 					parseLineToArchetypeSetCode(line);
 				}
 			}
-			
-			archetypeSetcodeArrayList.forEach(obj -> Arrays.asList(obj).forEach(System.out::println));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -36,10 +34,11 @@ public class ArchetypeSetcodeParser {
 	}
 	
 	static void parseLineToArchetypeSetCode(String line) {
-		String[] splitLines = line.split("\\= ");
-		Arrays.asList(splitLines).forEach(String::strip);
-		//Arrays.asList(splitLines).forEach(System.out::println);
-		if((splitLines.length == 2)) 
-			archetypeSetcodeArrayList.add(new ArchetypeSetcodeComponent(splitLines[0], splitLines[1]));
+		String[] splitLine = line.split("\\= ");
+		splitLine[0] = splitLine[0].strip();
+		if(splitLine.length == 2)
+			splitLine[1] = splitLine[1].strip();
+		if((splitLine.length == 2))
+			archetypeSetcodeArrayList.add(new ArchetypeSetcodeComponent(splitLine[0], Integer.decode(splitLine[1])));
 	}
 }

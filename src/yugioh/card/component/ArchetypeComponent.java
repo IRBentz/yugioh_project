@@ -1,5 +1,5 @@
 package yugioh.card.component;
-
+@Deprecated
 public enum ArchetypeComponent implements CardComponentInterface.SubInterface {
 	ALLY_OF_JUSTICE_A(HexCode.HEX_1), GENEX_A(HexCode.HEX_2), RGENEX_A(HexCode.HEX_100_2),
 	GENEX_ALLY_A(HexCode.HEX_200_2), HORUS_A(HexCode.HEX_3), HORUS_BLACK_FLAME_DRAGON_A(HexCode.HEX_100_3),

@@ -11,7 +11,7 @@ public class NumToLinkArrowComponentArray {
     public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
         while(kb.hasNext()) {
-            evalNum2(Integer.decode(kb.next())).forEach(System.out::println);
+            evalIntToList(Integer.decode(kb.next())).forEach(System.out::println);
         }
     }
 
@@ -19,19 +19,15 @@ public class NumToLinkArrowComponentArray {
         ArrayList<LinkArrowComponent> linkArrows = new ArrayList<>(Arrays.asList(LinkArrowComponent.values()));
         ArrayList<LinkArrowComponent> matchedArrows = new ArrayList<>();
         for(LinkArrowComponent arrow : linkArrows.reversed()) {
-            if(num - arrow.numericIden >= 0) {
-                num -= arrow.numericIden;
+            if(num - arrow.getNumericIden() >= 0) {
+                num -= arrow.getNumericIden();
                 matchedArrows.add(arrow);
             }
         }
         matchedArrows.reversed().forEach(System.out::println);
     }
 
-    static List<LinkArrowComponent> evalNum2(int num) {
-        return recurEval(num);
-    }
-
-    static List<LinkArrowComponent> recurEval(int num) {
+    static List<LinkArrowComponent> evalIntToList(int num) {
         if(num > 495) {
             throw new Error("Invalid input");
         }
@@ -39,8 +35,8 @@ public class NumToLinkArrowComponentArray {
             return new ArrayList<>();
         }
         for(LinkArrowComponent comp : Arrays.asList(LinkArrowComponent.values()).reversed()) {
-            if(num >= comp.numericIden) {
-                List<LinkArrowComponent> matched = recurEval(num - comp.numericIden);
+            if(num >= comp.getNumericIden()) {
+                List<LinkArrowComponent> matched = evalIntToList(num - comp.getNumericIden());
                 matched.add(comp);
                 return matched;
             }

@@ -58,7 +58,7 @@ public interface DBBuilderInterface {
 				}
 			}
 		} catch (IOException | ClassNotFoundException e) {
-			logger.log(Level.SEVERE, "An error occured", e);
+			logger.log(Level.SEVERE, "An error occurred", e);
 		}
 	}
 }

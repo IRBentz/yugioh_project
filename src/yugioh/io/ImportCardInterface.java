@@ -30,7 +30,7 @@ public interface ImportCardInterface {
 				}
 			}
 		} catch (SecurityException | ClassNotFoundException e) {
-			logger.log(Level.SEVERE, "An JSONException, SQLException Occured", e);
+			logger.log(Level.SEVERE, "An JSONException, SQLException Occurred", e);
 		}
 		logger.log(Level.SEVERE, () -> "Unmatched string: " + inputString);
 		return null;

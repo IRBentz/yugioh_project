@@ -21,7 +21,7 @@ import yugioh.io.ImportCardInterface;
 import yugioh.io.json.JSONCardObject;
 
 public class Backendv4 implements DBBuilderInterface {
-	private static Logger logger = Logger.getLogger(Backendv4.class.toString());
+	private static final Logger logger = Logger.getLogger(Backendv4.class.toString());
 	private JSONObject jCardGroupObject;
 	private JSONCardObject jCardObject;
 	private ImportCardInterface importCardObject;
@@ -128,7 +128,7 @@ public class Backendv4 implements DBBuilderInterface {
 							+ "\" at the following file path: \""
 							+ filePath.resolve(FileName.CARD_JSON.nameWithExtension) + "\"");
 		} catch (final IOException e) {
-			Backendv4.logger.log(Level.SEVERE, "An Exception Occured", e);
+			Backendv4.logger.log(Level.SEVERE, "An Exception Occurred", e);
 			jsonArray = new JSONArray();
 		}
 		for (Object cardGroup : jsonArray) {

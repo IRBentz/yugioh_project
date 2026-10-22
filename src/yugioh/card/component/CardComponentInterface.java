@@ -34,7 +34,7 @@ public interface CardComponentInterface {
 			}
 			return sb.toString();
 		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-			logger.log(Level.SEVERE, "An error occured", e);
+			logger.log(Level.SEVERE, "An error occurred", e);
 		}
 		return null;
 	}
@@ -51,7 +51,7 @@ public interface CardComponentInterface {
 					return component;
 				}
 			} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-				logger.log(Level.SEVERE, "An error occured", e);
+				logger.log(Level.SEVERE, "An error occurred", e);
 			}
 		}
 		return null;

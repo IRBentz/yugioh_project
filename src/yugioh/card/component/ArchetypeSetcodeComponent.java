@@ -1,15 +1,20 @@
 package yugioh.card.component;
 
-public class ArchetypeSetcodeComponent {
+public class ArchetypeSetcodeComponent implements CardComponentInterface.SubInterface {
+	private final CardComponent cardComponent = CardComponent.ARCHETYPE;
 	String setName;
-	HexComponent hexComponent;
+	int numericIden;
 	
-	public ArchetypeSetcodeComponent(String setName, String hexComponent) {
+	public ArchetypeSetcodeComponent(String setName, int numericIden) {
 		this.setName = setName;
-		this.hexComponent = new HexComponent(hexComponent);
+		this.numericIden = numericIden;
 	}
-	
+
+	@Override
+	public String getComponentName() { return cardComponent.getComponentName(); }
+
+	@Override
 	public String toString() {
-		return setName + "0x" + hexComponent.getLiteralString();
+		return setName + " " + Integer.toHexString(numericIden);
 	}
 }

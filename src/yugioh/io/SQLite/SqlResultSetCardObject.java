@@ -38,27 +38,23 @@ public class SqlResultSetCardObject implements ImportCardInterface {
 	}
 
 	@Override
-	public LinkArrowComponent[] getLinkArrowArray(String input) {
-		
-		return null;
+	public LinkArrowComponent[] getLinkArrowArray(String input) throws SQLException {
+		return LinkArrowComponent.evalIntToList(resultSet.getInt(input)).toArray(LinkArrowComponent[]::new);
 	}
 
 	@Override
-	public MonsterAttributeComponent getMonsterAttributeComponent(String input) {
-		
-		return null;
+	public MonsterAttributeComponent getMonsterAttributeComponent(String input) throws SQLException {
+		return (MonsterAttributeComponent) stringToCardComponentInterface(resultSet.getString(input));
 	}
 
 	@Override
-	public MonsterTypeComponent getMonsterTypeComponent(String input) {
-		
-		return null;
+	public MonsterTypeComponent getMonsterTypeComponent(String input) throws SQLException {
+		return (MonsterTypeComponent) stringToCardComponentInterface(resultSet.getString(input));
 	}
 
 	@Override
-	public String getString(String input) {
-		
-		return null;
+	public String getString(String input) throws SQLException {
+		return resultSet.getString(input);
 	}
 
 	@Override
@@ -73,5 +69,4 @@ public class SqlResultSetCardObject implements ImportCardInterface {
 		return null;
 	}
 
-	public record Rs(int id, int alias, String name, String desc, int type, int atk, int def, int level, int race, int attribute, int category) {}
 }

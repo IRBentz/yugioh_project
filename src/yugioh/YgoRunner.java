@@ -2,6 +2,8 @@ package yugioh;
 
 import yugioh.engine.Backendv4;
 import yugioh.engine.DBBuilderInterface;
+import yugioh.engine.HelperInterface;
+import yugioh.io.FilePath.ArchetypeSetcodeHelper;
 import yugioh.logging.builtin.Logging;
 
 public class YgoRunner {
@@ -9,6 +11,8 @@ public class YgoRunner {
 		Logging.setupLogging();
 		
 		DBBuilderInterface builder = new Backendv4(0);
+		HelperInterface ash = new ArchetypeSetcodeHelper();
+		ash.run();
 		builder.buildDB();
 	}
 }

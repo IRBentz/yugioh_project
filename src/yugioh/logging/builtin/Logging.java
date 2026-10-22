@@ -11,7 +11,7 @@ public class Logging {
 		try  {
 			LogManager.getLogManager().readConfiguration(new FileInputStream("src/logging.properties"));
 		} catch (SecurityException | IOException e) {
-			Logger.getGlobal().log(Level.SEVERE, "An exception has occured attempting to read logger.properties", e);
+			Logger.getGlobal().log(Level.SEVERE, "An exception has occurred attempting to read logger.properties", e);
 		}
 	}
 

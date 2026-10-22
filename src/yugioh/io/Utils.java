@@ -59,7 +59,7 @@ public class Utils {
 							.getConstructor().newInstance(), effectNum);
 		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException
 				| ClassNotFoundException | IllegalArgumentException | InstantiationException e) {
-			logger.log(Level.SEVERE, "An exception occured.", e);
+			logger.log(Level.SEVERE, "An exception occurred.", e);
 		}
 	}
 
