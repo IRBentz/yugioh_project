@@ -51,7 +51,7 @@
                 <dependency>
                         <groupId>org.json</groupId>
                         <artifactId>json</artifactId>
-                        <version>20260522</version>
+                        <version>20260814</version>
                 </dependency>
                 <!--
                 https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
