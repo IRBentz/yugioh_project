@@ -8,8 +8,7 @@
 *.ctxt
 
 # Eclipse Files
-.classpath
-.project
+.eclipse/*
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -31,7 +30,6 @@ replay_pid*
 bin/
 target/
 .settings/
-.idea/
 
 # Other misc files
 *.png
